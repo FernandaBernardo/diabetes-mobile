@@ -24,13 +24,14 @@ public class ListaAlimentos {
 		alimentos.add(new Alimento(8L, "bolo", 26));
 		alimentos.add(new Alimento(9L, "feijão", 14));
 		alimentos.add(new Alimento(10L, "iogurte", 16));
+		alimentos.add(new Alimento(11L, "chocolate", 12));
+		alimentos.add(new Alimento(12L, "bala", 5));
+		alimentos.add(new Alimento(13L, "lasanha", 35));
+		alimentos.add(new Alimento(14L, "pizza", 27));
+		alimentos.add(new Alimento(15L, "suco de laranja", 28));
 	}
 	
-	List<Alimento> getAlimentos(String nome) {
-		List<Alimento> alimentosBuscados = new ArrayList<Alimento>();
-		for (Alimento alimento : alimentos) {
-			if((alimento.getNome()).contains(nome)) alimentosBuscados.add(alimento);
-		}
-		return alimentosBuscados;
+	List<Alimento> getAlimentos() {
+		return alimentos;
 	}
 }

@@ -1,12 +1,12 @@
 package br.com.caelum.diabetes;
 
+import java.util.List;
+
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import br.com.caelum.diabetes.model.Alimento;
 
 public class MainActivity extends Activity {
 
@@ -15,18 +15,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Button botao = (Button) findViewById(R.id.buscar);
+		ListaAlimentos listaAlimentos = new ListaAlimentos();
+		List<Alimento> alimentos = listaAlimentos.getAlimentos();
+//		String[] alimentos = {"arroz branco", "arroz integral", "batata", "feijão", "pão francês", "pão de forma", "chocolate", "bala"}; 
+		ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
 		
-		botao.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				EditText busca = (EditText) findViewById(R.id.alimento);
-				String alimentoBuscado = busca.getText().toString();
-				
-				Intent intent = new Intent(MainActivity.this, ListaAlimentosActivity.class);
-				intent.putExtra("carboidrato", alimentoBuscado);
-				startActivity(intent);
-			}
-		});
+		AutoCompleteTextView busca = (AutoCompleteTextView) findViewById(R.id.busca);
+		
+		busca.setAdapter(adapter);
 	}
 }
