@@ -11,6 +11,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/busca" 
+        android:id="@+id/textView1"/>
+    
+    <Button 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_alignLeft="@+id/alimento" 
+        android:layout_below="@+id/alimento" 
+        android:text="@string/buscar"
+        android:id="@+id/buscar"/>
+    
+    <EditText 
+        android:ems="10" 
+        android:id="@+id/alimento" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_alignLeft="@+id/textView1" 
+        android:layout_below="@+id/textView1" 
+        android:padding="15dip">
+        <requestFocus />
+    </EditText>
+    
 
 </RelativeLayout>
