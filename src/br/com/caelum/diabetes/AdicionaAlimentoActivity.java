@@ -20,7 +20,7 @@ import br.com.caelum.diabetes.model.Alimento;
 public class AdicionaAlimentoActivity extends Activity {
 
 	private EditText carboidrato;
-	protected Alimento alimentoAtual;
+	private Alimento alimentoAtual;
 	private EditText valor;
 	private EditText unidade;
 	private Button botao;
@@ -63,13 +63,11 @@ public class AdicionaAlimentoActivity extends Activity {
 					carboidrato.setText("0.0");
 				}
 			}
-
 			@Override
-			public void afterTextChanged(Editable s) {
+			public void afterTextChanged(Editable arg0) {
 			}
-
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 			}
 		});
 		
@@ -77,6 +75,7 @@ public class AdicionaAlimentoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(AdicionaAlimentoActivity.this, MontaRefeicaoActivity.class);
+				intent.putExtra("alimento", alimentoAtual);
 				startActivity(intent);
 			}
 		});

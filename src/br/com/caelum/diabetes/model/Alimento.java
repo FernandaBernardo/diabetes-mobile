@@ -1,6 +1,8 @@
 package br.com.caelum.diabetes.model;
 
-public class Alimento {
+import java.io.Serializable;
+
+public class Alimento implements Serializable{
 	private Long id;
 	private String nome;
 	private double carboidrato;
