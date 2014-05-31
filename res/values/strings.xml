@@ -3,7 +3,11 @@
 
     <string name="app_name">Diabetes</string>
     <string name="action_settings">Settings</string>
-    <string name="busca">Busca:</string>
-    <string name="buscar">Buscar</string>
+    <string name="alimento">Alimento:</string>
+    <string name="quantidade">Quantidade:</string>
+    <string name="valor">Valor</string>
+    <string name="unidade">Unidade, ex: colher/copo</string>
+    <string name="nome">Nome</string>
+    <string name="carboidrato">Carboidrato</string>
 </resources>
 

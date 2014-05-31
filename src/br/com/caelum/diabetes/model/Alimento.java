@@ -4,11 +4,17 @@ public class Alimento {
 	private Long id;
 	private String nome;
 	private double carboidrato;
+	private String unidadeDeMedida;
 	
-	public Alimento(Long id, String nome, double carboidrato) {
+	public Alimento(Long id, String nome, double carboidrato, String unidadeDeMedida) {
 		this.id = id;
 		this.nome = nome;
 		this.carboidrato = carboidrato;
+		this.unidadeDeMedida = unidadeDeMedida;
+	}
+	
+	public double getCarboidratoPorValor(double valor) {
+		return valor*carboidrato;
 	}
 	
 	public String getNome() {
@@ -35,5 +41,13 @@ public class Alimento {
 	@Override
 	public String toString() {
 		return nome;
+	}
+
+	public String getUnidadeDeMedida() {
+		return unidadeDeMedida;
+	}
+
+	public void setUnidadeDeMedida(String unidadeDeMedida) {
+		this.unidadeDeMedida = unidadeDeMedida;
 	}
 }
