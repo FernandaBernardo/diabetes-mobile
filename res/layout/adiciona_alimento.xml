@@ -30,7 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/unidade"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:id="@+id/unidade"
+        android:enabled="false"/>
     
     <TextView 
         android:layout_width="match_parent"
@@ -42,5 +44,11 @@
         android:hint="0"
         android:inputType="number"
         android:id="@+id/carboidrato_alimento"/>
+    
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adicionar_alimento"
+        android:text="@string/adicionar_alimento"/>
     
 </LinearLayout>

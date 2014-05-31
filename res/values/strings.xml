@@ -9,5 +9,7 @@
     <string name="unidade">Unidade, ex: colher/copo</string>
     <string name="nome">Nome</string>
     <string name="carboidrato">Carboidrato</string>
+    <string name="adicionar_alimento">Adicionar Alimento</string>
+    <string name="novo_alimento">Novo Alimento</string>
 </resources>
 
