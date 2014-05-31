@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import br.com.caelum.diabetes.dao.AlimentoDao;
 import br.com.caelum.diabetes.model.Alimento;
 
 public class AdicionaAlimentoActivity extends Activity {
@@ -24,18 +25,21 @@ public class AdicionaAlimentoActivity extends Activity {
 	private EditText valor;
 	private EditText unidade;
 	private Button botao;
+	private AlimentoDao alimentoDao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adiciona_alimento);
 		
+		alimentoDao = new AlimentoDao(this);
+		
 		carboidrato = (EditText) findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) findViewById(R.id.valor);
 		unidade = (EditText) findViewById(R.id.unidade);
 		botao = (Button) findViewById(R.id.adicionar_alimento);
 		
-		final List<Alimento> alimentos = new ListaAlimentos().getAlimentos();
+		final List<Alimento> alimentos = alimentoDao.getAlimentos();
 		
 		ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
 		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) findViewById(R.id.busca);

@@ -3,12 +3,12 @@ package br.com.caelum.diabetes.model;
 import java.io.Serializable;
 
 public class Alimento implements Serializable{
-	private Long id;
+	private int id;
 	private String nome;
 	private double carboidrato;
 	private String unidadeDeMedida;
 	
-	public Alimento(Long id, String nome, double carboidrato, String unidadeDeMedida) {
+	public Alimento(int id, String nome, double carboidrato, String unidadeDeMedida) {
 		this.id = id;
 		this.nome = nome;
 		this.carboidrato = carboidrato;
@@ -36,7 +36,7 @@ public class Alimento implements Serializable{
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
