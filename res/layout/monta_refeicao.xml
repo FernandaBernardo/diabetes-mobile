@@ -8,5 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lista_alimentos"/>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/total_de_carboidrato"/>
+    
+    <EditText 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="0.0"
+        android:id="@+id/totalCHO"/>
 
 </LinearLayout>

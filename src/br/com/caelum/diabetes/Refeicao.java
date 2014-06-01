@@ -8,6 +8,7 @@ import br.com.caelum.diabetes.model.Alimento;
 
 public class Refeicao implements Serializable{
 	private List<Alimento> alimentos;
+	private double totalCHO;
 	
 	public Refeicao() {
 		alimentos = new ArrayList<Alimento>();
@@ -23,5 +24,13 @@ public class Refeicao implements Serializable{
 
 	public void setAlimentos(List<Alimento> alimentos) {
 		this.alimentos = alimentos;
+	}
+
+	public double getTotalCHO() {
+		totalCHO = 0;
+		for (Alimento alimento : alimentos) {
+			totalCHO += alimento.getCarboidrato();
+		}
+		return totalCHO;
 	}
 }

@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import br.com.caelum.diabetes.model.Alimento;
 
@@ -33,6 +35,9 @@ public class MontaRefeicaoActivity extends Activity{
 			List<Alimento> alimentos = refeicao.getAlimentos();
 			ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_list_item_1, alimentos);
 			lista.setAdapter(adapter);
+			
+			EditText totalCHO = (EditText) findViewById(R.id.totalCHO);
+			totalCHO.setText(String.valueOf(refeicao.getTotalCHO()));
 		}
 	}
 	
