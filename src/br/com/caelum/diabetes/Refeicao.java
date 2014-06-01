@@ -1,11 +1,12 @@
 package br.com.caelum.diabetes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.diabetes.model.Alimento;
 
-public class Refeicao {
+public class Refeicao implements Serializable{
 	private List<Alimento> alimentos;
 	
 	public Refeicao() {

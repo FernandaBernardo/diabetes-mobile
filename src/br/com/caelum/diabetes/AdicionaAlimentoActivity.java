@@ -78,9 +78,8 @@ public class AdicionaAlimentoActivity extends Activity {
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(AdicionaAlimentoActivity.this, MontaRefeicaoActivity.class);
-				intent.putExtra("alimento", alimentoAtual);
-				startActivity(intent);
+				setResult(RESULT_OK, new Intent().putExtra("alimento", alimentoAtual));
+				finish();
 			}
 		});
 	}

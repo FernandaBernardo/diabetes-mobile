@@ -12,28 +12,28 @@ import android.widget.ListView;
 import br.com.caelum.diabetes.model.Alimento;
 
 public class MontaRefeicaoActivity extends Activity{
-	private Refeicao refeicao;
+	private Refeicao refeicao = new Refeicao();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.monta_refeicao);
-		
-		refeicao = new Refeicao();
 	}
 	
 	@Override
-	protected void onResume() {
-		super.onResume();
-		Bundle bundle = getIntent().getExtras();
-		Alimento alimento = (Alimento) bundle.get("alimento");
-		refeicao.adicionaAlimento(alimento);
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 		
-		ListView lista = (ListView) findViewById(R.id.lista_alimentos);
-		
-		List<Alimento> alimentos = refeicao.getAlimentos();
-		ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_list_item_1, alimentos);
-		lista.setAdapter(adapter);
+		if(requestCode == 0 && resultCode == RESULT_OK) {
+			Alimento alimento = (Alimento) data.getSerializableExtra("alimento");
+			refeicao.adicionaAlimento(alimento);
+			
+			ListView lista = (ListView) findViewById(R.id.lista_alimentos);
+			
+			List<Alimento> alimentos = refeicao.getAlimentos();
+			ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_list_item_1, alimentos);
+			lista.setAdapter(adapter);
+		}
 	}
 	
 	@Override
@@ -50,7 +50,8 @@ public class MontaRefeicaoActivity extends Activity{
 		
 		if(itemId == R.id.novo_alimento) {
 			Intent intent = new Intent(MontaRefeicaoActivity.this, AdicionaAlimentoActivity.class);
-			startActivityForResult(intent, itemId);
+			intent.putExtra("refeicao", refeicao);
+			startActivityForResult(intent, 0);
 			return true;
 		}
 			
