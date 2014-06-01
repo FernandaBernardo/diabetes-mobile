@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/text_view_refeicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refeicao_prompt"
+        
+        />
+    
+    <Spinner 
+        android:id="@+id/refeicao_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/refeicoes_array"
+        />
+    
+    
+    <Button
+        android:id="@+id/button_refeicao_selecionada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/refeicao_next"
+        />
+
+</LinearLayout>
