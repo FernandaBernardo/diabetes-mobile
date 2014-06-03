@@ -9,16 +9,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
- * Activity que representa uma seleção a ser escolhida pelo usuário (Café da manhã, almoço, jantar....).
- * <p> Essa escolha influenciará nos cálculos a serem realizados em {@link AdicionaAlimentoActivity}
+ * Activity que representa uma seleï¿½ï¿½o a ser escolhida pelo usuï¿½rio (Cafï¿½ da manhï¿½, almoï¿½o, jantar....).
+ * <p> Essa escolha influenciarï¿½ nos cï¿½lculos a serem realizados em {@link AdicionaAlimentoActivity}
  * @author Johnny Taira
  *
  */
 public class SelecionaRefeicaoActivity extends Activity {
-	
 	private Spinner spinnerRefeicao;
 	private TextView selecioneRefeicao;
-	
 	private Button buttonRefeicao;
 	
 	@Override
@@ -35,15 +33,9 @@ public class SelecionaRefeicaoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(SelecionaRefeicaoActivity.this, MontaRefeicaoActivity.class);
-				
-				startActivityForResult(intent, 1);
-				
+				intent.putExtra("tipo_refeicao", spinnerRefeicao.getSelectedItem().toString());
+				startActivity(intent);
 			}
-			
-			
 		});
-		
 	}
-	
-	
 }

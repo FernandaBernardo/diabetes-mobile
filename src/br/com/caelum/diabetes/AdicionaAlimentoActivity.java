@@ -15,33 +15,34 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import br.com.caelum.diabetes.dao.AlimentoDao;
-import br.com.caelum.diabetes.model.Alimento;
+import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
+import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class AdicionaAlimentoActivity extends Activity {
 
 	private EditText carboidrato;
-	private Alimento alimentoAtual;
+	private AlimentoFisico alimentoAtual;
 	private EditText valor;
 	private EditText unidade;
 	private Button botao;
-	private AlimentoDao alimentoDao;
+	private AlimentoFisicoDao alimentoDao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adiciona_alimento);
 		
-		alimentoDao = new AlimentoDao(this);
+		alimentoDao = new AlimentoFisicoDao(new DbHelper(this));
 		
 		carboidrato = (EditText) findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) findViewById(R.id.valor);
 		unidade = (EditText) findViewById(R.id.unidade);
 		botao = (Button) findViewById(R.id.adicionar_alimento);
 		
-		final List<Alimento> alimentos = alimentoDao.getAlimentos();
+		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 		
-		ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
+		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
 		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) findViewById(R.id.busca);
 		buscaAlimento.setAdapter(adapter);
 		
@@ -49,7 +50,7 @@ public class AdicionaAlimentoActivity extends Activity {
 		buscaAlimento.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int pos, long arg3) {
-				alimentoAtual = (Alimento) adapter.getAdapter().getItem(pos);
+				alimentoAtual = (AlimentoFisico) adapter.getAdapter().getItem(pos);
 				
 				carboidrato.setText(String.valueOf(alimentoAtual.getCarboidrato()));
 				valor.setText("1");

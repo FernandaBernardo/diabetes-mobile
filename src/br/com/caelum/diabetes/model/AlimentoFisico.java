@@ -2,13 +2,13 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
-public class Alimento implements Serializable{
+public class AlimentoFisico implements Serializable{
 	private int id;
 	private String nome;
 	private double carboidrato;
 	private String unidadeDeMedida;
 	
-	public Alimento(int id, String nome, double carboidrato, String unidadeDeMedida) {
+	public AlimentoFisico(int id, String nome, double carboidrato, String unidadeDeMedida) {
 		this.id = id;
 		this.nome = nome;
 		this.carboidrato = carboidrato;

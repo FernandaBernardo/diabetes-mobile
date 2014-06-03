@@ -7,19 +7,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import br.com.caelum.diabetes.model.Alimento;
+import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class MontaRefeicaoActivity extends Activity{
-	private Refeicao refeicao = new Refeicao();
+	private Refeicao refeicao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.monta_refeicao);
+		
+		Bundle bundle = getIntent().getExtras();
+		TipoRefeicao tipoRefeicao = TipoRefeicao.fromString((String) bundle.get("tipo_refeicao"));
+		refeicao = new Refeicao(tipoRefeicao);
 	}
 	
 	@Override
@@ -27,13 +30,13 @@ public class MontaRefeicaoActivity extends Activity{
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if(requestCode == 0 && resultCode == RESULT_OK) {
-			Alimento alimento = (Alimento) data.getSerializableExtra("alimento");
+			AlimentoFisico alimento = (AlimentoFisico) data.getSerializableExtra("alimento");
 			refeicao.adicionaAlimento(alimento);
 			
 			ListView lista = (ListView) findViewById(R.id.lista_alimentos);
 			
-			List<Alimento> alimentos = refeicao.getAlimentos();
-			ArrayAdapter<Alimento> adapter = new ArrayAdapter<Alimento>(this, android.R.layout.simple_list_item_1, alimentos);
+			List<AlimentoFisico> alimentos = refeicao.getAlimentos();
+			ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(this, android.R.layout.simple_list_item_1, alimentos);
 			lista.setAdapter(adapter);
 			
 			EditText totalCHO = (EditText) findViewById(R.id.totalCHO);

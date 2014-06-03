@@ -4,31 +4,33 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.caelum.diabetes.model.Alimento;
+import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class Refeicao implements Serializable{
-	private List<Alimento> alimentos;
+	private List<AlimentoFisico> alimentos;
 	private double totalCHO;
+	private TipoRefeicao tipoRefeicao; 
 	
-	public Refeicao() {
-		alimentos = new ArrayList<Alimento>();
+	public Refeicao(TipoRefeicao tipoRefeicao) {
+		this.tipoRefeicao = tipoRefeicao;
+		alimentos = new ArrayList<AlimentoFisico>();
 	}
 	
-	public void adicionaAlimento(Alimento alimento) {
+	public void adicionaAlimento(AlimentoFisico alimento) {
 		alimentos.add(alimento);
 	}
 	
-	public List<Alimento> getAlimentos() {
+	public List<AlimentoFisico> getAlimentos() {
 		return alimentos;
 	}
 
-	public void setAlimentos(List<Alimento> alimentos) {
+	public void setAlimentos(List<AlimentoFisico> alimentos) {
 		this.alimentos = alimentos;
 	}
 
 	public double getTotalCHO() {
 		totalCHO = 0;
-		for (Alimento alimento : alimentos) {
+		for (AlimentoFisico alimento : alimentos) {
 			totalCHO += alimento.getCarboidrato();
 		}
 		return totalCHO;

@@ -15,14 +15,14 @@
 
     <string name="refeicao_prompt">Selecione a Refeição</string>
     <string name="refeicao_next">Próximo</string>
-    
+   
     <string-array name="refeicoes_array">
         <item>Café da Manhã</item>
         <item>Lanche da Manhã</item>
         <item>Almoço</item>
         <item>Lanche da Tarde</item>
         <item>Jantar</item>
-        <item>Lanche da Noite</item>
+        <item>Ceia</item>
     </string-array>
 
 </resources>
