@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    
+    <TextView
+        android:text="@string/novo_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/text_novo_peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:text="@string/novo_gli_alvo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/text_gli_alvo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:text="@string/novo_gli_basal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/text_gli_basal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:text="@string/novo_gli_contagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/text_gli_contagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <TextView
+        android:text="@string/novo_gli_correcao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText 
+        android:id="@+id/text_gli_correcao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    
+    <Button
+        android:id="@+id/button_configurar_perfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    	/>
+    
+    
+
+</LinearLayout>

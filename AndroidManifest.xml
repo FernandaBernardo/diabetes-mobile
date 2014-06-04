@@ -30,6 +30,10 @@
             android:name="br.com.caelum.diabetes.MontaRefeicaoActivity"
             android:label="@string/app_name"
             />
+        
+        <activity
+            android:name="br.com.caelum.diabetes.ConfigurarPerfilActivity"
+            />
     </application>
     	
 </manifest>
