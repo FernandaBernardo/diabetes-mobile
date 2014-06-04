@@ -11,5 +11,4 @@
         android:id="@+id/novo_alimento"
         android:showAsAction="always"
         android:icon="@drawable/plus"/>
-
 </menu>
