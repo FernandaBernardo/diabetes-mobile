@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.extras;
 
 public class Extras {
 	public static final String cafeDaManha = "Café da Manhã";

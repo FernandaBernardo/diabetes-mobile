@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="br.com.caelum.diabetes.SelecionaRefeicaoActivity"
+            android:name="br.com.caelum.diabetes.activity.SelecionaRefeicaoActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
         </activity>
         
         <activity 
-            android:name="br.com.caelum.diabetes.AdicionaAlimentoActivity"
+            android:name="br.com.caelum.diabetes.activity.AdicionaAlimentoActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name="br.com.caelum.diabetes.MontaRefeicaoActivity"
+            android:name="br.com.caelum.diabetes.activity.MontaRefeicaoActivity"
             android:label="@string/app_name"
             />
         
         <activity
-            android:name="br.com.caelum.diabetes.ConfigurarPerfilActivity"
+            android:name="br.com.caelum.diabetes.activity.ConfigurarPerfilActivity"
             />
     </application>
     	

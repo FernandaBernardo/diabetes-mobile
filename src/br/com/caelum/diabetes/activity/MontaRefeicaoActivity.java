@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.activity;
 
 import java.util.List;
 
@@ -10,7 +10,14 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.dao.AlimentoVirtualDao;
+import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.dao.RefeicaoDao;
+import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.model.AlimentoFisico;
+import br.com.caelum.diabetes.model.AlimentoVirtual;
+import br.com.caelum.diabetes.model.Refeicao;
 
 public class MontaRefeicaoActivity extends Activity{
 	private Refeicao refeicao;
@@ -23,6 +30,19 @@ public class MontaRefeicaoActivity extends Activity{
 		Bundle bundle = getIntent().getExtras();
 		TipoRefeicao tipoRefeicao = TipoRefeicao.fromString((String) bundle.get("tipo_refeicao"));
 		refeicao = new Refeicao(tipoRefeicao);
+		
+		DbHelper helper = new DbHelper(this);
+		
+		RefeicaoDao refeicaoDao = new RefeicaoDao(helper);
+		refeicao.setId(refeicaoDao.salva(refeicao));
+		
+		helper.close();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
 	}
 	
 	@Override
@@ -31,12 +51,24 @@ public class MontaRefeicaoActivity extends Activity{
 		
 		if(requestCode == 0 && resultCode == RESULT_OK) {
 			AlimentoFisico alimento = (AlimentoFisico) data.getSerializableExtra("alimento");
-			refeicao.adicionaAlimento(alimento);
+			double quantidade = data.getDoubleExtra("quantidade", 0);
+			
+			AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimento, quantidade);
+			alimentoVirtual.setRefeicao(refeicao);
+			
+			refeicao.adicionaAlimento(alimentoVirtual);
+			
+			DbHelper helper = new DbHelper(this);
+			
+			AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(helper);
+			alimentoVirtualDao.salva(alimentoVirtual);
+			
+			helper.close();
 			
 			ListView lista = (ListView) findViewById(R.id.lista_alimentos);
 			
-			List<AlimentoFisico> alimentos = refeicao.getAlimentos();
-			ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(this, android.R.layout.simple_list_item_1, alimentos);
+			List<AlimentoVirtual> alimentos = refeicao.getAlimentos();
+			ArrayAdapter<AlimentoVirtual> adapter = new ArrayAdapter<AlimentoVirtual>(this, android.R.layout.simple_list_item_1, alimentos);
 			lista.setAdapter(adapter);
 			
 			EditText totalCHO = (EditText) findViewById(R.id.totalCHO);
@@ -62,7 +94,6 @@ public class MontaRefeicaoActivity extends Activity{
 			startActivityForResult(intent, 0);
 			return true;
 		}
-			
 		return false;
 	}
 }

@@ -1,4 +1,5 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.extras;
+
 
 public enum TipoRefeicao{
 	CAFE_DA_MANHA(Extras.cafeDaManha), 

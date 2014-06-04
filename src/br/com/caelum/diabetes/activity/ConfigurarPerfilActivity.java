@@ -1,11 +1,8 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.activity;
 
+import br.com.caelum.diabetes.R;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,7 +21,7 @@ public class ConfigurarPerfilActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState ){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configurar_perfil);
-		//oi eu sou um comentário NÃO ME APAGUE PFVR TENHA PIEDADE
+		//oi eu sou um comentï¿½rio Nï¿½O ME APAGUE PFVR TENHA PIEDADE
 		buttonSalvar = (Button) findViewById(R.id.button_configurar_perfil);
 		textBasal = (TextView) findViewById(R.id.text_gli_basal);
 		textPeso = (TextView) findViewById(R.id.text_novo_peso);

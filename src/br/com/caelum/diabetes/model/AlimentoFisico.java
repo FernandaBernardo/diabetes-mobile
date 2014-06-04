@@ -32,7 +32,7 @@ public class AlimentoFisico implements Serializable{
 		this.carboidrato = carboidrato;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 

@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.activity;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.model.AlimentoFisico;
@@ -79,7 +80,7 @@ public class AdicionaAlimentoActivity extends Activity {
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setResult(RESULT_OK, new Intent().putExtra("alimento", alimentoAtual));
+				setResult(RESULT_OK, new Intent().putExtra("alimento", alimentoAtual).putExtra("quantidade", Double.parseDouble(valor.getText().toString())));
 				finish();
 			}
 		});

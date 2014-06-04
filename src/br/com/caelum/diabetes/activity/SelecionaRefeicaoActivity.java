@@ -1,5 +1,6 @@
-package br.com.caelum.diabetes;
+package br.com.caelum.diabetes.activity;
 
+import br.com.caelum.diabetes.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

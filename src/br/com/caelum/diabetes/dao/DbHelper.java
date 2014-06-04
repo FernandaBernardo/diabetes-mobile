@@ -19,7 +19,6 @@ public class DbHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		String refeicao = "CREATE TABLE " + "Refeicao" + " " + 
 				"(id INTEGER PRIMARY KEY, " +
-				"totalCHO DOUBLE, " +
 				"tipoRefeicao TEXT);";
 		
 		String alimentoFisico = "CREATE TABLE " + "AlimentoFisico" + " " + 
