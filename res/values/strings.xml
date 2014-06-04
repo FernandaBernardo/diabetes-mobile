@@ -13,19 +13,16 @@
     <string name="novo_alimento">Novo Alimento</string>
     <string name="total_de_carboidrato">Total de Carboidrato:</string>
     
-    
-    
-    <!-- configurar_perfil_main.xml -->
-    <string name="novo_peso">Peso: </string>
-    <string name="mensagem_configurar">Seija bem-vindo, usuário!</string>
-    <string name="novo_gli_alvo">Glicemia-alvo: </string>
-    <string name="novo_gli_correcao">Glicemia Correção: </string>
-    <string name="novo_gli_contagem">Glicemia Contagem: </string>
-    <string name="novo_gli_basal">Glicemia Basal: </string>
-    <string name="salvar_config_perfil">Salvar</string>
+    <string name="peso">Peso: </string>
+    <string name="bem_vindo">Seja bem-vindo, usuário!</string>
+    <string name="glicemia_alvo">Glicemia-alvo: </string>
+    <string name="glicemia_correcao">Glicemia Correção: </string>
+    <string name="glicemia_contagem">Glicemia Contagem: </string>
+    <string name="glicemia_basal">Glicemia Basal: </string>
+    <string name="salvar">Salvar</string>
 
-    <string name="refeicao_prompt">Selecione a Refeição</string>
-    <string name="refeicao_next">Próximo</string>
+    <string name="selecione_refeicao">Selecione a Refeição</string>
+    <string name="proximo">Próximo</string>
    
     <string-array name="refeicoes_array">
         <item>Café da Manhã</item>
@@ -35,6 +32,7 @@
         <item>Jantar</item>
         <item>Ceia</item>
     </string-array>
+        <string name="perfil">Perfil</string>
 
 </resources>
 

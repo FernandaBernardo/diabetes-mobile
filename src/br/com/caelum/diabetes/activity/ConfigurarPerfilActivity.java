@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 
 public class ConfigurarPerfilActivity extends Activity{
-	
-	
 	private Button buttonSalvar;
 	private TextView textBasal;
 	private TextView textPeso;
@@ -21,15 +19,12 @@ public class ConfigurarPerfilActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState ){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configurar_perfil);
-		//oi eu sou um coment�rio N�O ME APAGUE PFVR TENHA PIEDADE
+		
 		buttonSalvar = (Button) findViewById(R.id.button_configurar_perfil);
 		textBasal = (TextView) findViewById(R.id.text_gli_basal);
 		textPeso = (TextView) findViewById(R.id.text_novo_peso);
 		textCorrecao = (TextView) findViewById(R.id.text_gli_correcao);
 		textContagem = (TextView) findViewById(R.id.text_gli_contagem);
 		textAlvo = (TextView) findViewById(R.id.text_gli_alvo);
-		
-	
 	}
-	
 }

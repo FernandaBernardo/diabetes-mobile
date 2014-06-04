@@ -8,7 +8,7 @@
         android:id="@+id/text_view_refeicao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/refeicao_prompt"
+        android:text="@string/selecione_refeicao"
         
         />
     
@@ -24,7 +24,7 @@
         android:id="@+id/button_refeicao_selecionada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/refeicao_next"
+        android:text="@string/proximo"
         />
 
 </LinearLayout>
