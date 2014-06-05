@@ -8,9 +8,10 @@ public class AlimentoVirtual implements Serializable{
 	private double quantidade;
 	private AlimentoFisico alimento;
 	
-	public AlimentoVirtual(AlimentoFisico alimento, double quantidade) {
+	public AlimentoVirtual(AlimentoFisico alimento, double quantidade, Refeicao refeicao) {
 		this.quantidade = quantidade;
 		this.alimento = alimento;
+		this.refeicao = refeicao;
 	}
 	
 	public double getTotalCarboidrato() {

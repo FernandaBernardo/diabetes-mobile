@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.activity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
@@ -40,30 +41,11 @@ public class MontaRefeicaoActivity extends Activity{
 	}
 	
 	@Override
-	protected void onResume() {
-		super.onResume();
-		
-	}
-	
-	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if(requestCode == 0 && resultCode == RESULT_OK) {
-			AlimentoFisico alimento = (AlimentoFisico) data.getSerializableExtra("alimento");
-			double quantidade = data.getDoubleExtra("quantidade", 0);
-			
-			AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimento, quantidade);
-			alimentoVirtual.setRefeicao(refeicao);
-			
-			refeicao.adicionaAlimento(alimentoVirtual);
-			
-			DbHelper helper = new DbHelper(this);
-			
-			AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(helper);
-			alimentoVirtualDao.salva(alimentoVirtual);
-			
-			helper.close();
+			refeicao = (Refeicao) data.getSerializableExtra("refeicao");
 			
 			ListView lista = (ListView) findViewById(R.id.lista_alimentos);
 			
@@ -89,6 +71,7 @@ public class MontaRefeicaoActivity extends Activity{
 		
 		if(itemId == R.id.novo_refeicao) {
 			Intent intent = new Intent(MontaRefeicaoActivity.this, AdicionaAlimentoActivity.class);
+			intent.putExtra("refeicao", refeicao);
 			startActivityForResult(intent, 0);
 			return true;
 		}
@@ -100,5 +83,4 @@ public class MontaRefeicaoActivity extends Activity{
 		}
 		return false;
 	}
-
 }

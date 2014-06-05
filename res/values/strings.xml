@@ -22,17 +22,14 @@
     <string name="salvar">Salvar</string>
 
     <string name="selecione_refeicao">Selecione a Refeição</string>
-    <string name="proximo">Próximo</string>
-   
-    <string-array name="refeicoes_array">
-        <item>Café da Manhã</item>
-        <item>Lanche da Manhã</item>
-        <item>Almoço</item>
-        <item>Lanche da Tarde</item>
-        <item>Jantar</item>
-        <item>Ceia</item>
-    </string-array>
-        <string name="perfil">Perfil</string>
+    <string name="cafe_da_manha">Café da Manhã</string>
+    <string name="lanche_da_manha">Lanche da Manhã</string>
+    <string name="almoco">Almoço</string>
+    <string name="lanche_da_tarde">Lanche da Tarde</string>
+    <string name="jantar">Jantar</string>
+    <string name="ceia">Ceia</string>
+    
+    <string name="perfil">Perfil</string>
 
 </resources>
 

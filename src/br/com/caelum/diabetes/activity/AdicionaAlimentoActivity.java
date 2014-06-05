@@ -17,8 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
+import br.com.caelum.diabetes.dao.AlimentoVirtualDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.model.AlimentoFisico;
+import br.com.caelum.diabetes.model.AlimentoVirtual;
+import br.com.caelum.diabetes.model.Refeicao;
 
 public class AdicionaAlimentoActivity extends Activity {
 
@@ -28,13 +31,19 @@ public class AdicionaAlimentoActivity extends Activity {
 	private EditText unidade;
 	private Button botao;
 	private AlimentoFisicoDao alimentoDao;
+	private Refeicao refeicao;
+	private DbHelper helper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adiciona_alimento);
 		
-		alimentoDao = new AlimentoFisicoDao(new DbHelper(this));
+		Bundle extras = getIntent().getExtras();
+		refeicao = (Refeicao) extras.getSerializable("refeicao");
+		
+		helper = new DbHelper(this);
+		alimentoDao = new AlimentoFisicoDao(helper);
 		
 		carboidrato = (EditText) findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) findViewById(R.id.valor);
@@ -46,7 +55,6 @@ public class AdicionaAlimentoActivity extends Activity {
 		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
 		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) findViewById(R.id.busca);
 		buscaAlimento.setAdapter(adapter);
-		
 		
 		buscaAlimento.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -80,7 +88,13 @@ public class AdicionaAlimentoActivity extends Activity {
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setResult(RESULT_OK, new Intent().putExtra("alimento", alimentoAtual).putExtra("quantidade", Double.parseDouble(valor.getText().toString())));
+				AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimentoAtual, Double.parseDouble(valor.getText().toString()), refeicao);
+				refeicao.adicionaAlimento(alimentoVirtual);
+				
+				AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(helper);
+				alimentoVirtualDao.salva(alimentoVirtual);
+				
+				setResult(RESULT_OK, new Intent().putExtra("refeicao", refeicao));
 				finish();
 			}
 		});
