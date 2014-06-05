@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/cafe_da_manha"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_cafe"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/lanche_da_manha"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_lanche_manha"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/almoco"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_almoco"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/lanche_da_tarde"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_lanche_tarde"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/jantar"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_jantar"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/ceia"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/unidade" 
+	    android:inputType="number"
+	    android:id="@+id/valor_ceia"/>
+</LinearLayout>

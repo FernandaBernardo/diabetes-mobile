@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	
+    <TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/idade"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="number"
+	    android:id="@+id/idade"/>
+    
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/peso"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="number"
+	    android:id="@+id/peso"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/altura"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="number"
+	    android:id="@+id/altura"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/sexo"/>
+	<RadioGroup
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content">
+	    <RadioButton 
+	        android:id="@+id/feminino"
+		    android:text="@string/feminino"/>
+	    <RadioButton 
+	        android:id="@+id/masculino"
+		    android:text="@string/masculino"/>
+	</RadioGroup>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/tipo_de_diabetes"/>
+	<RadioGroup 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+	    
+	    <RadioButton 
+	        android:id="@+id/diabetes1"
+	        android:text="@string/tipo_1"/>
+	    <RadioButton 
+	        android:id="@+id/diabetes2"
+	        android:text="@string/tipo_2"/>
+	</RadioGroup>
+</LinearLayout>

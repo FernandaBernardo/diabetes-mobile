@@ -6,16 +6,16 @@
     <string name="alimento">Alimento:</string>
     <string name="quantidade">Quantidade:</string>
     <string name="valor">Valor</string>
-    <string name="unidade">Unidade, ex: colher/copo</string>
+    <string name="unidade">Unidade</string>
     <string name="nome">Nome</string>
     <string name="carboidrato">Carboidrato</string>
     <string name="adicionar_alimento">Adicionar Alimento</string>
     <string name="novo_refeicao">Novo Refeição</string>
     <string name="total_de_carboidrato">Total de Carboidrato:</string>
     
-    <string name="peso">Peso: </string>
+    <string name="peso">Peso(kg)</string>
     <string name="bem_vindo">Seja bem-vindo, usuário!</string>
-    <string name="glicemia_alvo">Glicemia-alvo: </string>
+    <string name="glicemia_alvo">Glicemia Alvo</string>
     <string name="glicemia_correcao">Glicemia Correção: </string>
     <string name="glicemia_contagem">Glicemia Contagem: </string>
     <string name="glicemia_basal">Glicemia Basal: </string>
@@ -30,6 +30,22 @@
     <string name="ceia">Ceia</string>
     
     <string name="perfil">Perfil</string>
+    
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="bolus">Valores Correção (Bolus)</string>
+    <string name="basal">Valores Contínuos (Basal)</string>
+    <string name="u_g_de_carboidrato">U/g de carboidrato</string>
+    <string name="mg_dl">mg/Dl</string>
+    <string name="kg">kg</string>
+    <string name="altura">Altura(metros)</string>
+    <string name="m">m</string>
+    <string name="idade">Idade</string>
+    <string name="sexo">Sexo</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="tipo_de_diabetes">Tipo de Diabetes</string>
+    <string name="tipo_1">Tipo 1</string>
+    <string name="tipo_2">Tipo 2</string>
 
 </resources>
 

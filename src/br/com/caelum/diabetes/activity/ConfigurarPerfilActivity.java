@@ -1,30 +1,38 @@
 package br.com.caelum.diabetes.activity;
 
-import br.com.caelum.diabetes.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
+import br.com.caelum.diabetes.R;
 
 
 public class ConfigurarPerfilActivity extends Activity{
-	private Button buttonSalvar;
-	private TextView textBasal;
-	private TextView textPeso;
-	private TextView textCorrecao;
-	private TextView textContagem;
-	private TextView textAlvo;
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState ){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configurar_perfil);
 		
-		buttonSalvar = (Button) findViewById(R.id.button_configurar_perfil);
-		textBasal = (TextView) findViewById(R.id.text_gli_basal);
-		textPeso = (TextView) findViewById(R.id.text_novo_peso);
-		textCorrecao = (TextView) findViewById(R.id.text_gli_correcao);
-		textContagem = (TextView) findViewById(R.id.text_gli_contagem);
-		textAlvo = (TextView) findViewById(R.id.text_gli_alvo);
+		Button botaoDados = (Button) findViewById(R.id.perfil_dados);
+		Button botaoBasal = (Button) findViewById(R.id.perfil_basal);
+		Button botaoBolus = (Button) findViewById(R.id.perfil_bolus);
+		Button botaoGlicemiaAlvo = (Button) findViewById(R.id.perfil_glicemia_alvo);
+		
+		onClickBotao(botaoDados, ConfigurarDadosPessoaisActivity.class);
+		onClickBotao(botaoBasal, ConfigurarBasalActivity.class);
+		onClickBotao(botaoBolus, ConfigurarBolusActivity.class);
+		onClickBotao(botaoGlicemiaAlvo, ConfigurarGlicemiaAlvoActivity.class);
+	}
+
+	private void onClickBotao(Button botaoDados, final Class class1) {
+		botaoDados.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(ConfigurarPerfilActivity.this, class1);
+				startActivity(intent);
+			}
+		});
 	}
 }

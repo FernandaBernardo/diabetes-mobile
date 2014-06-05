@@ -4,57 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView
-        android:text="@string/peso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText 
-        android:id="@+id/text_novo_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <TextView
-        android:text="@string/glicemia_alvo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText 
-        android:id="@+id/text_gli_alvo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <TextView
-        android:text="@string/glicemia_basal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText 
-        android:id="@+id/text_gli_basal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <TextView
-        android:text="@string/glicemia_contagem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText 
-        android:id="@+id/text_gli_contagem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <TextView
-        android:text="@string/glicemia_correcao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText 
-        android:id="@+id/text_gli_correcao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <Button
-        android:id="@+id/button_configurar_perfil"
+    <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/salvar"/>
+        android:text="@string/dados_pessoais"
+        android:id="@+id/perfil_dados"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/basal"
+        android:id="@+id/perfil_basal"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bolus"
+        android:id="@+id/perfil_bolus"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/glicemia_alvo"
+        android:id="@+id/perfil_glicemia_alvo"/>
     
-    
-
 </LinearLayout>
