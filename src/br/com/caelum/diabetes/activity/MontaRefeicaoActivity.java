@@ -5,6 +5,8 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -73,6 +75,30 @@ public class MontaRefeicaoActivity extends Activity{
 			totalCHO.setText(String.valueOf(refeicao.getTotalCHO()));
 		}
 	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_principal, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		
+		int itemId = item.getItemId();
+		
+		if(itemId == R.id.novo_refeicao) {
+			Intent intent = new Intent(MontaRefeicaoActivity.this, AdicionaAlimentoActivity.class);
+			startActivityForResult(intent, 0);
+			return true;
+		}
+		
+		if(itemId == R.id.perfil) {
+			Intent intent = new Intent(MontaRefeicaoActivity.this, ConfigurarPerfilActivity.class);
+			startActivity(intent);
+			return true;
+		}
+		return false;
+	}
 
 }

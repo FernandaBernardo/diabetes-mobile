@@ -27,8 +27,8 @@ public class BemVindoActivity extends Activity {
 		
 		int itemId = item.getItemId();
 		
-		if(itemId == R.id.novo_alimento) {
-			Intent intent = new Intent(BemVindoActivity.this, AdicionaAlimentoActivity.class);
+		if(itemId == R.id.novo_refeicao) {
+			Intent intent = new Intent(BemVindoActivity.this, SelecionaRefeicaoActivity.class);
 			startActivityForResult(intent, 0);
 			return true;
 		}
