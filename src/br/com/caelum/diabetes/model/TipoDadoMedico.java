@@ -3,7 +3,7 @@ package br.com.caelum.diabetes.model;
 import br.com.caelum.diabetes.extras.Extras;
 
 public enum TipoDadoMedico {
-	CONTINUO(Extras.CONTINUO), 
+	CONTINUA(Extras.CONTINUO), 
 	CORRECAO(Extras.CORRECAO),
 	GLICEMIA_ALVO(Extras.GLICEMIA_ALVO);
 	

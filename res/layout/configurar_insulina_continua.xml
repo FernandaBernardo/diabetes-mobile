@@ -13,7 +13,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_cafe"/>
+	    android:id="@+id/valor_cafe_continua"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_lanche_manha"/>
+	    android:id="@+id/valor_lanche_manha_continua"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -35,7 +35,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_almoco"/>
+	    android:id="@+id/valor_almoco_continua"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -46,7 +46,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_lanche_tarde"/>
+	    android:id="@+id/valor_lanche_tarde_continua"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -57,7 +57,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_jantar"/>
+	    android:id="@+id/valor_jantar_continua"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -68,5 +68,10 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/unidade" 
 	    android:inputType="number"
-	    android:id="@+id/valor_ceia"/>
+	    android:id="@+id/valor_ceia_continua"/>
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/salvar"
+	    android:id="@+id/salvar_insulina_continua"/>
 </LinearLayout>
