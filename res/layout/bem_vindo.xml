@@ -8,4 +8,20 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/bem_vindo"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/digite_o_seu_nome"/>
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/nome_pessoa"
+	    android:inputType="textCapWords"/>
+	
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/proximo"
+	    android:id="@+id/botao_proximo"/>
 </LinearLayout>

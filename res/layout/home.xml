@@ -3,32 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+	<Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calculadora"
+        android:id="@+id/main_calculadora"/>
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dados_pessoais"
-        android:id="@+id/perfil_dados"/>
+        android:text="@string/lembretes"
+        android:id="@+id/main_lembretes"/>
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/basal"
-        android:id="@+id/perfil_basal"/>
+        android:text="@string/exames"
+        android:id="@+id/main_exames"/>
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bolus"
-        android:id="@+id/perfil_bolus"/>
+        android:text="@string/estat_sticas"
+        android:id="@+id/main_estatisticas"/>
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/glicemia_alvo"
-        android:id="@+id/perfil_glicemia_alvo"/>
-    
-    <Button 
+        android:text="@string/medicao"
+        android:id="@+id/main_medicao"/>    
+	<Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pular"
-        android:id="@+id/pular_configurar"/>
-    
+        android:text="@string/perfil"
+        android:id="@+id/main_perfil"/>
+
 </LinearLayout>

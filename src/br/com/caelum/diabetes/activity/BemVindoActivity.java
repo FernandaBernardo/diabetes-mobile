@@ -5,7 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.model.Paciente;
 
 public class BemVindoActivity extends Activity {
 	
@@ -13,6 +18,20 @@ public class BemVindoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bem_vindo);
+		
+		Button botao = (Button) findViewById(R.id.botao_proximo);
+		botao.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				EditText nomePessoa = (EditText) findViewById(R.id.nome_pessoa);
+				
+				Paciente paciente = Paciente.getinstance();
+				paciente.setNome(nomePessoa.getText().toString());
+				
+				Intent intent = new Intent(BemVindoActivity.this, HomeActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override
