@@ -1,5 +1,6 @@
 package br.com.caelum.diabetes.dao;
 
+import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,17 +18,17 @@ public class DbHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String refeicao = "CREATE TABLE " + "Refeicao" + " " + 
+		String refeicao = "CREATE TABLE " + TabelasBD.REFEICAO + " " + 
 				"(id INTEGER PRIMARY KEY, " +
 				"tipoRefeicao TEXT);";
 		
-		String alimentoFisico = "CREATE TABLE " + "AlimentoFisico" + " " + 
+		String alimentoFisico = "CREATE TABLE " + TabelasBD.ALIMENTO_FISICO + " " + 
 				"(id INTEGER PRIMARY KEY, " +
 				"nome TEXT UNIQUE NOT NULL, " +
 				"carboidrato DOUBLE, " +
 				"unidadeDeMedida TEXT);";
 		
-		String alimentoVirtual = "CREATE TABLE " + "AlimentoVirtual" + " " + 
+		String alimentoVirtual = "CREATE TABLE " + TabelasBD.ALIMENTO_VIRTUAL + " " + 
 				"(id INTEGER PRIMARY KEY, " +
 				"id_refeicao INTEGER, " +
 				"quantidade DOUBLE, " +

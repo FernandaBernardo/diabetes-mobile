@@ -15,12 +15,12 @@ public class SelecionaRefeicaoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.seleciona_refeicao);
 		
-		startActivityWithButton((Button) findViewById(R.id.tipo_cafe_manha), Extras.cafeDaManha);
-		startActivityWithButton((Button) findViewById(R.id.tipo_lanche_manha), Extras.lancheDaManha);
-		startActivityWithButton((Button) findViewById(R.id.tipo_almoco), Extras.almoco);
-		startActivityWithButton((Button) findViewById(R.id.tipo_lanche_tarde), Extras.lancheDaTarde);
-		startActivityWithButton((Button) findViewById(R.id.tipo_jantar), Extras.jantar);
-		startActivityWithButton((Button) findViewById(R.id.tipo_ceia), Extras.ceia);
+		startActivityWithButton((Button) findViewById(R.id.tipo_cafe_manha), Extras.CAFE_DA_MANHA);
+		startActivityWithButton((Button) findViewById(R.id.tipo_lanche_manha), Extras.LANCHE_DA_MANHA);
+		startActivityWithButton((Button) findViewById(R.id.tipo_almoco), Extras.ALMOCO);
+		startActivityWithButton((Button) findViewById(R.id.tipo_lanche_tarde), Extras.LANCHE_DA_TARDE);
+		startActivityWithButton((Button) findViewById(R.id.tipo_jantar), Extras.JANTAR);
+		startActivityWithButton((Button) findViewById(R.id.tipo_ceia), Extras.CEIA);
 	}
 
 	private void startActivityWithButton(Button botao, final String tipoRefeicao) {

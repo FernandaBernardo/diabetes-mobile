@@ -6,11 +6,12 @@ import java.util.List;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class AlimentoFisicoDao{
 
-	private static final String TABELA = "AlimentoFisico";
+	private static final String TABELA = TabelasBD.ALIMENTO_FISICO;
 	private static final String[] COLUNAS = {"id", "nome", "carboidrato", "unidadeDeMedida"};
 
 	private DbHelper helper;

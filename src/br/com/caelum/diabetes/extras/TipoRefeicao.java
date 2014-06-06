@@ -2,12 +2,12 @@ package br.com.caelum.diabetes.extras;
 
 
 public enum TipoRefeicao{
-	CAFE_DA_MANHA(Extras.cafeDaManha), 
-	LANCHE_DA_MANHA(Extras.lancheDaManha),
-	ALMOCO(Extras.almoco),
-	LANCHE_DA_TARDE(Extras.lancheDaTarde),
-	JANTAR(Extras.jantar),
-	CEIA(Extras.ceia);
+	CAFE_DA_MANHA(Extras.CAFE_DA_MANHA), 
+	LANCHE_DA_MANHA(Extras.LANCHE_DA_MANHA),
+	ALMOCO(Extras.ALMOCO),
+	LANCHE_DA_TARDE(Extras.LANCHE_DA_TARDE),
+	JANTAR(Extras.JANTAR),
+	CEIA(Extras.CEIA);
 	
 	private String text;
 
