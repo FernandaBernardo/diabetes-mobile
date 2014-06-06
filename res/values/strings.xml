@@ -35,7 +35,7 @@
     <string name="bolus">Valores Correção (Bolus)</string>
     <string name="basal">Valores Contínuos (Basal)</string>
     <string name="u_g_de_carboidrato">U/g de carboidrato</string>
-    <string name="mg_dl">mg/Dl</string>
+    <string name="mg_dl">mg/DL</string>
     <string name="kg">kg</string>
     <string name="altura">Altura(metros)</string>
     <string name="m">m</string>

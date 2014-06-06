@@ -23,8 +23,8 @@ public class ConfigurarPerfilActivity extends Activity{
 		Button botaoPular = (Button) findViewById(R.id.pular_configurar);
 		
 		onClickBotao(botaoDados, ConfigurarDadosPessoaisActivity.class);
-		onClickBotao(botaoBasal, ConfigurarBasalActivity.class);
-		onClickBotao(botaoBolus, ConfigurarBolusActivity.class);
+		onClickBotao(botaoBasal, ConfigurarInsulinaContinuaActivity.class);
+		onClickBotao(botaoBolus, ConfigurarInsulinaCorrecaoActivity.class);
 		onClickBotao(botaoGlicemiaAlvo, ConfigurarGlicemiaAlvoActivity.class);
 		
 		onClickBotao(botaoPular, HomeActivity.class);

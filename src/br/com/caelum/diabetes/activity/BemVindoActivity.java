@@ -49,6 +49,12 @@ public class BemVindoActivity extends Activity {
 	}
 	
 	@Override
+	protected void onPause() {
+		super.onPause();
+		finish();
+	}
+	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_principal, menu);
 		return super.onCreateOptionsMenu(menu);

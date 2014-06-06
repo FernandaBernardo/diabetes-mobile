@@ -13,7 +13,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
 	    android:inputType="number"
-	    android:id="@+id/valor_cafe"/>
+	    android:id="@+id/valor_cafe_glicemia"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
 	    android:inputType="number"
-	    android:id="@+id/valor_almoco"/>
+	    android:id="@+id/valor_almoco_glicemia"/>
 
 	<TextView 
 	    android:layout_width="match_parent"
@@ -35,5 +35,11 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/mg_dl" 
 	    android:inputType="number"
-	    android:id="@+id/valor_jantar"/>
+	    android:id="@+id/valor_jantar_glicemia"/>
+	
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/salvar"
+	    android:id="@+id/salvar_glicemia"/>
 </LinearLayout>

@@ -10,4 +10,7 @@ public class Extras {
     
     public static final String DIABETES_1 = "Tipo 1";
     public static final String DIABETES_2 = "Tipo 2";
+	public static final String CONTINUO = "Contínuo";
+	public static final String CORRECAO = "Correção";
+	public static final String GLICEMIA_ALVO = "Glicemia Alvo";
 }

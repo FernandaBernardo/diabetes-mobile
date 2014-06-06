@@ -10,6 +10,10 @@ public class Paciente {
 	private String sexo;
 	private String tipoDiabetes;
 	
+	private DadosMedicos insulinaContinua;
+	private DadosMedicos insulinaCorrecao;
+	private DadosMedicos glicemiaAlvo;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -55,5 +59,23 @@ public class Paciente {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+	public DadosMedicos getInsulinaContinua() {
+		return insulinaContinua;
+	}
+	public void setInsulinaContinua(DadosMedicos insulinaContinua) {
+		this.insulinaContinua = insulinaContinua;
+	}
+	public DadosMedicos getInsulinaCorrecao() {
+		return insulinaCorrecao;
+	}
+	public void setInsulinaCorrecao(DadosMedicos insulinaCorrecao) {
+		this.insulinaCorrecao = insulinaCorrecao;
+	}
+	public DadosMedicos getGlicemiaAlvo() {
+		return glicemiaAlvo;
+	}
+	public void setGlicemiaAlvo(DadosMedicos glicemiaAlvo) {
+		this.glicemiaAlvo = glicemiaAlvo;
 	}
 }

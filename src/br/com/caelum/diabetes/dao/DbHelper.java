@@ -45,10 +45,23 @@ public class DbHelper extends SQLiteOpenHelper{
 				"sexo TEXT," +
 				"tipoDiabetes TEXT);";
 		
+		String dadosMedicos = "CREATE TABLE " + TabelasBD.DADOS_MEDICOS+ " " + 
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"cafeDaManha DOUBLE, " +
+				"lancheDaManha DOUBLE, " +
+				"almoco DOUBLE, " +
+				"lancheDaTarde DOUBLE, " +
+				"jantar DOUBLE, " +
+				"ceia DOUBLE, " +
+				"tipoDado TEXT," +
+				"id_paciente INTEGER," + 
+				"FOREIGN KEY (id_paciente) references Paciente(id));";
+		
 		db.execSQL(refeicao);
 		db.execSQL(alimentoFisico);
 		db.execSQL(alimentoVirtual);
 		db.execSQL(paciente);
+		db.execSQL(dadosMedicos);
 		insereAlimentoFisico(db);
 	}
 
