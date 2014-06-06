@@ -36,9 +36,18 @@ public class DbHelper extends SQLiteOpenHelper{
 				"FOREIGN KEY (id_alimento) references AlimentoFisico(id), " +
 				"FOREIGN KEY (id_refeicao) references Refeicao(id));";
 		
+		String paciente = "CREATE TABLE " + TabelasBD.PACIENTE + " " + 
+				"(id INTEGER PRIMARY KEY, " +
+				"nome TEXT, " +
+				"idade INTEGER, " +
+				"peso DOUBLE," +
+				"altura DOUBLE," +
+				"tipoDiabetes TEXT);";
+		
 		db.execSQL(refeicao);
 		db.execSQL(alimentoFisico);
 		db.execSQL(alimentoVirtual);
+		db.execSQL(paciente);
 		insereAlimentoFisico(db);
 	}
 

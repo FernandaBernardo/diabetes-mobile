@@ -19,12 +19,6 @@ public class RefeicaoDao{
 		ContentValues values = toContentValues(refeicao);
 		return (int) helper.getWritableDatabase().insert(TABELA, null, values);
 	}
-	
-	
-	public void salvaFirst(Refeicao refeicao, SQLiteDatabase db) {
-		ContentValues values = toContentValues(refeicao);
-		db.insert(TABELA, null, values);
-	}
 
 	public void deletar(Refeicao refeicao) {
 		String[] args = {String.valueOf(refeicao.getId())};

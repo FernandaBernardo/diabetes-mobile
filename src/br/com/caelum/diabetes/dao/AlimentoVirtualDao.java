@@ -21,11 +21,6 @@ public class AlimentoVirtualDao{
 		ContentValues values = toContentValues(alimento);
 		helper.getWritableDatabase().insert(TABELA, null, values);
 	}
-	
-	public void salvaFirst(AlimentoVirtual alimento, SQLiteDatabase db) {
-		ContentValues values = toContentValues(alimento);
-		db.insert(TABELA, null, values);
-	}
 
 	public void deletar(AlimentoVirtual alimento) {
 		String[] args = {String.valueOf(alimento.getId())};

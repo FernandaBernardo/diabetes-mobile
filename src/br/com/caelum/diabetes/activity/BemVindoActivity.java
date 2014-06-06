@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.Paciente;
 
 public class BemVindoActivity extends Activity {
@@ -27,6 +29,13 @@ public class BemVindoActivity extends Activity {
 				
 				Paciente paciente = Paciente.getinstance();
 				paciente.setNome(nomePessoa.getText().toString());
+				
+				DbHelper helper = new DbHelper(BemVindoActivity.this);
+				
+				PacienteDao dao = new PacienteDao(helper);
+				dao.salva(paciente);
+				
+				helper.close();
 				
 				Intent intent = new Intent(BemVindoActivity.this, HomeActivity.class);
 				startActivity(intent);
