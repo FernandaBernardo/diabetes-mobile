@@ -21,7 +21,7 @@
 	<EditText 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:inputType="number"
+	    android:inputType="numberDecimal"
 	    android:id="@+id/peso"/>
 	
 	<TextView 
@@ -31,7 +31,7 @@
 	<EditText 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:inputType="number"
+	    android:inputType="numberDecimal"
 	    android:id="@+id/altura"/>
 	
 	<TextView 
@@ -55,7 +55,8 @@
 	    android:text="@string/tipo_de_diabetes"/>
 	<RadioGroup 
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
+	    android:layout_height="wrap_content"
+	    android:id="@+id/diabetes">
 	    
 	    <RadioButton 
 	        android:id="@+id/diabetes1"
@@ -64,4 +65,10 @@
 	        android:id="@+id/diabetes2"
 	        android:text="@string/tipo_2"/>
 	</RadioGroup>
+	
+	<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/salvar"
+	    android:id="@+id/salvar_dados"/>
 </LinearLayout>

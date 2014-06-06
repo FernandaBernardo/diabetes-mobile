@@ -19,17 +19,17 @@ public class DbHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String refeicao = "CREATE TABLE " + TabelasBD.REFEICAO + " " + 
-				"(id INTEGER PRIMARY KEY, " +
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"tipoRefeicao TEXT);";
 		
 		String alimentoFisico = "CREATE TABLE " + TabelasBD.ALIMENTO_FISICO + " " + 
-				"(id INTEGER PRIMARY KEY, " +
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"nome TEXT UNIQUE NOT NULL, " +
 				"carboidrato DOUBLE, " +
 				"unidadeDeMedida TEXT);";
 		
 		String alimentoVirtual = "CREATE TABLE " + TabelasBD.ALIMENTO_VIRTUAL + " " + 
-				"(id INTEGER PRIMARY KEY, " +
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"id_refeicao INTEGER, " +
 				"quantidade DOUBLE, " +
 				"id_alimento INTEGER," +
@@ -37,11 +37,12 @@ public class DbHelper extends SQLiteOpenHelper{
 				"FOREIGN KEY (id_refeicao) references Refeicao(id));";
 		
 		String paciente = "CREATE TABLE " + TabelasBD.PACIENTE + " " + 
-				"(id INTEGER PRIMARY KEY, " +
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				"nome TEXT, " +
 				"idade INTEGER, " +
 				"peso DOUBLE," +
 				"altura DOUBLE," +
+				"sexo TEXT," +
 				"tipoDiabetes TEXT);";
 		
 		db.execSQL(refeicao);

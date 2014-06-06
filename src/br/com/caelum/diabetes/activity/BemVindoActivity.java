@@ -16,31 +16,36 @@ import br.com.caelum.diabetes.model.Paciente;
 
 public class BemVindoActivity extends Activity {
 	
+	private Paciente pacienteBanco;
+	private PacienteDao dao;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bem_vindo);
+		DbHelper helper = new DbHelper(BemVindoActivity.this);
+		dao = new PacienteDao(helper);
+		
+		pacienteBanco = dao.getPaciente();
+		
+		if(pacienteBanco != null) {
+			Intent intent = new Intent(BemVindoActivity.this, HomeActivity.class);
+			startActivity(intent);
+		}
 		
 		Button botao = (Button) findViewById(R.id.botao_proximo);
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				EditText nomePessoa = (EditText) findViewById(R.id.nome_pessoa);
-				
-				Paciente paciente = Paciente.getinstance();
+				Paciente paciente = new Paciente();
 				paciente.setNome(nomePessoa.getText().toString());
-				
-				DbHelper helper = new DbHelper(BemVindoActivity.this);
-				
-				PacienteDao dao = new PacienteDao(helper);
-				dao.salva(paciente);
-				
-				helper.close();
-				
+				paciente.setId(dao.salva(paciente));
 				Intent intent = new Intent(BemVindoActivity.this, HomeActivity.class);
 				startActivity(intent);
 			}
 		});
+		helper.close();
 	}
 	
 	@Override

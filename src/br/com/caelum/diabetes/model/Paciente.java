@@ -1,24 +1,14 @@
 package br.com.caelum.diabetes.model;
 
 public class Paciente {
-	private static Paciente instance = null;
 	
 	private int id;
 	private String nome;
 	private int idade;
 	private double peso;
 	private double altura;
+	private String sexo;
 	private String tipoDiabetes;
-	
-	private Paciente() {
-	}
-	
-	public static Paciente getinstance() {
-		if (instance == null) {
-			instance = new Paciente();
-		}
-		return instance;
-	}
 	
 	public String getNome() {
 		return nome;
@@ -57,5 +47,13 @@ public class Paciente {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 }
