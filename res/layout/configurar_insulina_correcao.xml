@@ -13,7 +13,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_cafe"/>
+	    android:id="@+id/valor_cafe_correcao"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_lanche_manha"/>
+	    android:id="@+id/valor_lanche_manha_correcao"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -35,7 +35,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_almoco"/>
+	    android:id="@+id/valor_almoco_correcao"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -46,7 +46,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_lanche_tarde"/>
+	    android:id="@+id/valor_lanche_tarde_correcao"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -57,7 +57,7 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_jantar"/>
+	    android:id="@+id/valor_jantar_correcao"/>
 	
 	<TextView 
 	    android:layout_width="match_parent"
@@ -68,5 +68,11 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/u_g_de_carboidrato" 
 	    android:inputType="number"
-	    android:id="@+id/valor_ceia"/>
+	    android:id="@+id/valor_ceia_correcao"/>
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/salvar"
+	    android:id="@+id/salvar_insulina_correcao"/>
+	
 </LinearLayout>
