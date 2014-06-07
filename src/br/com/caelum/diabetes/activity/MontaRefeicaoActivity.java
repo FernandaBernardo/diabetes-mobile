@@ -1,6 +1,5 @@
 package br.com.caelum.diabetes.activity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,16 +11,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
-import br.com.caelum.diabetes.dao.AlimentoVirtualDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
-import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
+import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class MontaRefeicaoActivity extends Activity{
 	private Refeicao refeicao;
+	private Paciente paciente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,9 @@ public class MontaRefeicaoActivity extends Activity{
 		
 		RefeicaoDao refeicaoDao = new RefeicaoDao(helper);
 		refeicao.setId(refeicaoDao.salva(refeicao));
+		
+		PacienteDao pacienteDao = new PacienteDao(helper);
+		paciente = pacienteDao.getPaciente();
 		
 		helper.close();
 	}
@@ -55,6 +58,11 @@ public class MontaRefeicaoActivity extends Activity{
 			
 			EditText totalCHO = (EditText) findViewById(R.id.totalCHO);
 			totalCHO.setText(String.valueOf(refeicao.getTotalCHO()));
+			
+			double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
+			
+			EditText totalInsulina = (EditText) findViewById(R.id.totalInsulina);
+			totalInsulina.setText(String.valueOf(valorInsulina));
 		}
 	}
 	@Override

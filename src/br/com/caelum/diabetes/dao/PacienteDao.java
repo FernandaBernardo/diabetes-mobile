@@ -2,8 +2,11 @@ package br.com.caelum.diabetes.dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.TabelasBD;
+import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.Paciente;
+import br.com.caelum.diabetes.model.TipoDadoMedico;
 
 public class PacienteDao {
 	private static final String TABELA = TabelasBD.PACIENTE;
@@ -41,9 +44,31 @@ public class PacienteDao {
 			paciente.setAltura(cursor.getDouble(4));
 			paciente.setSexo(cursor.getString(5));
 			paciente.setTipoDiabetes(cursor.getString(6));
+			
+			paciente.setInsulinaCorrecao(getDadosMedicos(paciente, Extras.CORRECAO));
+			paciente.setInsulinaContinua(getDadosMedicos(paciente, Extras.CONTINUO));
+			paciente.setGlicemiaAlvo(getDadosMedicos(paciente, Extras.GLICEMIA_ALVO));
 			return paciente;
 		}
 		return null;
+	}
+
+	private DadosMedicos getDadosMedicos(Paciente paciente, String tipoDado) {
+		DadosMedicos dadosCorrecao = new DadosMedicos();
+		String[] args = {tipoDado};
+		Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT * from " + TabelasBD.DADOS_MEDICOS+ " where tipoDado=?;", args);
+		if(cursor.moveToNext()) {
+			dadosCorrecao.setId(cursor.getInt(0));
+			dadosCorrecao.setCafeManha(cursor.getDouble(1));
+			dadosCorrecao.setLancheManha(cursor.getDouble(2));
+			dadosCorrecao.setAlmoco(cursor.getDouble(3));
+			dadosCorrecao.setLancheTarde(cursor.getDouble(4));
+			dadosCorrecao.setJantar(cursor.getDouble(5));
+			dadosCorrecao.setCeia(cursor.getDouble(6));
+			dadosCorrecao.setTipo(TipoDadoMedico.fromString(cursor.getString(7)));
+			dadosCorrecao.setPaciente(paciente);
+		}
+		return dadosCorrecao;
 	}
 	
 	private ContentValues toContentValues(Paciente paciente) {

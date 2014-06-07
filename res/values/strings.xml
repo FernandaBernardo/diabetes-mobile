@@ -54,6 +54,7 @@
     <string name="exames">Exames</string>
     <string name="estat_sticas">Estatísticas</string>
     <string name="medicao">Medição</string>
+    <string name="total_insulina">Total Insulina:</string>
 
 </resources>
 
