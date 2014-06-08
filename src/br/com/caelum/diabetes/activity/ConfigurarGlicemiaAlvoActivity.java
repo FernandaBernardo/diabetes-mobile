@@ -1,7 +1,6 @@
 package br.com.caelum.diabetes.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,12 +45,11 @@ public class ConfigurarGlicemiaAlvoActivity extends Activity{
 				
 				helper.close();
 				
-				Intent intent = new Intent(ConfigurarGlicemiaAlvoActivity.this, HomeActivity.class);
-				startActivity(intent);
+				finish();
 			}
 		});
 	}
-
+	
 	private void settarTextos() {
 		DbHelper helper = new DbHelper(this);
 		DadosMedicosDao dao = new DadosMedicosDao(helper);

@@ -1,7 +1,6 @@
 package br.com.caelum.diabetes.dao;
 
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.model.Refeicao;
 

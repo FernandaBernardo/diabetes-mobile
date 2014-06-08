@@ -1,18 +1,17 @@
 package br.com.caelum.diabetes.activity;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 
 public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 	private EditText cafe;
@@ -52,12 +51,11 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 				
 				helper.close();
 				
-				Intent intent = new Intent(ConfigurarInsulinaCorrecaoActivity.this, HomeActivity.class);
-				startActivity(intent);
+				finish();
 			}
 		});
 	}
-
+	
 	private void settarTextos() {
 		DbHelper helper = new DbHelper(this);
 		DadosMedicosDao dao = new DadosMedicosDao(helper);

@@ -1,10 +1,10 @@
 package br.com.caelum.diabetes.dao;
 
-import br.com.caelum.diabetes.extras.TabelasBD;
-import br.com.caelum.diabetes.model.AlimentoFisico;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import br.com.caelum.diabetes.extras.TabelasBD;
+import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class DbHelper extends SQLiteOpenHelper{
 
