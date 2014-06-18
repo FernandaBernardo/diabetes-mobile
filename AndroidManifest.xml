@@ -34,7 +34,11 @@
             android:windowSoftInputMode="stateAlwaysVisible"
             android:screenOrientation="portrait" />
         <activity
-            android:name="br.com.caelum.diabetes.activity.MontaRefeicaoActivity"
+            android:name="br.com.caelum.diabetes.activity.NovaRefeicaoActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="br.com.caelum.diabetes.activity.ListaRefeicaoActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         

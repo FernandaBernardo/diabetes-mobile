@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
@@ -19,14 +22,14 @@ import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.model.Refeicao;
 
-public class MontaRefeicaoActivity extends Activity{
+public class NovaRefeicaoActivity extends Activity{
 	private Refeicao refeicao;
 	private Paciente paciente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.monta_refeicao);
+		setContentView(R.layout.nova_refeicao);
 		
 		Bundle bundle = getIntent().getExtras();
 		TipoRefeicao tipoRefeicao = TipoRefeicao.fromString((String) bundle.get("tipo_refeicao"));
@@ -41,6 +44,16 @@ public class MontaRefeicaoActivity extends Activity{
 		paciente = pacienteDao.getPaciente();
 		
 		helper.close();
+		
+		Button salvar = (Button) findViewById(R.id.salvar_refeicao);
+		salvar.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(NovaRefeicaoActivity.this, ListaRefeicaoActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 	
 	@Override
@@ -78,14 +91,14 @@ public class MontaRefeicaoActivity extends Activity{
 		int itemId = item.getItemId();
 		
 		if(itemId == R.id.novo_refeicao) {
-			Intent intent = new Intent(MontaRefeicaoActivity.this, AdicionaAlimentoActivity.class);
+			Intent intent = new Intent(NovaRefeicaoActivity.this, AdicionaAlimentoActivity.class);
 			intent.putExtra("refeicao", refeicao);
 			startActivityForResult(intent, 0);
 			return true;
 		}
 		
 		if(itemId == R.id.perfil) {
-			Intent intent = new Intent(MontaRefeicaoActivity.this, ConfigurarPerfilActivity.class);
+			Intent intent = new Intent(NovaRefeicaoActivity.this, ConfigurarPerfilActivity.class);
 			startActivity(intent);
 			return true;
 		}

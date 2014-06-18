@@ -4,16 +4,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 public class Refeicao implements Serializable{
 	private int id;
 	private List<AlimentoVirtual> alimentos;
-	private TipoRefeicao tipoRefeicao; 
+	private TipoRefeicao tipoRefeicao;
+	private DateTime data;
 	
 	public Refeicao(TipoRefeicao tipoRefeicao) {
-		this.setTipoRefeicao(tipoRefeicao);
-		alimentos = new ArrayList<AlimentoVirtual>();
+		this.tipoRefeicao = tipoRefeicao;
+		this.alimentos = new ArrayList<AlimentoVirtual>();
+		this.data = new DateTime();
+	}
+	
+	public Refeicao(int id, TipoRefeicao tipoRefeicao, DateTime data) {
+		this.id = id;
+		this.tipoRefeicao = tipoRefeicao;
+		this.alimentos = new ArrayList<AlimentoVirtual>();
+		this.data = data;
 	}
 	
 	public void adicionaAlimento(AlimentoVirtual alimento) {
@@ -50,5 +61,20 @@ public class Refeicao implements Serializable{
 
 	public void setTipoRefeicao(TipoRefeicao tipoRefeicao) {
 		this.tipoRefeicao = tipoRefeicao;
+	}
+
+	public DateTime getData() {
+		return data;
+	}
+
+	public void setData(DateTime data) {
+		this.data = data;
+	}
+	
+	@Override
+	public String toString() {
+		return data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear() + 
+				" - " + data.getHourOfDay() + ":" + data.getMinuteOfHour() + " - " + 
+				tipoRefeicao; 
 	}
 }

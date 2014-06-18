@@ -20,7 +20,8 @@ public class DbHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		String refeicao = "CREATE TABLE " + TabelasBD.REFEICAO + " " + 
 				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-				"tipoRefeicao TEXT);";
+				"tipoRefeicao TEXT," + 
+				"data DATE);";
 		
 		String alimentoFisico = "CREATE TABLE " + TabelasBD.ALIMENTO_FISICO + " " + 
 				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +

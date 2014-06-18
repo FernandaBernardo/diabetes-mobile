@@ -27,7 +27,7 @@ public class SelecionaRefeicaoActivity extends Activity {
 		botao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SelecionaRefeicaoActivity.this, MontaRefeicaoActivity.class);
+				Intent intent = new Intent(SelecionaRefeicaoActivity.this, NovaRefeicaoActivity.class);
 				intent.putExtra("tipo_refeicao", tipoRefeicao);
 				startActivity(intent);
 			}

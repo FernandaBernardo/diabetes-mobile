@@ -32,5 +32,11 @@
         android:enabled="false"
         android:text="0.0"
         android:id="@+id/totalInsulina"/>
+    
+    <Button 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/salvar_refeicao"
+        android:text="@string/salvar"/>
 
 </LinearLayout>
