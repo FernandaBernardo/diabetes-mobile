@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<br.com.caelum.diabetes.layout.DashboardLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dados_pessoais"
+        android:id="@+id/perfil_dados"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/basal"
+        android:id="@+id/perfil_basal"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bolus"
+        android:id="@+id/perfil_bolus"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/glicemia_alvo"
+        android:id="@+id/perfil_glicemia_alvo"/>
+    
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pular"
+        android:id="@+id/pular_configurar"/>
+
+</br.com.caelum.diabetes.layout.DashboardLayout>
