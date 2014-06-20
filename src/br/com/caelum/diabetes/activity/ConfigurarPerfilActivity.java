@@ -20,14 +20,14 @@ public class ConfigurarPerfilActivity extends Activity{
 		Button botaoBolus = (Button) findViewById(R.id.perfil_bolus);
 		Button botaoGlicemiaAlvo = (Button) findViewById(R.id.perfil_glicemia_alvo);
 		
-		Button botaoPular = (Button) findViewById(R.id.pular_configurar);
+		Button botaoVoltar = (Button) findViewById(R.id.voltar);
 		
 		onClickBotao(botaoDados, ConfigurarDadosPessoaisActivity.class);
 		onClickBotao(botaoBasal, ConfigurarInsulinaContinuaActivity.class);
 		onClickBotao(botaoBolus, ConfigurarInsulinaCorrecaoActivity.class);
 		onClickBotao(botaoGlicemiaAlvo, ConfigurarGlicemiaAlvoActivity.class);
 		
-		onClickBotao(botaoPular, HomeActivity.class);
+		onClickBotao(botaoVoltar, HomeActivity.class);
 	}
 
 	private void onClickBotao(Button botaoDados, final Class class1) {

@@ -37,4 +37,4 @@
         android:text="@string/perfil"
         android:id="@+id/main_perfil" />
 
-</br.com.caelum.diabetes.layout.DashboardLayout>
+</br.com.caelum.diabetes.dashboard.DashboardLayout>
