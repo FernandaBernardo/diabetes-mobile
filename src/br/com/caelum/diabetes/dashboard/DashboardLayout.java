@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes.layout;
+package br.com.caelum.diabetes.dashboard;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<br.com.caelum.diabetes.layout.DashboardLayout 
+<br.com.caelum.diabetes.dashboard.DashboardLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,4 +32,4 @@
         android:text="@string/pular"
         android:id="@+id/pular_configurar"/>
 
-</br.com.caelum.diabetes.layout.DashboardLayout>
+</br.com.caelum.diabetes.dashboard.DashboardLayout>
