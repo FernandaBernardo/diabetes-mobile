@@ -10,7 +10,6 @@
     <string name="nome">Nome</string>
     <string name="carboidrato">Carboidrato</string>
     <string name="adicionar_alimento">Adicionar Alimento</string>
-    <string name="novo_refeicao">Novo Refeição</string>
     <string name="total_de_carboidrato">Total de Carboidrato:</string>
     
     <string name="peso">Peso(kg)</string>
@@ -58,6 +57,7 @@
     <string name="configurar_insulina_correcao">Configurar Insulina Correção</string>
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
+    <string name="novo_alimento">Novo Alimento</string>
 
 </resources>
 

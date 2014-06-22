@@ -1,9 +1,11 @@
-package br.com.caelum.diabetes.activity;
+package br.com.caelum.diabetes.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -12,7 +14,7 @@ import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.Paciente;
 
-public class ConfigurarDadosPessoaisActivity extends Activity{
+public class ConfigurarDadosPessoaisFragment extends Fragment{
 	private Paciente paciente;
 	private EditText idade;
 	private EditText peso;
@@ -22,21 +24,20 @@ public class ConfigurarDadosPessoaisActivity extends Activity{
 	private RadioButton tipo1;
 	private RadioButton tipo2;
 	private PacienteDao dao;
-
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.configurar_dados);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.configurar_dados, null);
 		
-		idade = (EditText) findViewById(R.id.idade);
-		peso = (EditText) findViewById(R.id.peso);
-		altura = (EditText) findViewById(R.id.altura);
-		feminino = (RadioButton) findViewById(R.id.feminino);
-		masculino = (RadioButton) findViewById(R.id.masculino);
-		tipo1 = (RadioButton) findViewById(R.id.diabetes1);
-		tipo2 = (RadioButton) findViewById(R.id.diabetes2);
+		idade = (EditText) view.findViewById(R.id.idade);
+		peso = (EditText) view.findViewById(R.id.peso);
+		altura = (EditText) view.findViewById(R.id.altura);
+		feminino = (RadioButton) view.findViewById(R.id.feminino);
+		masculino = (RadioButton) view.findViewById(R.id.masculino);
+		tipo1 = (RadioButton) view.findViewById(R.id.diabetes1);
+		tipo2 = (RadioButton) view.findViewById(R.id.diabetes2);
 		
-		DbHelper helper = new DbHelper(this);
+		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);
 		paciente = dao.getPaciente();
 		
@@ -54,7 +55,7 @@ public class ConfigurarDadosPessoaisActivity extends Activity{
 			tipo1.setChecked(true);
 		}
 		
-		Button salvar = (Button) findViewById(R.id.salvar_dados);
+		Button salvar = (Button) view.findViewById(R.id.salvar_dados);
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -76,9 +77,11 @@ public class ConfigurarDadosPessoaisActivity extends Activity{
 				
 				dao.atualiza(paciente);
 				
-				finish();
+				getFragmentManager().popBackStack();
 			}
 		});
+		
+		return view;
 	}
 }
 

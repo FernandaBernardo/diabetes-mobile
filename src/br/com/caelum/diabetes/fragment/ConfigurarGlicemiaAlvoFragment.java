@@ -1,9 +1,11 @@
-package br.com.caelum.diabetes.activity;
+package br.com.caelum.diabetes.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
@@ -13,16 +15,17 @@ import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 
-public class ConfigurarGlicemiaAlvoActivity extends Activity{
+public class ConfigurarGlicemiaAlvoFragment extends Fragment{
 	private EditText cafe;
 	private EditText almoco;
 	private EditText jantar;
 	private Button salvar;
-
+	private View view;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.configurar_glicemia);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.configurar_glicemia, null);
 		
 		getValoresGlobais();
 		settarTextos();
@@ -35,7 +38,7 @@ public class ConfigurarGlicemiaAlvoActivity extends Activity{
 				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
 				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
 				
-				DbHelper helper = new DbHelper(ConfigurarGlicemiaAlvoActivity.this);
+				DbHelper helper = new DbHelper(getActivity());
 				
 				PacienteDao pacienteDao = new PacienteDao(helper);
 				dadosMedicos.setPaciente(pacienteDao.getPaciente());
@@ -45,13 +48,15 @@ public class ConfigurarGlicemiaAlvoActivity extends Activity{
 				
 				helper.close();
 				
-				finish();
+				getFragmentManager().popBackStack();
 			}
 		});
+		
+		return view;
 	}
-	
+
 	private void settarTextos() {
-		DbHelper helper = new DbHelper(this);
+		DbHelper helper = new DbHelper(getActivity());
 		DadosMedicosDao dao = new DadosMedicosDao(helper);
 		
 		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.GLICEMIA_ALVO);
@@ -65,9 +70,9 @@ public class ConfigurarGlicemiaAlvoActivity extends Activity{
 	}
 
 	private void getValoresGlobais() {
-		cafe = (EditText) findViewById(R.id.valor_cafe_glicemia);
-		almoco = (EditText) findViewById(R.id.valor_almoco_glicemia);
-		jantar = (EditText) findViewById(R.id.valor_jantar_glicemia);
-		salvar = (Button) findViewById(R.id.salvar_glicemia);
+		cafe = (EditText) view.findViewById(R.id.valor_cafe_glicemia);
+		almoco = (EditText) view.findViewById(R.id.valor_almoco_glicemia);
+		jantar = (EditText) view.findViewById(R.id.valor_jantar_glicemia);
+		salvar = (Button) view.findViewById(R.id.salvar_glicemia);
 	}
 }

@@ -1,9 +1,11 @@
-package br.com.caelum.diabetes.activity;
+package br.com.caelum.diabetes.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
@@ -13,7 +15,7 @@ import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 
-public class ConfigurarInsulinaCorrecaoActivity extends Activity {
+public class ConfigurarInsulinaContinuaFragment extends Fragment{
 	private EditText cafe;
 	private EditText almoco;
 	private EditText jantar;
@@ -21,11 +23,12 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 	private EditText lancheTarde;
 	private EditText ceia;
 	private Button salvar;
+	private View view;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.configurar_insulina_correcao);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.configurar_insulina_continua, null);
 		
 		getValoresGlobais();
 		settarTextos();
@@ -33,7 +36,7 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.CORRECAO);
+				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.CONTINUA);
 				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
 				dadosMedicos.setLancheManha(Double.parseDouble(lancheManha.getText().toString()));
 				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
@@ -41,7 +44,7 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
 				dadosMedicos.setCeia(Double.parseDouble(ceia.getText().toString()));
 				
-				DbHelper helper = new DbHelper(ConfigurarInsulinaCorrecaoActivity.this);
+				DbHelper helper = new DbHelper(getActivity());
 				
 				PacienteDao pacienteDao = new PacienteDao(helper);
 				dadosMedicos.setPaciente(pacienteDao.getPaciente());
@@ -51,16 +54,18 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 				
 				helper.close();
 				
-				finish();
+				getFragmentManager().popBackStack();
 			}
 		});
+		
+		return view;
 	}
 	
 	private void settarTextos() {
-		DbHelper helper = new DbHelper(this);
+		DbHelper helper = new DbHelper(getActivity());
 		DadosMedicosDao dao = new DadosMedicosDao(helper);
 		
-		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CORRECAO);
+		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CONTINUA);
 		if(dadosMedicosAntigo == null) return;
 		
 		cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
@@ -74,12 +79,12 @@ public class ConfigurarInsulinaCorrecaoActivity extends Activity {
 	}
 
 	private void getValoresGlobais() {
-		cafe = (EditText) findViewById(R.id.valor_cafe_correcao);
-		lancheManha = (EditText) findViewById(R.id.valor_lanche_manha_correcao);
-		almoco = (EditText) findViewById(R.id.valor_almoco_correcao);
-		lancheTarde = (EditText) findViewById(R.id.valor_lanche_tarde_correcao);
-		jantar = (EditText) findViewById(R.id.valor_jantar_correcao);
-		ceia = (EditText) findViewById(R.id.valor_ceia_correcao);
-		salvar = (Button) findViewById(R.id.salvar_insulina_correcao);
+		cafe = (EditText) view.findViewById(R.id.valor_cafe_continua);
+		lancheManha = (EditText) view.findViewById(R.id.valor_lanche_manha_continua);
+		almoco = (EditText) view.findViewById(R.id.valor_almoco_continua);
+		lancheTarde = (EditText) view.findViewById(R.id.valor_lanche_tarde_continua);
+		jantar = (EditText) view.findViewById(R.id.valor_jantar_continua);
+		ceia = (EditText) view.findViewById(R.id.valor_ceia_continua);
+		salvar = (Button) view.findViewById(R.id.salvar_insulina_continua);
 	}
 }

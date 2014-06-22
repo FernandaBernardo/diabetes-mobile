@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes.activity;
+package br.com.caelum.diabetes.calculos;
 
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.model.DadosMedicos;

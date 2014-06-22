@@ -1,14 +1,16 @@
-package br.com.caelum.diabetes.activity;
+package br.com.caelum.diabetes.fragment;
 
 import java.util.List;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -23,7 +25,7 @@ import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.Refeicao;
 
-public class AdicionaAlimentoActivity extends Activity {
+public class AdicionaAlimentoFragment extends Fragment {
 
 	private EditText carboidrato;
 	private AlimentoFisico alimentoAtual;
@@ -35,25 +37,25 @@ public class AdicionaAlimentoActivity extends Activity {
 	private DbHelper helper;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.adiciona_alimento);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.adiciona_alimento, null);
 		
-		Bundle extras = getIntent().getExtras();
-		refeicao = (Refeicao) extras.getSerializable("refeicao");
+		Bundle bundle = this.getArguments();
+
+		refeicao = (Refeicao) bundle.getSerializable("refeicao");
 		
-		helper = new DbHelper(this);
+		helper = new DbHelper(getActivity());
 		alimentoDao = new AlimentoFisicoDao(helper);
 		
-		carboidrato = (EditText) findViewById(R.id.carboidrato_alimento);
-		valor = (EditText) findViewById(R.id.valor);
-		unidade = (EditText) findViewById(R.id.unidade);
-		botao = (Button) findViewById(R.id.adicionar_alimento);
+		carboidrato = (EditText) view.findViewById(R.id.carboidrato_alimento);
+		valor = (EditText) view.findViewById(R.id.valor);
+		unidade = (EditText) view.findViewById(R.id.unidade);
+		botao = (Button) view.findViewById(R.id.adicionar_alimento);
 		
 		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 		
-		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(this, android.R.layout.simple_dropdown_item_1line, alimentos);
-		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) findViewById(R.id.busca);
+		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(getActivity(), android.R.layout.simple_dropdown_item_1line, alimentos);
+		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) view.findViewById(R.id.busca);
 		buscaAlimento.setAdapter(adapter);
 		
 		buscaAlimento.setOnItemClickListener(new OnItemClickListener() {
@@ -94,9 +96,18 @@ public class AdicionaAlimentoActivity extends Activity {
 				AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(helper);
 				alimentoVirtualDao.salva(alimentoVirtual);
 				
-				setResult(RESULT_OK, new Intent().putExtra("refeicao", refeicao));
-				finish();
+				Bundle args = new Bundle();
+				args.putSerializable("refeicao", refeicao);
+				
+				NovaRefeicaoFragment fragment = new NovaRefeicaoFragment();
+				fragment.setArguments(args);
+				
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, fragment);
+				transaction.commit();
 			}
 		});
+		
+		return view;
 	}
 }
