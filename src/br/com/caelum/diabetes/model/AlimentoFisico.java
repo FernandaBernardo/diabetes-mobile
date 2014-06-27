@@ -2,6 +2,7 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class AlimentoFisico implements Serializable{
 	private int id;
 	private String nome;

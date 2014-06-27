@@ -1,8 +1,10 @@
 package br.com.caelum.diabetes.model;
 
+import java.io.Serializable;
+
 import br.com.caelum.diabetes.extras.Extras;
 
-public enum TipoDadoMedico {
+public enum TipoDadoMedico implements Serializable {
 	CONTINUA(Extras.CONTINUO), 
 	CORRECAO(Extras.CORRECAO),
 	GLICEMIA_ALVO(Extras.GLICEMIA_ALVO);

@@ -78,6 +78,7 @@ public class PacienteDao {
 		values.put("peso", paciente.getPeso());
 		values.put("altura", paciente.getAltura());
 		values.put("tipoDiabetes", paciente.getTipoDiabetes());
+		values.put("sexo", paciente.getSexo());
 		return values;
 	}
 }

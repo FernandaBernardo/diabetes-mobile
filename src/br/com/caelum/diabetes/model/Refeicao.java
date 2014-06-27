@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
+@SuppressWarnings("serial")
 public class Refeicao implements Serializable{
 	private int id;
 	private List<AlimentoVirtual> alimentos;

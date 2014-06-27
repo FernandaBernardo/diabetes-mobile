@@ -1,12 +1,15 @@
 package br.com.caelum.diabetes.model;
 
-public class Paciente {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Paciente implements Serializable{
 	
 	private int id;
 	private String nome;
-	private int idade;
-	private double peso;
-	private double altura;
+	private Integer idade;
+	private Double peso;
+	private Double altura;
 	private String sexo;
 	private String tipoDiabetes;
 	
@@ -20,22 +23,22 @@ public class Paciente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getIdade() {
+	public Integer getIdade() {
 		return idade;
 	}
-	public void setIdade(int idade) {
+	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
-	public double getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
-	public void setPeso(double peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
-	public double getAltura() {
+	public Double getAltura() {
 		return altura;
 	}
-	public void setAltura(double altura) {
+	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
 	public String getTipoDiabetes() {
@@ -77,5 +80,17 @@ public class Paciente {
 	}
 	public void setGlicemiaAlvo(DadosMedicos glicemiaAlvo) {
 		this.glicemiaAlvo = glicemiaAlvo;
+	}
+	
+	public boolean hasMedicalInfo(){
+		
+		return !(this.getAltura() == null || 
+				this.getGlicemiaAlvo() == null ||
+				this.getInsulinaContinua() == null ||
+				this.getInsulinaCorrecao() == null ||
+				this.getPeso() == null ||
+				this.getTipoDiabetes() == null ||
+				this.getIdade() == null); 
+		
 	}
 }

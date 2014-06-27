@@ -1,6 +1,9 @@
 package br.com.caelum.diabetes.model;
 
-public class DadosMedicos {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class DadosMedicos implements Serializable {
 	private int id;
 	private double cafeManha;
 	private double lancheManha;
