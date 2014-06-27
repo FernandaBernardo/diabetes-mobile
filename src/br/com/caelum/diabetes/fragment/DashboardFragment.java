@@ -21,7 +21,7 @@ public class DashboardFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new NovaRefeicaoFragment());
+				transaction.replace(R.id.main_view, new DashboardCalculadoraFragment());
 				transaction.commit();
 			}
 		});

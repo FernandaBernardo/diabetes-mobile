@@ -46,7 +46,8 @@ public class AlimentoFisicoDao{
 		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS, null, null, null, null, null);
 
 		while(cursor.moveToNext()) {
-			AlimentoFisico task = new AlimentoFisico(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getString(3));
+			AlimentoFisico task = new AlimentoFisico(cursor.getString(1), cursor.getDouble(2), cursor.getString(3));
+			task.setId(cursor.getInt(0));
 			alimentos.add(task);
 		}
 		cursor.close();

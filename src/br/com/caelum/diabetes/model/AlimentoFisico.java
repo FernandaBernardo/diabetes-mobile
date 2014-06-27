@@ -8,8 +8,7 @@ public class AlimentoFisico implements Serializable{
 	private double carboidrato;
 	private String unidadeDeMedida;
 	
-	public AlimentoFisico(int id, String nome, double carboidrato, String unidadeDeMedida) {
-		this.id = id;
+	public AlimentoFisico(String nome, double carboidrato, String unidadeDeMedida) {
 		this.nome = nome;
 		this.carboidrato = carboidrato;
 		this.unidadeDeMedida = unidadeDeMedida;

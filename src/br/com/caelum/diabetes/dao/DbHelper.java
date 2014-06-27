@@ -73,20 +73,20 @@ public class DbHelper extends SQLiteOpenHelper{
 	public void insereAlimentoFisico(SQLiteDatabase db) {
 		alimentoFisicoDao = new AlimentoFisicoDao(this);
 		
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(1, "arroz branco", 14, "colher de sopa"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(2, "arroz integral", 10, "colher de sopa"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(3, "coca-cola", 22, "copo médio"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(4, "snickers", 31, "unidade"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(5, "leite", 11, "copo"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(6, "pão francês", 28, "unidade média"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(7, "pão de forma", 28, "fatia"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(8, "bolo", 26, "pedaço"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(9, "feijão", 14, "concha"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(10, "iogurte", 16, "unidade pequena"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(11, "chocolate", 12, "barra"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(12, "bala", 5, "unidade"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(13, "lasanha", 35, "fatia média"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(14, "pizza", 27, "pedaço"), db);
-		alimentoFisicoDao.salvaFirst(new AlimentoFisico(15, "suco de laranja", 28, "copo médio"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("arroz branco", 14, "colher de sopa"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("arroz integral", 10, "colher de sopa"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("coca-cola", 22, "copo médio"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("snickers", 31, "unidade"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("leite", 11, "copo"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("pão francês", 28, "unidade média"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("pão de forma", 28, "fatia"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("bolo", 26, "pedaço"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("feijão", 14, "concha"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("iogurte", 16, "unidade pequena"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("chocolate", 12, "barra"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("bala", 5, "unidade"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("lasanha", 35, "fatia média"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("pizza", 27, "pedaço"), db);
+		alimentoFisicoDao.salvaFirst(new AlimentoFisico("suco de laranja", 28, "copo médio"), db);
 	}
 }
