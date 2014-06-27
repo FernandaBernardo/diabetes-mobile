@@ -9,7 +9,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
-import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class RefeicaoDao{

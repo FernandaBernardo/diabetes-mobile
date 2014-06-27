@@ -6,49 +6,42 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/alimento" />
+        android:text="@string/nome_alimento" />
+    
+    <EditText 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/nome_alimento"
+        android:id="@+id/nome_alimento"/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unidade_de_medida" />
     
     <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/busca"
+        android:id="@+id/unidade_novo_alimento"
         android:completionThreshold="1"
-        android:hint="@string/nome"/>
-    
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/quantidade" />
-    
-    <EditText 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/valor"
-        android:inputType="number"
-        android:id="@+id/valor"/>
-    <EditText 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/unidade"
-        android:inputType="number"
-        android:id="@+id/unidade"
-        android:enabled="false"/>
+        android:hint="@string/unidade"/>
     
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/carboidrato"/>
+    
     <EditText 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="0"
         android:inputType="number"
-        android:id="@+id/carboidrato_alimento"/>
+        android:id="@+id/carboidrato_novo_alimento"/>
     
     <Button 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/adicionar_alimento"
-        android:text="@string/adicionar_alimento"/>
-   
+        android:id="@+id/salvar_alimento"
+        android:text="@string/salvar_alimento" />
+    
 </LinearLayout>

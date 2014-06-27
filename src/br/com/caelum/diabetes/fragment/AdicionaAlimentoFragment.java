@@ -31,7 +31,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 	private AlimentoFisico alimentoAtual;
 	private EditText valor;
 	private EditText unidade;
-	private Button botao;
+	private Button adicionarAlimento;
 	private AlimentoFisicoDao alimentoDao;
 	private Refeicao refeicao;
 	private DbHelper helper;
@@ -50,7 +50,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 		carboidrato = (EditText) view.findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) view.findViewById(R.id.valor);
 		unidade = (EditText) view.findViewById(R.id.unidade);
-		botao = (Button) view.findViewById(R.id.adicionar_alimento);
+		adicionarAlimento = (Button) view.findViewById(R.id.adicionar_alimento);
 		
 		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 		
@@ -87,7 +87,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 			}
 		});
 		
-		botao.setOnClickListener(new OnClickListener() {
+		adicionarAlimento.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				AlimentoVirtual alimentoVirtual = new AlimentoVirtual(alimentoAtual, Double.parseDouble(valor.getText().toString()), refeicao);

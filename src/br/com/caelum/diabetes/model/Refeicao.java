@@ -15,6 +15,11 @@ public class Refeicao implements Serializable{
 	private TipoRefeicao tipoRefeicao;
 	private DateTime data;
 	
+	public Refeicao() {
+		this.alimentos = new ArrayList<AlimentoVirtual>();
+		this.data = new DateTime();
+	}
+	
 	public Refeicao(TipoRefeicao tipoRefeicao) {
 		this.tipoRefeicao = tipoRefeicao;
 		this.alimentos = new ArrayList<AlimentoVirtual>();
@@ -27,7 +32,7 @@ public class Refeicao implements Serializable{
 		this.alimentos = new ArrayList<AlimentoVirtual>();
 		this.data = data;
 	}
-	
+
 	public void adicionaAlimento(AlimentoVirtual alimento) {
 		alimentos.add(alimento);
 	}

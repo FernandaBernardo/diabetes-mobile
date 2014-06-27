@@ -33,6 +33,7 @@ public class DashboardFragment extends Fragment{
 		calculadora.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				newPaciente();
 				
 				if(!paciente.hasMedicalInfo()){
@@ -45,7 +46,9 @@ public class DashboardFragment extends Fragment{
 					transaction.commit();
 				}
 				
-				
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new DashboardCalculadoraFragment());
+				transaction.commit();
 			}
 		});
 		
