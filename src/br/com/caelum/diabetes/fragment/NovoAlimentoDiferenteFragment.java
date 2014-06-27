@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
 import br.com.caelum.diabetes.dao.DbHelper;
+import br.com.caelum.diabetes.extras.UnidadeMedidaAlimento;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 
 public class NovoAlimentoDiferenteFragment extends Fragment {
@@ -21,15 +24,19 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 		View view = inflater.inflate(R.layout.novo_alimento_diferente, null);
 		
 		final EditText nomeAlimento = (EditText) view.findViewById(R.id.nome_alimento);
-		final EditText unidadeMedida = (EditText) view.findViewById(R.id.unidade_novo_alimento);
+		final AutoCompleteTextView unidadeMedida = (AutoCompleteTextView) view.findViewById(R.id.unidade_novo_alimento);
 		final EditText carboidrato = (EditText) view.findViewById(R.id.carboidrato_novo_alimento);
 		Button salvarAlimento = (Button) view.findViewById(R.id.salvar_alimento);
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, UnidadeMedidaAlimento.getAll());
+		unidadeMedida.setAdapter(adapter);
 		
 		salvarAlimento.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				AlimentoFisico alimentoFisico = new AlimentoFisico(nomeAlimento.getText().toString(), Double.parseDouble(carboidrato.getText().toString()), 
-						unidadeMedida.getText().toString());
+				AlimentoFisico alimentoFisico = new AlimentoFisico(nomeAlimento.getText().toString(), 
+																	Double.parseDouble(carboidrato.getText().toString()), 
+																	unidadeMedida.getText().toString());
 				DbHelper helper = new DbHelper(getActivity());
 				AlimentoFisicoDao dao = new AlimentoFisicoDao(helper);
 				dao.salva(alimentoFisico);

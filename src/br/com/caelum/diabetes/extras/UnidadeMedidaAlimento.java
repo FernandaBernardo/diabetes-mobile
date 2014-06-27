@@ -1,5 +1,8 @@
 package br.com.caelum.diabetes.extras;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public enum UnidadeMedidaAlimento{
 	COLHER_DE_SOPA(Extras.COLHER_DE_SOPA), 
@@ -29,6 +32,21 @@ public enum UnidadeMedidaAlimento{
 			}
 		}
 		return null;
+	}
+	
+	public static ArrayList<String> getAll() {
+		ArrayList<String> lista = new ArrayList<String>();
+		lista.add(COLHER_DE_SOPA.getText());
+		lista.add(COLHER_DE_CHA.getText());
+		lista.add(CONCHA_MEDIA.getText());
+		lista.add(FATIA_MEDIA.getText());
+		lista.add(UNIDADE_MEDIA.getText());
+		lista.add(UNIDADE_PEQUENA.getText());
+		lista.add(ESCUMADEIRA.getText());
+		lista.add(XICARA.getText());
+		lista.add(COPO.getText());
+		
+		return lista;
 	}
 }
 

@@ -19,11 +19,12 @@
         android:layout_height="wrap_content"
         android:text="@string/unidade_de_medida" />
     
-    <EditText 
+    <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/unidade"
-        android:id="@+id/unidade_novo_alimento" />
+        android:id="@+id/unidade_novo_alimento"
+        android:completionThreshold="1"
+        android:hint="@string/unidade"/>
     
     <TextView 
         android:layout_width="match_parent"
