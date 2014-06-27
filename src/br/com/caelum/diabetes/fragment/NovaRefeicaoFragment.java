@@ -9,12 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.calculos.CalculaInsulina;
+import br.com.caelum.diabetes.calculos.DescobreTipoRefeicao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dao.RefeicaoDao;
@@ -34,17 +38,15 @@ public class NovaRefeicaoFragment extends Fragment{
 		
 		Bundle bundle = this.getArguments();
 	
-		TipoRefeicao tipoRefeicao = TipoRefeicao.fromString((String) bundle.get("tipo_refeicao"));
-		Refeicao refeicaoBundle = (Refeicao) bundle.get("refeicao");
-		
-		if (tipoRefeicao != null) {
-			refeicao = new Refeicao(tipoRefeicao);
-			bundle.remove("tipo_refeicao");
-		}
-		
-		if(refeicaoBundle != null) {
-			this.refeicao = refeicaoBundle;
-			bundle.remove("refeicao");
+		if(bundle != null) {
+			Refeicao refeicaoBundle = (Refeicao) bundle.get("refeicao");
+			
+			if(refeicaoBundle != null) {
+				this.refeicao = refeicaoBundle;
+				bundle.remove("refeicao");
+			}
+		} else {
+			refeicao = new Refeicao();
 		}
 		
 		DbHelper helper = new DbHelper(getActivity());
@@ -67,6 +69,33 @@ public class NovaRefeicaoFragment extends Fragment{
 		
 		EditText totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
 		totalInsulina.setText(String.valueOf(valorInsulina));
+		
+		Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
+		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
+		
+		String tipo;
+		if(refeicao.getTipoRefeicao() == null) {
+			tipo = new DescobreTipoRefeicao().getTipoRefeicao().getText();
+		} else {
+			tipo = refeicao.getTipoRefeicao().getText();
+		}
+		
+		int position = spinnerAdapter.getPosition(tipo);
+		if (position == -1) position = 0;
+		tipoRefeicao.setSelection(position);
+		refeicao.setTipoRefeicao(TipoRefeicao.fromString(tipo));
+		
+		tipoRefeicao.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View view, int pos, long id) {
+				String item = spinnerAdapter.getItem(pos);
+				refeicao.setTipoRefeicao(TipoRefeicao.fromString(item));
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
 		
 		Button novoAlimento = (Button) view.findViewById(R.id.novo_alimento);
 		novoAlimento.setOnClickListener(new OnClickListener() {

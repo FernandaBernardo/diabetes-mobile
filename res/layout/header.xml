@@ -3,7 +3,8 @@
 
     <Button
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/logo" />
+        android:layout_height="50dp"
+        android:drawableTop="@drawable/logo"
+        android:background="@null" />
  
 </RelativeLayout>

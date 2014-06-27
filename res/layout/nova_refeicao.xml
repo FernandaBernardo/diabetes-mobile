@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <Spinner 
+        android:id="@+id/tipo_refeicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/refeicoes_array"/>
+    
     <Button 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

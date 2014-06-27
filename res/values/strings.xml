@@ -58,6 +58,14 @@
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
     <string name="novo_alimento">Novo Alimento</string>
-
+	
+	<string-array name="refeicoes_array">
+	    <item>@string/cafe_da_manha</item>
+	    <item>@string/lanche_da_manha</item>
+	    <item>@string/almoco</item>
+	    <item>@string/lanche_da_tarde</item>
+	    <item>@string/jantar</item>
+	    <item>@string/ceia</item>
+	</string-array>
 </resources>
 
