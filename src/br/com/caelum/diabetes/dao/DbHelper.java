@@ -58,11 +58,18 @@ public class DbHelper extends SQLiteOpenHelper{
 				"id_paciente INTEGER," + 
 				"FOREIGN KEY (id_paciente) references Paciente(id));";
 		
+		String glicemia = "CREATE TABLE " + TabelasBD.GLICEMIA + " " + 
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"tipoRefeicao TEXT," + 
+				"data DATE," + 
+				"valorGlicemia INTEGER);";
+		
 		db.execSQL(refeicao);
 		db.execSQL(alimentoFisico);
 		db.execSQL(alimentoVirtual);
 		db.execSQL(paciente);
 		db.execSQL(dadosMedicos);
+		db.execSQL(glicemia);
 		insereAlimentoFisico(db);
 	}
 

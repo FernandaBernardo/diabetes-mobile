@@ -36,7 +36,6 @@ public class BemVindoActivity extends Activity {
 		if(pacienteBanco != null) {
 			Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 			intent.putExtra("paciente", pacienteBanco);
-			Bundle b = intent.getExtras();
 			startActivity(intent);
 		}
 		
@@ -50,7 +49,6 @@ public class BemVindoActivity extends Activity {
 				paciente.setId(dao.salva(paciente));
 				Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 				intent.putExtra("paciente", paciente);
-				Bundle b = intent.getExtras();
 				startActivity(intent);
 			}
 		});

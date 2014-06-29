@@ -81,6 +81,8 @@
 	    <item>@string/jantar</item>
 	    <item>@string/ceia</item>
 	</string-array>
+	    <string name="nova_medicao">Nova Medição</string>
+	    <string name="valor_glicemia">Valor Glicemia</string>
 
 </resources>
 

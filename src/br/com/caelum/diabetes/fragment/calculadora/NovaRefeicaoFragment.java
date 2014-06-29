@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes.fragment;
+package br.com.caelum.diabetes.fragment.calculadora;
 
 import java.util.List;
 

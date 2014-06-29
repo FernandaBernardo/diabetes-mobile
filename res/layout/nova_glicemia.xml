@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <Spinner 
+        android:id="@+id/tipo_refeicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/refeicoes_array"/>
+    
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/valor_glicemia"/>
+	
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/mg_dl"
+	    android:id="@+id/valor_glicemia"
+	    android:inputType="number"/>
+	
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/salvar"
+	    android:id="@+id/salvar_glicemia"/>
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes.fragment;
+package br.com.caelum.diabetes.fragment.perfil;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.fragment.DashboardFragment;
 
 public class ConfigurarPerfilFragment extends Fragment{
 	

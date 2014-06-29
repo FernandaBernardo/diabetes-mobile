@@ -1,4 +1,4 @@
-package br.com.caelum.diabetes.fragment;
+package br.com.caelum.diabetes.fragment.perfil;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

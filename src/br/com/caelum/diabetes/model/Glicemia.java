@@ -1,0 +1,49 @@
+package br.com.caelum.diabetes.model;
+
+import java.io.Serializable;
+
+import org.joda.time.DateTime;
+
+import br.com.caelum.diabetes.extras.TipoRefeicao;
+
+@SuppressWarnings("serial")
+public class Glicemia implements Serializable{
+	private int id;
+	private DateTime data;
+	private TipoRefeicao tipoRefeicao;
+	private int valorGlicemia;
+	
+	public Glicemia() {
+		this.data = new DateTime();
+	}
+	
+	public Glicemia(TipoRefeicao tipoRefeicao) {
+		this.tipoRefeicao = tipoRefeicao;
+		this.data = new DateTime();
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public DateTime getData() {
+		return data;
+	}
+	public void setData(DateTime data) {
+		this.data = data;
+	}
+	public TipoRefeicao getTipoRefeicao() {
+		return tipoRefeicao;
+	}
+	public void setTipoRefeicao(TipoRefeicao tipoRefeicao) {
+		this.tipoRefeicao = tipoRefeicao;
+	}
+	public int getValorGlicemia() {
+		return valorGlicemia;
+	}
+	public void setValorGlicemia(int valorGlicemia) {
+		this.valorGlicemia = valorGlicemia;
+	}
+}

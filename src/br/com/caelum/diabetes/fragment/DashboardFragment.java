@@ -13,6 +13,11 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
+import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
+import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
+import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
+import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 import br.com.caelum.diabetes.model.Paciente;
 
 public class DashboardFragment extends Fragment{
@@ -58,6 +63,16 @@ public class DashboardFragment extends Fragment{
 			public void onClick(View v) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
+				transaction.commit();
+			}
+		});
+		
+		Button medicao = (Button) view.findViewById(R.id.main_medicao);
+		medicao.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new DashboardGlicemiaFragment());
 				transaction.commit();
 			}
 		});

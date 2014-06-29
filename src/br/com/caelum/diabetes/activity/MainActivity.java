@@ -1,15 +1,12 @@
 package br.com.caelum.diabetes.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
-import br.com.caelum.diabetes.model.Paciente;
 
 public class MainActivity extends FragmentActivity{
 

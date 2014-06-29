@@ -6,4 +6,5 @@ public class TabelasBD {
 	public static final String ALIMENTO_VIRTUAL = "AlimentoVirtual";
 	public static final String PACIENTE = "Paciente";
 	public static final String DADOS_MEDICOS = "DadosMedicos";
+	public static final String GLICEMIA = "Glicemia";
 }

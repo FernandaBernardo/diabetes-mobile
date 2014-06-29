@@ -46,5 +46,5 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/salvar"
-	    android:id="@+id/salvar_glicemia"/>
+	    android:id="@+id/salvar_dados_perfil_glicemia"/>
 </LinearLayout>
