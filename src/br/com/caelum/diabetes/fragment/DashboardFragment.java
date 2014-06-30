@@ -16,7 +16,6 @@ import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
-import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 import br.com.caelum.diabetes.model.Paciente;
 

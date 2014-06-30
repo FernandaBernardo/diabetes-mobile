@@ -52,7 +52,7 @@ public class NovaGlicemiaFragment extends Fragment {
 				helper.close();
 				
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new DashboardGlicemiaFragment());
+				transaction.replace(R.id.main_view, new ListaGlicemiaFragment());
 				transaction.commit();
 			}
 		});

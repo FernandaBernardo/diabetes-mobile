@@ -46,4 +46,11 @@ public class Glicemia implements Serializable{
 	public void setValorGlicemia(int valorGlicemia) {
 		this.valorGlicemia = valorGlicemia;
 	}
+	
+	@Override
+	public String toString() {
+		return data.getDayOfMonth() + "/" + data.getMonthOfYear() + "/" + data.getYear() + 
+				" - " + data.getHourOfDay() + ":" + data.getMinuteOfHour() + " - " + 
+				tipoRefeicao + " - " + valorGlicemia; 
+	}
 }

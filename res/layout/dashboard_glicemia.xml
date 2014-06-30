@@ -12,5 +12,11 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/nova_medicao"
 	    android:id="@+id/nova_medicao"/>
+	
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Lista Glicemias"
+	    android:id="@+id/lista_glicemias"/>
 
 </LinearLayout>

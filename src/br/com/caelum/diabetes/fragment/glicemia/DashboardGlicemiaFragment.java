@@ -27,6 +27,15 @@ public class DashboardGlicemiaFragment extends Fragment{
 			}
 		});
 		
+		Button glicemias = (Button) view.findViewById(R.id.lista_glicemias);
+		glicemias.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new ListaGlicemiaFragment());
+				transaction.commit();
+			}
+		});
 		return view;
 	}
 }
