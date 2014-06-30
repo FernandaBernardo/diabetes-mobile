@@ -83,6 +83,9 @@
 	</string-array>
 	    <string name="nova_medicao">Nova Medição</string>
 	    <string name="valor_glicemia">Valor Glicemia</string>
+	    <string name="lista_glicemias">Lista Glicemias</string>
+	    <string name="media_dessa_semana">Média dessa Semana</string>
+	    <string name="media_desse_mes">Média desse Mês</string>
 
 </resources>
 

@@ -16,7 +16,33 @@
 	<Button 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:text="Lista Glicemias"
+	    android:text="@string/lista_glicemias"
 	    android:id="@+id/lista_glicemias"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/media_dessa_semana"/>
+	
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:enabled="false"
+	    android:id="@+id/media_glicemia_semana"
+	    android:hint=""
+	    android:textColor="#fff"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/media_desse_mes"/>
+	
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:enabled="false"
+	    android:id="@+id/media_glicemia_mes"
+	    android:hint=""
+	    android:textColor="#fff"/>
 
 </LinearLayout>
