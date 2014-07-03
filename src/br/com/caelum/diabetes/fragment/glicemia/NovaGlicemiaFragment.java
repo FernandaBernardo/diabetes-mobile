@@ -110,7 +110,7 @@ public class NovaGlicemiaFragment extends Fragment {
 				int pos = tipoRefeicao.getSelectedItemPosition();
 				glicemia.setTipoRefeicao(TipoRefeicao.fromString(spinnerAdapter.getItem(pos)));
 				
-				DateTime dateTime = new DateTime(ano, mes, dia, hora, minuto);
+				DateTime dateTime = new DateTime(ano, mes+1, dia, hora, minuto);
 				glicemia.setData(dateTime);
 				
 				DbHelper helper = new DbHelper(getActivity());

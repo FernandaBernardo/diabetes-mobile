@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <Spinner 
+
+    <TextClock
+        android:id="@+id/hora_refeicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format24Hour="k:mm"
+        tools:ignore="NewApi" />
+
+    <TextClock
+        android:id="@+id/data_refeicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format24Hour="dd/MM/yyyy"
+        tools:ignore="NewApi" />
+
+    <Spinner
         android:id="@+id/tipo_refeicao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/refeicoes_array"/>
-    
-    <Button 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:entries="@array/refeicoes_array" />
+
+    <Button
         android:id="@+id/novo_alimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/novo_alimento" />
-	
-    <ListView 
+
+    <ListView
+        android:id="@+id/lista_alimentos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lista_alimentos"/>
-    
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/total_de_carboidrato"/>
-    
-    <EditText 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="0.0"
-        android:id="@+id/totalCHO"/>
-    
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/total_insulina"/>
-    
-    <EditText 
+        android:text="@string/total_de_carboidrato" />
+
+    <EditText
+        android:id="@+id/totalCHO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="0.0"
-        android:id="@+id/totalInsulina"/>
-    
-    <Button 
+        android:text="0.0" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/total_insulina" />
+
+    <EditText
+        android:id="@+id/totalInsulina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="0.0" />
+
+    <Button
         android:id="@+id/salvar_refeicao"
-        android:text="@string/salvar"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/salvar" />
 
 </LinearLayout>
