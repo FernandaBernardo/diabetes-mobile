@@ -29,45 +29,63 @@ import br.com.caelum.diabetes.model.Glicemia;
 @SuppressLint("NewApi")
 public class NovaGlicemiaFragment extends Fragment {
 	Glicemia glicemia;
+	private int dia;
+	private int mes;
+	private int ano;
+	private int hora;
+	private int minuto;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
 		
+		DateTime dataAgora = new DateTime();
+		
 		final TextClock horario = (TextClock) view.findViewById(R.id.hora_glicemia);
+		horario.setText(dataAgora.getHourOfDay() + ":" + dataAgora.getMinuteOfHour());
+		final TextClock data = (TextClock) view.findViewById(R.id.data_glicemia);
+		data.setText(dataAgora.getDayOfMonth() + "/" + dataAgora.getMonthOfYear() + "/" + dataAgora.getYear());
+		
+		String dataAtual = (String)data.getText();
+		String[] numerosData = dataAtual.split("/");
+		
+		String horarioAtual = (String) horario.getText();
+		String[] numerosHorario= horarioAtual.split(":");
+		
+		dia = Integer.parseInt(numerosData[0]);
+		mes = Integer.parseInt(numerosData[1]) - 1;
+		ano = Integer.parseInt(numerosData[2]);
+		hora = Integer.parseInt(numerosHorario[0]);
+		minuto = Integer.parseInt(numerosHorario[1]);
+		
 		horario.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				 DateTime horaAtual = new DateTime();
-		            int hora = horaAtual.getHourOfDay();
-		            int minuto = horaAtual.getMinuteOfHour();
-		            TimePickerDialog timePicker;
-		            timePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-		                @Override
-		                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-		                    horario.setText(selectedHour + ":" + selectedMinute);
-		                }
-		            }, hora, minuto, true);
-		            timePicker.setTitle("Select Time");
-		            timePicker.show();
+	            TimePickerDialog timePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+	                @Override
+	                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+	                	hora = selectedHour;
+	                	minuto = selectedMinute;
+	                    horario.setText(hora + ":" + minuto);
+	                }
+	            }, hora, minuto, true);
+	            timePicker.show();
 			}
 		});
 		
-		final TextClock data = (TextClock) view.findViewById(R.id.data_glicemia);
 		data.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DateTime horaAtual = new DateTime();
-		        int dia = horaAtual.getDayOfMonth();
-		        int mes = horaAtual.getMonthOfYear();
-		        int ano = horaAtual.getYear();
 		        DatePickerDialog datePicker = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
 					@Override
 					public void onDateSet(DatePicker arg0, int year, int month, int day) {
-						data.setText(day+ "/" + month+ "/" + year);
+						dia = day;
+						mes = month;
+						ano = year;
+						data.setText(dia+ "/" + (mes+1) + "/" + ano);
 					}
-		        }, ano, mes-1, dia);
+		        }, ano, mes, dia);
 		        datePicker.show();
 			}
 		});
@@ -92,11 +110,7 @@ public class NovaGlicemiaFragment extends Fragment {
 				int pos = tipoRefeicao.getSelectedItemPosition();
 				glicemia.setTipoRefeicao(TipoRefeicao.fromString(spinnerAdapter.getItem(pos)));
 				
-				String[] dataSalvar = ((String)data.getText()).split("/");
-				String[] horarioSalvar = ((String)horario.getText()).split(":");
-				
-				DateTime dateTime = new DateTime(Integer.parseInt(dataSalvar[2]), Integer.parseInt(dataSalvar[1])+1, Integer.parseInt(dataSalvar[0]), 
-						Integer.parseInt(horarioSalvar[0]), Integer.parseInt(horarioSalvar[1]));
+				DateTime dateTime = new DateTime(ano, mes, dia, hora, minuto);
 				glicemia.setData(dateTime);
 				
 				DbHelper helper = new DbHelper(getActivity());
