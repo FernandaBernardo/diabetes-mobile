@@ -30,6 +30,7 @@ public class CalculaMediaGlicemia {
 				contador++;
 			}
 		}
+		if (contador==0) contador=1;
 		media /= contador;
 		return media;
 	}
