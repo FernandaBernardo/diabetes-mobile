@@ -2,6 +2,8 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+import static com.google.common.base.Preconditions.*;
+
 @SuppressWarnings("serial")
 public class Paciente implements Serializable{
 	
@@ -21,6 +23,8 @@ public class Paciente implements Serializable{
 		return nome;
 	}
 	public void setNome(String nome) {
+//		checkNotNull(nome);
+//		checkState(nome != "");
 		this.nome = nome;
 	}
 	public Integer getIdade() {
@@ -108,7 +112,9 @@ public class Paciente implements Serializable{
 				this.getInsulinaCorrecao() == null ||
 				this.getPeso() == null ||
 				this.getTipoDiabetes() == null ||
-				this.getIdade() == null); 
+				this.getIdade() == null ||
+				this.getSexo() == null
+				); 
 		
 	}
 }

@@ -26,7 +26,7 @@ public class ConfigurarDadosPessoaisFragment extends Fragment{
 	private PacienteDao dao;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.configurar_dados, null);
 		
 		idade = (EditText) view.findViewById(R.id.idade);
@@ -59,21 +59,30 @@ public class ConfigurarDadosPessoaisFragment extends Fragment{
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				paciente.setIdade(Integer.parseInt(idade.getText().toString()));
-				paciente.setPeso(Double.parseDouble(peso.getText().toString()));
-				paciente.setAltura(Double.parseDouble(altura.getText().toString()));
 				
-				if (masculino.isChecked()) {
-					paciente.setSexo(masculino.getText().toString());;
-				} else {
-					paciente.setSexo(feminino.getText().toString());;
+				
+				try{
+					paciente.setIdade(Integer.parseInt(idade.getText().toString()));
+					paciente.setPeso(Double.parseDouble(peso.getText().toString()));
+					paciente.setAltura(Double.parseDouble(altura.getText().toString()));
+					
+					if (masculino.isChecked()) {
+						paciente.setSexo(masculino.getText().toString());;
+					} else {
+						paciente.setSexo(feminino.getText().toString());;
+					}
+					
+					if (tipo2.isChecked()) {
+						paciente.setTipoDiabetes(tipo2.getText().toString());
+					} else {
+						paciente.setTipoDiabetes(tipo1.getText().toString());
+					}
+				}catch (NullPointerException e){
+					onCreateView(inflater, container, savedInstanceState);
+				}catch (IllegalStateException e ){
+					onCreateView(inflater, container, savedInstanceState);
 				}
 				
-				if (tipo2.isChecked()) {
-					paciente.setTipoDiabetes(tipo2.getText().toString());
-				} else {
-					paciente.setTipoDiabetes(tipo1.getText().toString());
-				}
 				
 				dao.atualiza(paciente);
 				

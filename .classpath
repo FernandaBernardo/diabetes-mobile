@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="C:/work/apps/joda-time-2.3/joda-time-2.3.jar" sourcepath="C:/Users/Johnny Taira/.m2/repository/joda-time/joda-time/2.3/joda-time-2.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/work/apps/guava/guava-17.0.jar" sourcepath="C:/work/apps/guava/guava-17.0-sources.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
