@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import br.com.caelum.diabetes.R;
+import br.com.caelum.diabetes.fragment.DashboardFragment;
 import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 
@@ -45,6 +46,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 
 			@Override
 			public void onClick(View v) {
+				setTransaction(R.id.main_view, new DashboardFragment());
 				getDialog().dismiss();
 				
 			}

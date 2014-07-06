@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class DadosMedicos implements Serializable {
-	private int id;
-	private double cafeManha;
-	private double lancheManha;
-	private double almoco;
-	private double lancheTarde;
-	private double jantar;
-	private double ceia;
+	private Integer id;
+	private Double cafeManha;
+	private Double lancheManha;
+	private Double almoco;
+	private Double lancheTarde;
+	private Double jantar;
+	private Double ceia;
 	
 	private TipoDadoMedico tipo;
 	private Paciente paciente;
@@ -22,40 +22,40 @@ public class DadosMedicos implements Serializable {
 		this.tipo = tipo;
 	}
 		
-	public double getCafeManha() {
+	public Double getCafeManha() {
 		return cafeManha;
 	}
-	public void setCafeManha(double cafeManha) {
+	public void setCafeManha(Double cafeManha) {
 		this.cafeManha = cafeManha;
 	}
-	public double getLancheManha() {
+	public Double getLancheManha() {
 		return lancheManha;
 	}
-	public void setLancheManha(double lancheManha) {
+	public void setLancheManha(Double lancheManha) {
 		this.lancheManha = lancheManha;
 	}
-	public double getAlmoco() {
+	public Double getAlmoco() {
 		return almoco;
 	}
-	public void setAlmoco(double almoco) {
+	public void setAlmoco(Double almoco) {
 		this.almoco = almoco;
 	}
-	public double getLancheTarde() {
+	public Double getLancheTarde() {
 		return lancheTarde;
 	}
-	public void setLancheTarde(double lancheTarde) {
+	public void setLancheTarde(Double lancheTarde) {
 		this.lancheTarde = lancheTarde;
 	}
-	public double getJantar() {
+	public Double getJantar() {
 		return jantar;
 	}
-	public void setJantar(double jantar) {
+	public void setJantar(Double jantar) {
 		this.jantar = jantar;
 	}
-	public double getCeia() {
+	public Double getCeia() {
 		return ceia;
 	}
-	public void setCeia(double ceia) {
+	public void setCeia(Double ceia) {
 		this.ceia = ceia;
 	}
 	public TipoDadoMedico getTipo() {
@@ -64,10 +64,10 @@ public class DadosMedicos implements Serializable {
 	public void setTipo(TipoDadoMedico tipo) {
 		this.tipo = tipo;
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -77,6 +77,18 @@ public class DadosMedicos implements Serializable {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
+	}
+	
+	public boolean isEmpty(){
+		
+		if (this.tipo == TipoDadoMedico.GLICEMIA_ALVO){
+			return this.cafeManha == null || this.almoco == null || this.jantar == null;
+		}
+		
+		return this.almoco == null || this.cafeManha == null
+				|| this.ceia == null || this.jantar == null
+				|| this.lancheManha == null || this.lancheTarde == null
+				|| this.paciente == null;
 	}
 }
 

@@ -84,6 +84,24 @@ public class Paciente implements Serializable{
 	
 	public boolean hasMedicalInfo(){
 		
+		if (! (this.getGlicemiaAlvo() == null)){
+			if (this.getGlicemiaAlvo().isEmpty()){
+				return false;
+			}
+		}
+		
+		if (! (this.getInsulinaContinua() == null)){
+			if (this.getInsulinaContinua().isEmpty()){
+				return false;
+			}
+		}
+		
+		if (! (this.getInsulinaCorrecao() == null)){
+			if (this.getInsulinaCorrecao().isEmpty()){
+				return false;
+			}
+		}
+		
 		return !(this.getAltura() == null || 
 				this.getGlicemiaAlvo() == null ||
 				this.getInsulinaContinua() == null ||
