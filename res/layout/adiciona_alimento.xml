@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:hint="0"
         android:inputType="number"
+        android:enabled="false"
         android:id="@+id/carboidrato_alimento"/>
     
     <Button 

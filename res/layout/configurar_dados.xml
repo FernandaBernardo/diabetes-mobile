@@ -70,5 +70,6 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/salvar"
-	    android:id="@+id/salvar_dados"/>
+	    android:id="@+id/salvar_dados"
+	    android:enabled="false"/>"
 </LinearLayout>

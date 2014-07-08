@@ -65,6 +65,9 @@
         nos ajudará! =)</string>
     <string name="confirmar_dados_medicos">Sim, quero preencher os dados</string>
     <string name="cancelar_dados_medicos">Não, quero continuar a utilizar o aplicativo</string>
+    
+    <string name="dado_incorreto_ok">OK</string>
+    <string name="dado_incorreto_texto">Dados Inválidos. Preencha novamente!</string>
 
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>
     <string name="salvar_alimento">Salvar Alimento</string>

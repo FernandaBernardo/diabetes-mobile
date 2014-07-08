@@ -23,14 +23,14 @@ public class Paciente implements Serializable{
 		return nome;
 	}
 	public void setNome(String nome) {
-//		checkNotNull(nome);
-//		checkState(nome != "");
 		this.nome = nome;
 	}
 	public Integer getIdade() {
+		
 		return idade;
 	}
 	public void setIdade(Integer idade) {
+		checkNotNull(idade);
 		this.idade = idade;
 	}
 	public Double getPeso() {
