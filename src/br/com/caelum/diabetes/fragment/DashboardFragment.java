@@ -40,7 +40,7 @@ public class DashboardFragment extends Fragment{
 
 				newPaciente();
 				
-				if(!paciente.hasMedicalInfo()){
+				if(!paciente.temValorCorrecao()){
 					PreencherDadosMedicosDialog dadosMedicosDialog = new PreencherDadosMedicosDialog();
 					FragmentManager fm = getFragmentManager();
 					dadosMedicosDialog.show(fm, "dashboard_fragment");

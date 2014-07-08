@@ -9,21 +9,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
-import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 
 public class PreencherDadosMedicosDialog extends DialogFragment {
 
 	private Button confirmarButton;
 	private Button cancelarButton;
-	
-	public PreencherDadosMedicosDialog(){
 		
-	}
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		
@@ -32,25 +26,19 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 		cancelarButton = (Button)view.findViewById(R.id.cancelar_button);
 		
 		confirmarButton.setOnClickListener(new OnClickListener(){
-
 			@Override
 			public void onClick(View arg0) {
 				setTransaction(R.id.main_view, new ConfigurarPerfilFragment());
 				getDialog().dismiss();
-				
 			}
-			
 		});
 		
 		cancelarButton.setOnClickListener(new OnClickListener(){
-
 			@Override
 			public void onClick(View v) {
 				setTransaction(R.id.main_view, new DashboardFragment());
 				getDialog().dismiss();
-				
 			}
-			
 		});
 		
 		return view;

@@ -1,7 +1,6 @@
 package br.com.caelum.diabetes.extras;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public enum UnidadeMedidaAlimento{
