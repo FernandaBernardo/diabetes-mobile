@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format24Hour="k:mm"
+        tools:ignore="NewApi" 
+        android:id="@+id/hora_lembrete"/>
+
+	<TextClock
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    tools:ignore="NewApi" 
+	    android:id="@+id/data_lembrete"
+	    android:format24Hour="dd/MM/yyyy" />
+    
+    <EditText
+        android:id="@+id/atividade_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/exemplo"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/anotacoes" />
+
+    <EditText
+        android:id="@+id/anotacoes_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      />
+
+    <Button
+        android:id="@+id/salvar_lembrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/salvar" />
+    
+    
+
+</LinearLayout>

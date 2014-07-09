@@ -16,22 +16,24 @@ import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
 import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
+import br.com.caelum.diabetes.fragment.lembretes.DashboardLembreteFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
 import br.com.caelum.diabetes.model.Paciente;
 
-public class DashboardFragment extends Fragment{
-	
+public class DashboardFragment extends Fragment {
+
 	private PacienteDao dao;
 	private Paciente paciente;
-	
-	private void newPaciente(){
+
+	private void newPaciente() {
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);
 		paciente = dao.getPaciente();
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.dashboard, null);
 		Button calculadora = (Button) view.findViewById(R.id.main_calculadora);
 		calculadora.setOnClickListener(new OnClickListener() {
@@ -39,43 +41,63 @@ public class DashboardFragment extends Fragment{
 			public void onClick(View v) {
 
 				newPaciente();
-				
-				if(!paciente.temValorCorrecao()){
+
+				if (!paciente.temValorCorrecao()) {
 					PreencherDadosMedicosDialog dadosMedicosDialog = new PreencherDadosMedicosDialog();
 					FragmentManager fm = getFragmentManager();
 					dadosMedicosDialog.show(fm, "dashboard_fragment");
-				}else{
-					FragmentTransaction transaction = getFragmentManager().beginTransaction();
-					transaction.replace(R.id.main_view, new SelecionaRefeicaoFragment());
+				} else {
+					FragmentTransaction transaction = getFragmentManager()
+							.beginTransaction();
+					transaction.replace(R.id.main_view,
+							new SelecionaRefeicaoFragment());
 					transaction.commit();
 				}
-				
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new DashboardCalculadoraFragment());
+
+				FragmentTransaction transaction = getFragmentManager()
+						.beginTransaction();
+				transaction.replace(R.id.main_view,
+						new DashboardCalculadoraFragment());
 				transaction.commit();
 			}
 		});
-		
+
 		Button perfil = (Button) view.findViewById(R.id.main_perfil);
 		perfil.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
+				FragmentTransaction transaction = getFragmentManager()
+						.beginTransaction();
+				transaction.replace(R.id.main_view,
+						new ConfigurarPerfilFragment());
 				transaction.commit();
 			}
 		});
-		
+
 		Button medicao = (Button) view.findViewById(R.id.main_medicao);
 		medicao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new DashboardGlicemiaFragment());
+				FragmentTransaction transaction = getFragmentManager()
+						.beginTransaction();
+				transaction.replace(R.id.main_view,
+						new DashboardGlicemiaFragment());
 				transaction.commit();
 			}
 		});
-		
+
+		Button lembrete = (Button) view.findViewById(R.id.main_lembretes);
+		lembrete.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FragmentTransaction transaction = getFragmentManager()
+						.beginTransaction();
+				transaction.replace(R.id.main_view,
+						new DashboardLembreteFragment());
+				transaction.commit();
+			}
+		});
+
 		return view;
 	}
 }

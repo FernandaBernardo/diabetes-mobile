@@ -75,6 +75,12 @@
     <string name="quantidade_de_carboidrato">Quantidade de Carboidrato</string>
     <string name="unidade_de_medida">Unidade de Medida</string>
     <string name="nova_refeicao">Nova Refeição</string>
+    
+    <string name="anotacoes">Anotações</string>
+    <string name="exemplo">Ex.: Medir Glicemia, Marcar Consulta etc.</string>
+    
+    <string name="ultimos_lembretes">Últimos Lembretes</string>
+	<string name="novo_lembrete">Novo Lembrete</string>
 	
 	<string-array name="refeicoes_array">
 	    <item>@string/cafe_da_manha</item>
