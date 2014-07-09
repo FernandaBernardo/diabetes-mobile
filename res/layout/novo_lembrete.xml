@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/exemplo"
+        android:inputType="textCapSentences"
         />
 
     <TextView
@@ -35,6 +36,7 @@
         android:id="@+id/anotacoes_lembrete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
       />
 
     <Button

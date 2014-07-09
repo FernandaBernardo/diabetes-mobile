@@ -34,7 +34,7 @@ public class NovoLembreteFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.lembrete, null);
+		View view = inflater.inflate(R.layout.novo_lembrete, null);
 		DateTime dataAgora = new DateTime();
 		final TextClock horario = (TextClock) view
 				.findViewById(R.id.hora_lembrete);
