@@ -54,6 +54,28 @@ public class LembreteDao {
 		return lembretes;
 	}
 
+	public List<Lembrete> getLembretes(int limit) {
+		ArrayList<Lembrete> lembretes = new ArrayList<Lembrete>();
+		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS,
+				null, null, null, null, "data");
+		int contador = 0;
+		while (cursor.moveToNext()) {
+			if (contador == limit) {
+				break;
+			}
+			Lembrete lembrete = new Lembrete();
+			lembrete.setId(cursor.getInt(0));
+			lembrete.setData(new DateTime(cursor.getLong(1)));
+			lembrete.setAtividade(cursor.getString(2));
+			lembrete.setAnotacoes(cursor.getString(3));
+			lembretes.add(lembrete);
+			contador++;
+		}
+		cursor.close();
+
+		return lembretes;
+	}
+
 	private ContentValues toContentValues(Lembrete lembrete) {
 		ContentValues values = new ContentValues();
 		values.put("data", lembrete.getData().toDate().getTime());

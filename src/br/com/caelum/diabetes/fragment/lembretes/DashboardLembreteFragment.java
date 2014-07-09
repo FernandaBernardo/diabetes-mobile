@@ -18,7 +18,7 @@ import br.com.caelum.diabetes.dao.LembreteDao;
 import br.com.caelum.diabetes.model.Lembrete;
 
 public class DashboardLembreteFragment extends Fragment {
-	private Button listarUltimosLembretes;
+	private Button listarTodosLembretes;
 	private Button novoLembrete;
 	private Lembrete lembrete;
 
@@ -27,27 +27,14 @@ public class DashboardLembreteFragment extends Fragment {
 			Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.dashboard_lembrete, null);
 
-		listarUltimosLembretes = (Button) view
+		listarTodosLembretes = (Button) view
 				.findViewById(R.id.ultimos_lembretes);
 
-		listarUltimosLembretes.setOnClickListener(new OnClickListener() {
+		listarTodosLembretes.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				DbHelper helper = new DbHelper(getActivity());
-				LembreteDao dao = new LembreteDao(helper);
-
-				List<Lembrete> lembretes = dao.getLembretes();
-
-				helper.close();
-
-				ArrayAdapter<Lembrete> adapter = new ArrayAdapter<Lembrete>(
-						getActivity(), android.R.layout.simple_list_item_1,
-						lembretes);
-
-				ListView listaLembretes = (ListView) view
-						.findViewById(R.id.list_lembretes);
-				listaLembretes.setAdapter(adapter);
+				setTransaction(new ListarTodosLembretesFragment());
 			}
 
 		});
@@ -58,15 +45,38 @@ public class DashboardLembreteFragment extends Fragment {
 
 			@Override
 			public void onClick(View arg0) {
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view, new NovoLembreteFragment());
-				transaction.commit();
+				setTransaction(new NovoLembreteFragment());
+
 			}
 
 		});
 
+		listarProximosLembretes(view);
+
 		return view;
 
+	}
+
+	private void listarProximosLembretes(View view) {
+		DbHelper helper = new DbHelper(getActivity());
+		LembreteDao dao = new LembreteDao(helper);
+
+		List<Lembrete> lembretes = dao.getLembretes(5);
+
+		helper.close();
+
+		ArrayAdapter<Lembrete> adapter = new ArrayAdapter<Lembrete>(
+				getActivity(), android.R.layout.simple_list_item_1, lembretes);
+
+		ListView listaLembretes = (ListView) view
+				.findViewById(R.id.list_lembretes_proximos);
+		listaLembretes.setAdapter(adapter);
+	}
+
+	private void setTransaction(Fragment fragment) {
+		FragmentTransaction transaction = getFragmentManager()
+				.beginTransaction();
+		transaction.replace(R.id.main_view, fragment);
+		transaction.commit();
 	}
 }
