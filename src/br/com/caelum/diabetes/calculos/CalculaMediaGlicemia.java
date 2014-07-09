@@ -19,13 +19,31 @@ public class CalculaMediaGlicemia {
 		helper.close();
 	}
 	
-	public int getMediaDaSemana() {
+	public int getMediaDoDia() {
 		DateTime data = new DateTime();
-		int semana = data.getWeekyear();
+		int dia = data.getDayOfYear();
+		int ano = data.getYear(); 
 		int contador = 0;
 		int media = 0;
 		for (Glicemia glicemia : glicemias) {
-			if(glicemia.getData().getWeekyear() == semana) {
+			if(glicemia.getData().getDayOfYear() == dia && glicemia.getData().getYear() == ano) {
+				media += glicemia.getValorGlicemia();
+				contador++;
+			}
+		}
+		if (contador==0) contador=1;
+		media /= contador;
+		return media;
+	}
+	
+	public int getMediaDaSemana() {
+		DateTime data = new DateTime();
+		int semana = data.getWeekyear();
+		int ano = data.getYear();
+		int contador = 0;
+		int media = 0;
+		for (Glicemia glicemia : glicemias) {
+			if(glicemia.getData().getWeekyear() == semana && glicemia.getData().getYear() == ano) {
 				media += glicemia.getValorGlicemia();
 				contador++;
 			}
@@ -38,10 +56,11 @@ public class CalculaMediaGlicemia {
 	public int getMediaDoMes() {
 		DateTime data = new DateTime();
 		int mes = data.getMonthOfYear();
+		int ano = data.getYear();
 		int contador = 0;
 		int media = 0;
 		for (Glicemia glicemia : glicemias) {
-			if(glicemia.getData().getMonthOfYear() == mes) {
+			if(glicemia.getData().getMonthOfYear() == mes && glicemia.getData().getYear() == ano) {
 				media += glicemia.getValorGlicemia();
 				contador++;
 			}

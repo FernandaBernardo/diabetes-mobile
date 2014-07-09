@@ -39,9 +39,14 @@ public class DashboardGlicemiaFragment extends Fragment{
 			}
 		});
 		
-		EditText glicemiasSemana = (EditText) view.findViewById(R.id.media_glicemia_semana);
 		CalculaMediaGlicemia medias = new CalculaMediaGlicemia(getActivity());
+		
+		EditText glicemiasHoje = (EditText) view.findViewById(R.id.media_glicemia_hoje);
+		glicemiasHoje.setText(medias.getMediaDoDia() + "");
+		
+		EditText glicemiasSemana = (EditText) view.findViewById(R.id.media_glicemia_semana);
 		glicemiasSemana.setText(medias.getMediaDaSemana() + "");
+		
 		EditText glicemiasMes = (EditText) view.findViewById(R.id.media_glicemia_mes);
 		glicemiasMes.setText(medias.getMediaDoMes() + "");
 		return view;

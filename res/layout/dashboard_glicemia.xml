@@ -22,6 +22,19 @@
 	<TextView 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+	    android:text="@string/media_de_hoje"/>
+	
+	<EditText 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:enabled="false"
+	    android:id="@+id/media_glicemia_hoje"
+	    android:hint=""
+	    android:textColor="#fff"/>
+	
+	<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
 	    android:text="@string/media_dessa_semana"/>
 	
 	<EditText 
