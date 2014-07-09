@@ -15,6 +15,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.fragment.DashboardFragment;
+import br.com.caelum.diabetes.fragment.calculadora.NovaRefeicaoFragment;
+import br.com.caelum.diabetes.fragment.calculadora.NovoAlimentoDiferenteFragment;
+import br.com.caelum.diabetes.fragment.glicemia.NovaGlicemiaFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarDadosPessoaisFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarGlicemiaAlvoFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarInsulinaContinuaFragment;
+import br.com.caelum.diabetes.fragment.perfil.ConfigurarInsulinaCorrecaoFragment;
 
 public class MainActivity extends FragmentActivity{
 	  private DrawerLayout menuLateral;
@@ -30,7 +37,8 @@ public class MainActivity extends FragmentActivity{
 		
 		setContentView(R.layout.main);
 		
-		String[] titulos = {"Home", "Calculadora"};
+		String[] titulos = {"Home", "Novo Alimento", "Nova Refeição", "Nova Glicemia", 
+				"Configurações Pessoais", "Configurar Basal", "Configurar Bolus", "Configurar Glicemia Alvo"};
 		
         menuLateral = (DrawerLayout) findViewById(R.id.menu_lateral);
         listaMenuLateral = (ListView) findViewById(R.id.lista_menu_lateral);
@@ -38,9 +46,36 @@ public class MainActivity extends FragmentActivity{
         listaMenuLateral.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titulos));
         listaMenuLateral.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
+				FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+				switch(pos) {
+					case 0:
+						transaction.replace(R.id.main_view, new DashboardFragment());
+						break;
+					case 1:
+						transaction.replace(R.id.main_view, new NovoAlimentoDiferenteFragment());
+						break;
+					case 2:
+						transaction.replace(R.id.main_view, new NovaRefeicaoFragment());
+						break;
+					case 3:
+						transaction.replace(R.id.main_view, new NovaGlicemiaFragment());
+						break;
+					case 4:
+						transaction.replace(R.id.main_view, new ConfigurarDadosPessoaisFragment());
+						break;
+					case 5:
+						transaction.replace(R.id.main_view, new ConfigurarInsulinaContinuaFragment());
+						break;
+					case 6:
+						transaction.replace(R.id.main_view, new ConfigurarInsulinaCorrecaoFragment());
+						break;
+					case 7:
+						transaction.replace(R.id.main_view, new ConfigurarGlicemiaAlvoFragment());
+						break;
+				}
+				transaction.commit();
+				menuLateral.closeDrawer(listaMenuLateral);
 			}
 		});
         
