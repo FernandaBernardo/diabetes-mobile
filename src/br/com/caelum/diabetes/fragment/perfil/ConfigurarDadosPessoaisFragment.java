@@ -104,9 +104,9 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	}
 
 	private void setValues() {
-		idade.setText(String.valueOf(paciente.getIdade()));
-		peso.setText(String.valueOf(paciente.getPeso()));
-		altura.setText(String.valueOf(paciente.getAltura()));
+		idade.setHint(String.valueOf(paciente.getIdade()));
+		peso.setHint(String.valueOf(paciente.getPeso()));
+		altura.setHint(String.valueOf(paciente.getAltura()));
 		if (masculino.getText().toString().equals(paciente.getSexo())) {
 			masculino.setChecked(true);
 		} else {
