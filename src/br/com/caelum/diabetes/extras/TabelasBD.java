@@ -7,4 +7,6 @@ public class TabelasBD {
 	public static final String PACIENTE = "Paciente";
 	public static final String DADOS_MEDICOS = "DadosMedicos";
 	public static final String GLICEMIA = "Glicemia";
+	public static final String EXAME = "Exame";
+	public static final String LEMBRETE = "Lembrete";
 }

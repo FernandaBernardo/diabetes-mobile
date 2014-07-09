@@ -64,12 +64,19 @@ public class DbHelper extends SQLiteOpenHelper{
 				"data DATE," + 
 				"valorGlicemia INTEGER);";
 		
+		String lembrete = "CREATE TABLE " + TabelasBD.LEMBRETE + " " + 
+				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"data DATE," + 
+				"atividade TEXT," + 
+				"anotacoes TEXT);";
+		
 		db.execSQL(refeicao);
 		db.execSQL(alimentoFisico);
 		db.execSQL(alimentoVirtual);
 		db.execSQL(paciente);
 		db.execSQL(dadosMedicos);
 		db.execSQL(glicemia);
+		db.execSQL(lembrete);
 		insereAlimentoFisico(db);
 	}
 
