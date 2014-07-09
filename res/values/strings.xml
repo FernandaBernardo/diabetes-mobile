@@ -99,6 +99,9 @@
 	    <string name="hoje">Hoje</string>
 	    <string name="semana">Semana</string>
 	    <string name="mes">Mês</string>
+	    <string name="tipo_da_refeicao">Tipo da Refeição</string>
+	    <string name="salvar_glicemia">Salvar Glicemia</string>
+	    <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
 
 </resources>
 
