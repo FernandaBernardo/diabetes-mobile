@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.calculos.CalculaMediaGlicemia;
 
@@ -39,11 +38,17 @@ public class DashboardGlicemiaFragment extends Fragment{
 			}
 		});
 		
-		EditText glicemiasSemana = (EditText) view.findViewById(R.id.media_glicemia_semana);
 		CalculaMediaGlicemia medias = new CalculaMediaGlicemia(getActivity());
+		
+		Button glicemiasHoje = (Button) view.findViewById(R.id.media_glicemia_hoje);
+		glicemiasHoje.setText(medias.getMediaDoDia() + "");
+		
+		Button glicemiasSemana = (Button) view.findViewById(R.id.media_glicemia_semana);
 		glicemiasSemana.setText(medias.getMediaDaSemana() + "");
-		EditText glicemiasMes = (EditText) view.findViewById(R.id.media_glicemia_mes);
+		
+		Button glicemiasMes = (Button) view.findViewById(R.id.media_glicemia_mes);
 		glicemiasMes.setText(medias.getMediaDoMes() + "");
+		
 		return view;
 	}
 }

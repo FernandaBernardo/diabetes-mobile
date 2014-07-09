@@ -70,6 +70,7 @@ public class DbHelper extends SQLiteOpenHelper{
 				"atividade TEXT," + 
 				"anotacoes TEXT);";
 		
+		
 		db.execSQL(refeicao);
 		db.execSQL(alimentoFisico);
 		db.execSQL(alimentoVirtual);

@@ -95,6 +95,10 @@
 	    <string name="lista_glicemias">Lista Glicemias</string>
 	    <string name="media_dessa_semana">Média dessa Semana</string>
 	    <string name="media_desse_mes">Média desse Mês</string>
+	    <string name="media_de_hoje">Média de Hoje</string>
+	    <string name="hoje">Hoje</string>
+	    <string name="semana">Semana</string>
+	    <string name="mes">Mês</string>
 
 </resources>
 
