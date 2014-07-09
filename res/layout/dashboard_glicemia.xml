@@ -6,56 +6,93 @@
     android:orientation="vertical"
     android:layout_weight="1"
     android:background="@color/blue" >
-
-	<Button 
-	    android:layout_width="match_parent"
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:text="@string/nova_medicao"
-	    android:id="@+id/nova_medicao"/>
+	    android:orientation="horizontal"
+	    android:weightSum="3"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginBottom="10dp">
+	    
+	    <TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/hoje"
+		    android:layout_weight="1"
+		    android:textAlignment="center"
+		    android:textColor="#fff"
+		    android:textAllCaps="true"/>
+	    <TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/semana"
+		    android:layout_marginLeft="30dp"
+		    android:layout_weight="1"
+		    android:textAlignment="center"
+		    android:textColor="#fff"
+		    android:textAllCaps="true"/>
+		<TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/mes"
+		    android:layout_marginLeft="20dp"
+		    android:layout_weight="1"
+		    android:textAlignment="center"
+		    android:textColor="#fff"
+		    android:textAllCaps="true"/>
+	</LinearLayout>
 	
-	<Button 
-	    android:layout_width="match_parent"
+	<LinearLayout
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:text="@string/lista_glicemias"
-	    android:id="@+id/lista_glicemias"/>
+	    android:orientation="horizontal"
+	    android:weightSum="3"
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginBottom="40dp">
+		
+		<Button
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:background="@drawable/botao"
+		    android:id="@+id/media_glicemia_hoje"
+		    android:textColor="@color/blue"
+		    android:layout_marginRight="30dp"/>
+		<Button
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:background="@drawable/botao"
+		    android:id="@+id/media_glicemia_semana"
+		    android:textColor="@color/blue"
+		    android:layout_marginRight="30dp"
+		    android:layout_marginLeft="30dp"/>
+		<Button
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		    android:background="@drawable/botao"
+		    android:id="@+id/media_glicemia_mes"
+		    android:textColor="@color/blue"
+		    android:layout_marginLeft="30dp"/>
+	</LinearLayout>
 	
-	<TextView 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/media_de_hoje"/>
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" 
+	    android:orientation="vertical"
+	    android:gravity="center">
+		<Button 
+		    android:layout_width="200dp"
+		    android:layout_height="wrap_content"
+		    android:text="@string/nova_medicao"
+		    android:id="@+id/nova_medicao"
+		    android:layout_marginBottom="30dp" />
+		
+		<Button 
+		    android:layout_width="200dp"
+		    android:layout_height="wrap_content"
+		    android:text="@string/lista_glicemias"
+		    android:id="@+id/lista_glicemias"/>
 	
-	<EditText 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:enabled="false"
-	    android:id="@+id/media_glicemia_hoje"
-	    android:hint=""
-	    android:textColor="#fff"/>
-	
-	<TextView 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/media_dessa_semana"/>
-	
-	<EditText 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:enabled="false"
-	    android:id="@+id/media_glicemia_semana"
-	    android:hint=""
-	    android:textColor="#fff"/>
-	
-	<TextView 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/media_desse_mes"/>
-	
-	<EditText 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:enabled="false"
-	    android:id="@+id/media_glicemia_mes"
-	    android:hint=""
-	    android:textColor="#fff"/>
-
+	</LinearLayout>
 </LinearLayout>
