@@ -15,6 +15,12 @@
 	<Button 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
+	    android:text="@string/listar_refeicoes"
+	    android:id="@+id/listar_refeicoes"/>
+	
+	<Button 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
 	    android:text="@string/adicionar_novo_alimento"
 	    android:id="@+id/adicionar_novo_alimento"/>
 </br.com.caelum.diabetes.dashboard.DashboardLayout>

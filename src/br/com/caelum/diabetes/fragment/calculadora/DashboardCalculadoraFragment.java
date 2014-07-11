@@ -17,6 +17,7 @@ public class DashboardCalculadoraFragment extends Fragment{
 		View view = inflater.inflate(R.layout.dashboard_calculadora, null);
 		
 		Button novaRefeicao = (Button) view.findViewById(R.id.nova_refeicao);
+		Button listarRefeicoes = (Button) view.findViewById(R.id.listar_refeicoes);
 		Button adicionarNovoAlimento = (Button) view.findViewById(R.id.adicionar_novo_alimento);
 		
 		novaRefeicao.setOnClickListener(new OnClickListener() {
@@ -33,6 +34,15 @@ public class DashboardCalculadoraFragment extends Fragment{
 			public void onClick(View v) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new NovoAlimentoDiferenteFragment());
+				transaction.commit();
+			}
+		});
+		
+		listarRefeicoes.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new ListaRefeicaoFragment());
 				transaction.commit();
 			}
 		});
