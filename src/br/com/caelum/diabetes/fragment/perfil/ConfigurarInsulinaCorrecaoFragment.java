@@ -2,10 +2,11 @@ package br.com.caelum.diabetes.fragment.perfil;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,12 +35,12 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 
 		getValoresGlobais();
 		settarTextos();
-		validateOnFocusChange(cafe);
-		validateOnFocusChange(almoco);
-		validateOnFocusChange(jantar);
-		validateOnFocusChange(lancheManha);
-		validateOnFocusChange(lancheTarde);
-		validateOnFocusChange(ceia);
+		validateEditText(cafe);
+		validateEditText(almoco);
+		validateEditText(jantar);
+		validateEditText(lancheManha);
+		validateEditText(lancheTarde);
+		validateEditText(ceia);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar,
 				lancheManha, lancheTarde, ceia));
@@ -78,16 +79,28 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 		return view;
 	}
 
-	private void validateOnFocusChange(final EditText editText) {
+	private void validateEditText(final EditText editText) {
 
-		editText.setOnFocusChangeListener(new OnFocusChangeListener() {
+		editText.addTextChangedListener(new TextWatcher() {
 
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
-						jantar, lancheManha, lancheTarde, ceia));
+			public void afterTextChanged(Editable s) {
+
 			}
 
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
+						jantar, ceia, lancheManha, lancheTarde));
+
+			}
 		});
 
 	}

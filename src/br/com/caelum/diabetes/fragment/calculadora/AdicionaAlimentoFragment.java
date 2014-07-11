@@ -10,7 +10,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -53,9 +52,6 @@ public class AdicionaAlimentoFragment extends Fragment {
 		carboidrato = (EditText) view.findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) view.findViewById(R.id.valor);
 		unidade = (EditText) view.findViewById(R.id.unidade);
-		validateOnFocusChange(valor);
-		validateOnFocusChange(unidade);
-
 		adicionarAlimento = (Button) view.findViewById(R.id.adicionar_alimento);
 		adicionarAlimento.setEnabled(ValidatorUtils.checkIfIsValid(carboidrato,
 				valor, unidade));
@@ -132,19 +128,5 @@ public class AdicionaAlimentoFragment extends Fragment {
 		});
 
 		return view;
-	}
-
-	private void validateOnFocusChange(final EditText editText) {
-
-		editText.setOnFocusChangeListener(new OnFocusChangeListener() {
-
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				adicionarAlimento.setEnabled(ValidatorUtils.checkIfIsValid(
-						valor, unidade));
-			}
-
-		});
-
 	}
 }

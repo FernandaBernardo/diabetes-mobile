@@ -8,6 +8,8 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +23,7 @@ import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.LembreteDao;
 import br.com.caelum.diabetes.model.Lembrete;
+import br.com.caelum.diabetes.util.ValidatorUtils;
 
 @SuppressLint("NewApi")
 public class NovoLembreteFragment extends Fragment {
@@ -30,6 +33,9 @@ public class NovoLembreteFragment extends Fragment {
 	private int hora;
 	private int minuto;
 	private Lembrete lembrete;
+	private EditText atividade;
+	private EditText anotacoes;
+	private Button salvar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,12 +104,12 @@ public class NovoLembreteFragment extends Fragment {
 
 		lembrete = new Lembrete();
 
-		final EditText atividade = (EditText) view
-				.findViewById(R.id.atividade_lembrete);
-		final EditText anotacoes = (EditText) view
-				.findViewById(R.id.anotacoes_lembrete);
+		atividade = (EditText) view.findViewById(R.id.atividade_lembrete);
+		anotacoes = (EditText) view.findViewById(R.id.anotacoes_lembrete);
+		validateEditText(atividade);
 
-		Button salvar = (Button) view.findViewById(R.id.salvar_lembrete);
+		salvar = (Button) view.findViewById(R.id.salvar_lembrete);
+		salvar.setEnabled(ValidatorUtils.checkEmptyEditText(atividade));
 		salvar.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -129,4 +135,30 @@ public class NovoLembreteFragment extends Fragment {
 
 		return view;
 	}
+
+	private void validateEditText(final EditText editText) {
+
+		editText.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				salvar.setEnabled(ValidatorUtils.checkEmptyEditText(atividade));
+
+			}
+		});
+
+	}
+
 }

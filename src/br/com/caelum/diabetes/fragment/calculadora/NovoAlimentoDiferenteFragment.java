@@ -3,10 +3,11 @@ package br.com.caelum.diabetes.fragment.calculadora;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -36,13 +37,13 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 		carboidrato = (EditText) view
 				.findViewById(R.id.carboidrato_novo_alimento);
 		salvarAlimento = (Button) view.findViewById(R.id.salvar_alimento);
-		validateOnFocusChange(nomeAlimento);
-		validateOnFocusChange(carboidrato);
+		validateEditText(nomeAlimento);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_dropdown_item_1line,
 				UnidadeMedidaAlimento.getAll());
 		unidadeMedida.setAdapter(adapter);
-
+		salvarAlimento.setEnabled(ValidatorUtils
+				.checkEmptyEditText(nomeAlimento));
 		salvarAlimento.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -66,14 +67,27 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 		return view;
 	}
 
-	private void validateOnFocusChange(final EditText editText) {
+	private void validateEditText(final EditText editText) {
 
-		editText.setOnFocusChangeListener(new OnFocusChangeListener() {
+		editText.addTextChangedListener(new TextWatcher() {
 
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				salvarAlimento.setEnabled(ValidatorUtils.checkIfIsValid(
-						nomeAlimento, carboidrato));
+			public void afterTextChanged(Editable arg0) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				salvarAlimento.setEnabled(ValidatorUtils
+						.checkEmptyEditText(nomeAlimento));
+
 			}
 
 		});

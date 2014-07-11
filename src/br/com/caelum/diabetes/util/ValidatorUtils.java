@@ -17,6 +17,18 @@ public class ValidatorUtils {
 
 	}
 
+	public static boolean checkEmptyEditText(EditText... editTexts) {
+		boolean result = true;
+		for (EditText editText : editTexts) {
+			if (editText.getText().toString().equals("")
+					|| editText.getText() == null) {
+				result = false;
+			}
+		}
+
+		return result;
+	}
+
 	public static boolean checkIfIsValid(EditText... editTexts) {
 		boolean result = true;
 		for (EditText editText : editTexts) {

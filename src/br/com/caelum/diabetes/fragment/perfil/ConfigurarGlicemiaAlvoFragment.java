@@ -2,10 +2,11 @@ package br.com.caelum.diabetes.fragment.perfil;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,9 +32,9 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 
 		getValoresGlobais();
 		settarTextos();
-		validateOnFocusChange(cafe);
-		validateOnFocusChange(almoco);
-		validateOnFocusChange(jantar);
+		validateEditText(cafe);
+		validateEditText(almoco);
+		validateEditText(jantar);
 
 		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar));
 		salvar.setOnClickListener(new OnClickListener() {
@@ -65,14 +66,27 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		return view;
 	}
 
-	private void validateOnFocusChange(final EditText editText) {
+	private void validateEditText(final EditText editText) {
 
-		editText.setOnFocusChangeListener(new OnFocusChangeListener() {
+		editText.addTextChangedListener(new TextWatcher() {
 
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
+			public void afterTextChanged(Editable arg0) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
 				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
 						jantar));
+
 			}
 
 		});

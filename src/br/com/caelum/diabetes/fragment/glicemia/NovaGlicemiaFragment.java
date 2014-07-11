@@ -8,6 +8,8 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,6 +27,7 @@ import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.GlicemiaDao;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 import br.com.caelum.diabetes.model.Glicemia;
+import br.com.caelum.diabetes.util.ValidatorUtils;
 
 @SuppressLint("NewApi")
 public class NovaGlicemiaFragment extends Fragment {
@@ -34,6 +37,8 @@ public class NovaGlicemiaFragment extends Fragment {
 	private int ano;
 	private int hora;
 	private int minuto;
+	private EditText valorGlicemia;
+	private Button salvarGlicemia;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,10 +118,11 @@ public class NovaGlicemiaFragment extends Fragment {
 			position = 0;
 		tipoRefeicao.setSelection(position);
 
-		final EditText valorGlicemia = (EditText) view
-				.findViewById(R.id.valor_glicemia);
-		Button salvarGlicemia = (Button) view
-				.findViewById(R.id.salvar_glicemia);
+		valorGlicemia = (EditText) view.findViewById(R.id.valor_glicemia);
+		validateEditText(valorGlicemia);
+		salvarGlicemia = (Button) view.findViewById(R.id.salvar_glicemia);
+		salvarGlicemia.setEnabled(ValidatorUtils
+				.checkEmptyEditText(valorGlicemia));
 
 		salvarGlicemia.setOnClickListener(new OnClickListener() {
 			@Override
@@ -144,5 +150,32 @@ public class NovaGlicemiaFragment extends Fragment {
 			}
 		});
 		return view;
+	}
+
+	private void validateEditText(final EditText editText) {
+
+		editText.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+					int arg2, int arg3) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				salvarGlicemia.setEnabled(ValidatorUtils
+						.checkEmptyEditText(valorGlicemia));
+
+			}
+
+		});
+
 	}
 }
