@@ -5,7 +5,19 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:background="@color/blue" >
+    android:background="@color/blue" 
+    android:gravity="center_horizontal">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/medias"
+        android:textAllCaps="true"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"/>
     
     <LinearLayout
 	    android:layout_width="fill_parent"
@@ -50,7 +62,7 @@
 	    android:orientation="horizontal"
 	    android:weightSum="3"
 	    android:layout_marginLeft="20dp"
-	    android:layout_marginBottom="40dp">
+	    android:layout_marginBottom="50dp">
 		
 		<Button
 		    android:layout_width="60dp"
@@ -88,7 +100,7 @@
 		    android:id="@+id/nova_medicao"
 		    android:background="@drawable/botao_escuro"
 		    android:textColor="#fff"
-		    android:layout_marginBottom="30dp" />
+		    android:layout_marginBottom="40dp" />
 		
 		<Button 
 		    android:layout_width="200dp"

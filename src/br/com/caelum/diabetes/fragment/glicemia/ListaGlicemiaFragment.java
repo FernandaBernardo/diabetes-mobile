@@ -10,10 +10,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -23,7 +24,7 @@ import br.com.caelum.diabetes.model.Glicemia;
 public class ListaGlicemiaFragment extends Fragment{
 	private ListView listaGlicemias;
 	protected Glicemia glicemiaSelecionada;
-	private ArrayAdapter<Glicemia> adapter;
+	private ListaGlicemiaAdapter adapter;
 	private List<Glicemia> glicemias;
 
 	@Override
@@ -32,15 +33,20 @@ public class ListaGlicemiaFragment extends Fragment{
 		
 		listaGlicemias = (ListView) view.findViewById(R.id.glicemias);
 		
-		listaGlicemias.setOnItemLongClickListener(new OnItemLongClickListener() {
+		listaGlicemias.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long id) {
-				glicemiaSelecionada = (Glicemia) listaGlicemias.getItemAtPosition(position);
-				return false;
+			public void onItemClick(AdapterView<?> arg0, View v, int pos, long arg3) {
+				glicemiaSelecionada = (Glicemia) listaGlicemias.getItemAtPosition(pos);
+				final ImageView campoOpcoes = (ImageView) v.findViewById(R.id.glicemia_opcoes);
+				campoOpcoes.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						registerForContextMenu(campoOpcoes);						
+						campoOpcoes.showContextMenu();
+					}
+				});
 			}
 		});
-		
-		registerForContextMenu(listaGlicemias);
 		
 		return view;
 	}
@@ -59,7 +65,7 @@ public class ListaGlicemiaFragment extends Fragment{
 		
 		helper.close();
 		
-		adapter = new ArrayAdapter<Glicemia>(getActivity(), android.R.layout.simple_list_item_1, glicemias);
+		adapter = new ListaGlicemiaAdapter(glicemias, getActivity());
 		
 		listaGlicemias.setAdapter(adapter);		
 	}

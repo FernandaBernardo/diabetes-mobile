@@ -103,6 +103,7 @@
 	    <string name="salvar_glicemia">Salvar Glicemia</string>
 	    <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
 	    <string name="listar_refeicoes">Listar Refeições</string>
+	    <string name="medias">Médias</string>
 
 </resources>
 
