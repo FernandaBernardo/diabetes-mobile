@@ -119,13 +119,13 @@ public class AdicionaAlimentoFragment extends Fragment {
 				Bundle args = new Bundle();
 				args.putSerializable("refeicao", refeicao);
 
-				NovaRefeicaoFragment fragment = new NovaRefeicaoFragment();
-				fragment.setArguments(args);
+//				NovaRefeicaoFragment fragment = new NovaRefeicaoFragment();
+//				fragment.setArguments(args);
 
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view, fragment);
-				transaction.commit();
+				getFragmentManager().popBackStack();
+//				transaction.replace(R.id.main_view, fragment);
+				
+//				transaction.commit();
 			}
 		});
 

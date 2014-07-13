@@ -14,7 +14,6 @@ import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.dialog.PreencherDadosMedicosDialog;
 import br.com.caelum.diabetes.fragment.calculadora.DashboardCalculadoraFragment;
-import br.com.caelum.diabetes.fragment.calculadora.SelecionaRefeicaoFragment;
 import br.com.caelum.diabetes.fragment.glicemia.DashboardGlicemiaFragment;
 import br.com.caelum.diabetes.fragment.lembretes.DashboardLembreteFragment;
 import br.com.caelum.diabetes.fragment.perfil.ConfigurarPerfilFragment;
@@ -25,7 +24,7 @@ public class DashboardFragment extends Fragment {
 	private PacienteDao dao;
 	private Paciente paciente;
 
-	private void newPaciente() {
+	private void getPaciente() {
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);
 		paciente = dao.getPaciente();
@@ -40,25 +39,18 @@ public class DashboardFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 
-				newPaciente();
+				getPaciente();
 
 				if (!paciente.temValorCorrecao()) {
 					PreencherDadosMedicosDialog dadosMedicosDialog = new PreencherDadosMedicosDialog();
 					FragmentManager fm = getFragmentManager();
 					dadosMedicosDialog.show(fm, "dashboard_fragment");
 				} else {
-					FragmentTransaction transaction = getFragmentManager()
-							.beginTransaction();
-					transaction.replace(R.id.main_view,
-							new SelecionaRefeicaoFragment());
+					FragmentTransaction transaction = getFragmentManager().beginTransaction();
+					transaction.replace(R.id.main_view, new DashboardCalculadoraFragment());
+					transaction.addToBackStack(null);
 					transaction.commit();
 				}
-
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new DashboardCalculadoraFragment());
-				transaction.commit();
 			}
 		});
 

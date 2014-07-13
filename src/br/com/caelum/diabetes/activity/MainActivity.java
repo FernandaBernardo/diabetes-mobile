@@ -95,17 +95,4 @@ public class MainActivity extends FragmentActivity{
 		transaction.addToBackStack(null);
 		transaction.commit();
 	}
-
-	@Override
-	public void onBackPressed() {
-		
-		DashboardFragment fragment = new DashboardFragment();
-		fragment.setArguments(getIntent().getExtras());
-		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-		transaction.replace(R.id.main_view,fragment);
-		transaction.addToBackStack(null);
-		transaction.commit();
-	}
-	
-	
 }

@@ -60,4 +60,26 @@ public class RefeicaoDao{
 		return values;
 	}
 
+//	public Refeicao getRefeicao(int id) {
+//		String[] args = {String.valueOf(id)};
+//		Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT * from " + TabelasBD.REFEICAO + " where id=?;", args);
+//		if(cursor.moveToNext()) {
+//			Refeicao refeicao = new Refeicao();
+//			refeicao.setId(cursor.getInt(0));
+//			refeicao.setNome(cursor.getString(1));
+//			refeicao.setIdade(cursor.getInt(2));
+//			refeicao.setPeso(cursor.getDouble(3));
+//			refeicao.setAltura(cursor.getDouble(4));
+//			refeicao.setSexo(cursor.getString(5));
+//			refeicao.setTipoDiabetes(cursor.getString(6));
+//			
+//			refeicao.setInsulinaCorrecao(getDadosMedicos(refeicao, Extras.CORRECAO));
+//			refeicao.setInsulinaContinua(getDadosMedicos(refeicao, Extras.CONTINUO));
+//			refeicao.setGlicemiaAlvo(getDadosMedicos(refeicao, Extras.GLICEMIA_ALVO));
+//			return refeicao;
+//		}
+//		return null;
+//		return null;
+//	}
+
 }

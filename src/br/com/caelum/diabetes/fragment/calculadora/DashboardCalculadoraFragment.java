@@ -25,6 +25,7 @@ public class DashboardCalculadoraFragment extends Fragment{
 			public void onClick(View arg0) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new NovaRefeicaoFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
@@ -34,6 +35,7 @@ public class DashboardCalculadoraFragment extends Fragment{
 			public void onClick(View v) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new NovoAlimentoDiferenteFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
@@ -43,6 +45,7 @@ public class DashboardCalculadoraFragment extends Fragment{
 			public void onClick(View v) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new ListaRefeicaoFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});

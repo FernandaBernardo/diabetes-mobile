@@ -49,23 +49,33 @@ public class NovaRefeicaoFragment extends Fragment{
 	private int minuto;
 	protected AlimentoVirtual alimentoSelecionado;
 	private ListView campoLista;
+	
+	void carregaBundle(){
+		if(null == refeicao){
+			refeicao = new Refeicao();
+		} else {
+			carregaLista();
+		}
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		carregaBundle();
+		
+		EditText totalCHO = (EditText) view.findViewById(R.id.totalCHO);
+		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
+		
+		double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
+		
+		EditText totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
+		totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
-		
-		Bundle bundle = this.getArguments();
-	
-		if(bundle != null) {
-			Refeicao refeicaoBundle = (Refeicao) bundle.get("refeicao");
-			
-			if(refeicaoBundle != null) {
-				this.refeicao = refeicaoBundle;
-				bundle.remove("refeicao");
-			}
-		} else {
-			refeicao = new Refeicao();
-		}
+		carregaBundle();
 		
 		DbHelper helper = new DbHelper(getActivity());
 		
@@ -143,15 +153,6 @@ public class NovaRefeicaoFragment extends Fragment{
 			}
 		});
 		
-		
-		EditText totalCHO = (EditText) view.findViewById(R.id.totalCHO);
-		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
-		
-		double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
-		
-		EditText totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
-		totalInsulina.setText(String.valueOf(valorInsulina) + " U");
-		
 		Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
 		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
 		
@@ -191,6 +192,7 @@ public class NovaRefeicaoFragment extends Fragment{
 				
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, fragment);
+				transaction.addToBackStack("nova-refeicao");
 				transaction.commit();
 			}
 		});
