@@ -71,7 +71,7 @@
 
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>
     <string name="salvar_alimento">Salvar Alimento</string>
-    <string name="nome_alimento">Nome Alimento</string>
+    <string name="nome_alimento">Nome do Novo Alimento</string>
     <string name="quantidade_de_carboidrato">Quantidade de Carboidrato</string>
     <string name="unidade_de_medida">Unidade de Medida</string>
     <string name="nova_refeicao">Nova Refeição</string>
@@ -104,6 +104,8 @@
 	    <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
 	    <string name="listar_refeicoes">Listar Refeições</string>
 	    <string name="medias">Médias</string>
+	    <string name="ex_colher_de_cha_concha_unidade">Ex: colher de chá, concha, unidade</string>
+	    <string name="quantidade_de_gramas_de_cho">quantidade de gramas de CHO</string>
 
 </resources>
 
