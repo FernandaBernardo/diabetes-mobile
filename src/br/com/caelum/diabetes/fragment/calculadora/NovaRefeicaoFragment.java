@@ -15,11 +15,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextClock;
@@ -45,6 +47,8 @@ public class NovaRefeicaoFragment extends Fragment{
 	private int ano;
 	private int hora;
 	private int minuto;
+	protected AlimentoVirtual alimentoSelecionado;
+	private ListView campoLista;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +74,7 @@ public class NovaRefeicaoFragment extends Fragment{
 		
 		helper.close();
 		
-DateTime dataAgora = new DateTime();
+		DateTime dataAgora = new DateTime();
 		
 		final TextClock horario = (TextClock) view.findViewById(R.id.hora_refeicao);
 		horario.setText(dataAgora.getHourOfDay() + ":" + dataAgora.getMinuteOfHour());
@@ -120,19 +124,33 @@ DateTime dataAgora = new DateTime();
 			}
 		});
 		
-		ListView lista = (ListView) view.findViewById(R.id.lista_alimentos);
+		campoLista = (ListView) view.findViewById(R.id.lista_alimentos);
 		
-		List<AlimentoVirtual> alimentos = refeicao.getAlimentos();
-		ArrayAdapter<AlimentoVirtual> adapter = new ArrayAdapter<AlimentoVirtual>(getActivity(), android.R.layout.simple_list_item_1, alimentos);
-		lista.setAdapter(adapter);
+		carregaLista();
+		
+		campoLista.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View v, int pos, long arg3) {
+				alimentoSelecionado = (AlimentoVirtual) campoLista.getItemAtPosition(pos);
+				final ImageView campoDeletar = (ImageView) v.findViewById(R.id.refeicao_alimento_deletar);
+				campoDeletar.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						refeicao.getAlimentos().remove(alimentoSelecionado);
+						carregaLista();
+					}
+				});				
+			}
+		});
+		
 		
 		EditText totalCHO = (EditText) view.findViewById(R.id.totalCHO);
-		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()));
+		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
 		
 		double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
 		
 		EditText totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
-		totalInsulina.setText(String.valueOf(valorInsulina));
+		totalInsulina.setText(String.valueOf(valorInsulina) + " U");
 		
 		Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
 		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
@@ -198,5 +216,11 @@ DateTime dataAgora = new DateTime();
 		});
 		
 		return view;
+	}
+
+	private void carregaLista() {
+		List<AlimentoVirtual> alimentos = refeicao.getAlimentos();
+		ListaAlimentoAdapter adapter = new ListaAlimentoAdapter(alimentos, getActivity());
+		campoLista.setAdapter(adapter);
 	}
 }
