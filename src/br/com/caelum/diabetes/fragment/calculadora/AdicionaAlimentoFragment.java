@@ -36,6 +36,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 	private AlimentoFisicoDao alimentoDao;
 	private Refeicao refeicao;
 	private DbHelper helper;
+	private AutoCompleteTextView buscaAlimento;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,15 +54,12 @@ public class AdicionaAlimentoFragment extends Fragment {
 		valor = (EditText) view.findViewById(R.id.valor);
 		unidade = (EditText) view.findViewById(R.id.unidade);
 		adicionarAlimento = (Button) view.findViewById(R.id.adicionar_alimento);
-		adicionarAlimento.setEnabled(ValidatorUtils.checkIfIsValid(carboidrato,
-				valor, unidade));
 		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 
 		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(
 				getActivity(), android.R.layout.simple_dropdown_item_1line,
 				alimentos);
-		AutoCompleteTextView buscaAlimento = (AutoCompleteTextView) view
-				.findViewById(R.id.busca);
+		buscaAlimento = (AutoCompleteTextView) view.findViewById(R.id.busca);
 		buscaAlimento.setAdapter(adapter);
 
 		buscaAlimento.setOnItemClickListener(new OnItemClickListener() {
@@ -77,6 +75,10 @@ public class AdicionaAlimentoFragment extends Fragment {
 				unidade.setText(alimentoAtual.getUnidadeDeMedida());
 			}
 		});
+
+		validateEditText(buscaAlimento);
+		adicionarAlimento.setEnabled(ValidatorUtils
+				.checkIfIsValid(buscaAlimento));
 
 		valor.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -128,5 +130,33 @@ public class AdicionaAlimentoFragment extends Fragment {
 		});
 
 		return view;
+	}
+
+	private void validateEditText(final EditText editText) {
+
+		editText.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+
+				adicionarAlimento.setEnabled(ValidatorUtils
+						.checkIfIsValid(buscaAlimento));
+
+			}
+
+		});
+
 	}
 }

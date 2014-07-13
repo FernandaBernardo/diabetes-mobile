@@ -29,20 +29,50 @@ public class ValidatorUtils {
 		return result;
 	}
 
-	public static boolean checkIfIsValid(EditText... editTexts) {
-		boolean result = true;
+	public static boolean checkIfIsValidWithHint(EditText... editTexts) {
 		for (EditText editText : editTexts) {
-			if (editText.getText().toString().equals("")
-					|| editText.getText() == null
-					|| editText.getText().toString().equals("0.0")
-					|| editText.getText().toString().equals("0")) {
-
-				result = false;
+			if (checkHint(editText)) {
+				if (checkValueAndLength(editText)) {
+					return false;
+				}
+			} else {
+				if (checkValue(editText)) {
+					return false;
+				}
 			}
 
 		}
 
-		return result;
+		return true;
+	}
+
+	public static boolean checkIfIsValid(EditText... editTexts) {
+		for (EditText editText : editTexts) {
+			if (checkValueAndLength(editText)) {
+				return false;
+			}
+
+		}
+
+		return true;
 
 	}
+
+	private static boolean checkHint(EditText editText) {
+		return (editText.getHint().toString().equals("0.0") || editText
+				.getHint().equals("0"));
+	}
+
+	private static boolean checkValueAndLength(EditText editText) {
+		return (editText.getText().length() == 0 || editText.getText() == null
+				|| editText.getText().toString().equals("0.0") || editText
+				.getText().toString().equals("0"));
+	}
+
+	private static boolean checkValue(EditText editText) {
+		return (editText.getText().toString().equals("0.0") || editText
+				.getText().toString().equals("0"));
+
+	}
+
 }

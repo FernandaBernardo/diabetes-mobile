@@ -99,6 +99,7 @@ public class ConfigurarInsulinaCorrecaoFragment extends Fragment {
 					int count) {
 				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
 						jantar, ceia, lancheManha, lancheTarde));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 		});

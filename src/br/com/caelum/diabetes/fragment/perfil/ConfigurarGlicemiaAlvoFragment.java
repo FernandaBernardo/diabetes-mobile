@@ -86,6 +86,7 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 					int arg3) {
 				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
 						jantar));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 

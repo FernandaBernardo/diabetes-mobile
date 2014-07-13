@@ -46,16 +46,36 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 		setValues();
 
 		salvar = (Button) view.findViewById(R.id.salvar_dados);
-		salvar.setEnabled(ValidatorUtils.checkIfIsValid(idade, peso, altura));
+		salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso,
+				altura));
 
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				paciente.setIdade(Integer.parseInt(idade.getText().toString()));
-				paciente.setPeso(Double.parseDouble(peso.getText().toString()));
-				paciente.setAltura(Double.parseDouble(altura.getText()
-						.toString()));
+				if (idade.getText().length() == 0) {
+					paciente.setIdade(Integer.parseInt(idade.getHint()
+							.toString()));
+				} else {
+					paciente.setIdade(Integer.parseInt(idade.getText()
+							.toString()));
+				}
+
+				if (peso.getText().length() == 0) {
+					paciente.setPeso(Double.parseDouble(peso.getHint()
+							.toString()));
+				} else {
+					paciente.setPeso(Double.parseDouble(peso.getText()
+							.toString()));
+				}
+
+				if (altura.getText().length() == 0) {
+					paciente.setAltura(Double.parseDouble(altura.getHint()
+							.toString()));
+				} else {
+					paciente.setAltura(Double.parseDouble(altura.getText()
+							.toString()));
+				}
 
 				if (masculino.isChecked()) {
 					paciente.setSexo(masculino.getText().toString());
@@ -98,8 +118,9 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(idade, peso,
-						altura));
+
+				salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade,
+						peso, altura));
 
 			}
 
