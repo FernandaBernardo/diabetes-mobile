@@ -1,16 +1,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp">
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/novo_alimento_refeicao"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="true"
+        android:textSize="20sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+		android:layout_marginBottom="10dp"
         android:text="@string/alimento" />
     
     <AutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/botao_edit"
         android:id="@+id/busca"
         android:completionThreshold="1"
         android:hint="@string/nome"/>
@@ -18,38 +36,58 @@
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/quantidade" />
     
-    <EditText 
-        android:layout_width="match_parent"
+    <LinearLayout 
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/valor"
-        android:inputType="number"
-        android:id="@+id/valor"/>
-    <EditText 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/unidade"
-        android:inputType="number"
-        android:id="@+id/unidade"
-        android:enabled="false"/>
-    
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:weightSum="1">
+	    <EditText 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/valor"
+	        android:inputType="number"
+	        android:paddingLeft="10dp"
+	        android:layout_weight=".7"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/botao_edit"
+	        android:id="@+id/valor"/>
+	    <EditText 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/unidade"
+	        android:inputType="number"
+	        android:layout_weight=".3"
+	        android:id="@+id/unidade"
+	        android:paddingLeft="10dp"
+	        android:background="@drawable/botao_edit"
+	        android:enabled="false"/>
+    </LinearLayout>
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/carboidrato"/>
     <EditText 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="0"
+        android:hint="0g"
         android:inputType="number"
         android:enabled="false"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/botao_edit"
         android:id="@+id/carboidrato_alimento"/>
     
     <Button 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/adicionar_alimento"
+        android:textColor="#fff"
+        android:background="@drawable/botao_escuro"
         android:text="@string/adicionar_alimento"/>
    
 </LinearLayout>
