@@ -172,6 +172,7 @@ public class NovaGlicemiaFragment extends Fragment {
 					int arg3) {
 				salvarGlicemia.setEnabled(ValidatorUtils
 						.checkEmptyEditText(valorGlicemia));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 

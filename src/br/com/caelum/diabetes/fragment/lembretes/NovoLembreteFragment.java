@@ -155,6 +155,7 @@ public class NovoLembreteFragment extends Fragment {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				salvar.setEnabled(ValidatorUtils.checkEmptyEditText(atividade));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 		});

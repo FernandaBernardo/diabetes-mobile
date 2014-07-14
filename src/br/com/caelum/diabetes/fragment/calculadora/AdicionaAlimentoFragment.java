@@ -46,13 +46,14 @@ public class AdicionaAlimentoFragment extends Fragment {
 		Bundle bundle = this.getArguments();
 
 		refeicao = (Refeicao) bundle.getSerializable("refeicao");
-
+		
 		helper = new DbHelper(getActivity());
 		alimentoDao = new AlimentoFisicoDao(helper);
 
 		carboidrato = (EditText) view.findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) view.findViewById(R.id.valor);
 		unidade = (EditText) view.findViewById(R.id.unidade);
+		
 		adicionarAlimento = (Button) view.findViewById(R.id.adicionar_alimento);
 		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 
@@ -61,7 +62,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 				alimentos);
 		buscaAlimento = (AutoCompleteTextView) view.findViewById(R.id.busca);
 		buscaAlimento.setAdapter(adapter);
-
+		
 		buscaAlimento.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int pos,
@@ -79,7 +80,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 		validateEditText(buscaAlimento);
 		adicionarAlimento.setEnabled(ValidatorUtils
 				.checkIfIsValid(buscaAlimento));
-
+		valor.setEnabled(ValidatorUtils.checkIfIsValid(buscaAlimento));
 		valor.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
@@ -151,9 +152,10 @@ public class AdicionaAlimentoFragment extends Fragment {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 
+				valor.setEnabled(ValidatorUtils.checkIfIsValid(buscaAlimento));
 				adicionarAlimento.setEnabled(ValidatorUtils
 						.checkIfIsValid(buscaAlimento));
-
+				ValidatorUtils.checkIfOnError(editText);
 			}
 
 		});

@@ -22,6 +22,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		
 		View view = inflater.inflate(R.layout.preencher_dados_medicos, container);
+		getDialog().setTitle("ATENÇÃO");
 		confirmarButton = (Button)view.findViewById(R.id.confirmar_button);
 		cancelarButton = (Button)view.findViewById(R.id.cancelar_button);
 		

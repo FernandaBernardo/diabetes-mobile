@@ -121,6 +121,7 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 
 				salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade,
 						peso, altura));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 

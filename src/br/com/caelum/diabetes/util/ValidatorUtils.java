@@ -7,7 +7,7 @@ public class ValidatorUtils {
 	public static void checkIfOnError(final EditText editText) {
 
 		if (editText.getText().toString().length() == 0) {
-			editText.setError("Campo Obrigatório!");
+			editText.setError("Campo não preenchido!");
 		}
 
 		if (editText.getText().toString().equals("0.0")

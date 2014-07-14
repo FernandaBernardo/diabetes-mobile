@@ -3,7 +3,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="30dp" 
+    android:background="@color/blue">
     
    
        
@@ -18,10 +20,11 @@
                 android:id="@+id/dados_medicos_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" 
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:paddingTop="6dip" 
-                android:text="@string/dados_medicos_aviso"/>
+                android:text="@string/dados_medicos_aviso"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginBottom="30dp"
+                android:textColor="#fff"/>
     </ScrollView>
     
     <LinearLayout
@@ -32,6 +35,7 @@
 		android:orientation="horizontal"
         >
     	<Button
+    	    android:background="@drawable/botao_escuro"
         	android:id="@+id/confirmar_button"
         	android:text="@string/confirmar_dados_medicos"
         	android:layout_width="wrap_content"
@@ -39,13 +43,12 @@
         	android:layout_weight="1"
         	android:layout_gravity="center_horizontal"
         	android:gravity="center"
-        	android:paddingBottom="6dip"
-			android:paddingLeft="6dip"
-			android:paddingRight="6dip"
-			android:paddingTop="6dip"
+        	android:textColor="#DEDEDE"
         />
     
    		<Button 
+   		    android:layout_marginLeft="10dp"
+   		    android:background="@drawable/botao_escuro"
         	android:id="@+id/cancelar_button"
      	    android:text= "@string/cancelar_dados_medicos"
         	android:layout_width="wrap_content"
@@ -53,10 +56,7 @@
         	android:layout_weight="1"
         	android:layout_gravity="center_horizontal"
         	android:gravity="center"
-        	android:paddingBottom="6dip"
-			android:paddingLeft="6dip"
-			android:paddingRight="6dip"
-			android:paddingTop="6dip"
+        	android:textColor="#DEDEDE"
         />    
     </LinearLayout>
     

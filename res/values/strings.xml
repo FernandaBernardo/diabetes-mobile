@@ -77,9 +77,9 @@
     <string name="nova_refeicao">Nova Refeição</string>
     
     <string name="anotacoes">Anotações</string>
-    <string name="exemplo">Ex.: Medir Glicemia, Marcar Consulta etc.</string>
+    <string name="exemplo">Ex.: Medir Glicemia.</string>
     
-    <string name="ultimos_lembretes">Últimos Lembretes</string>
+    <string name="todos_lembretes">Todos os Lembretes</string>
 	<string name="novo_lembrete">Novo Lembrete</string>
 	
 	<string-array name="refeicoes_array">

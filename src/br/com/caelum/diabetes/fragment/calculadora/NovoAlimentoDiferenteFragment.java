@@ -87,6 +87,7 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 					int arg3) {
 				salvarAlimento.setEnabled(ValidatorUtils
 						.checkEmptyEditText(nomeAlimento));
+				ValidatorUtils.checkIfOnError(editText);
 
 			}
 
