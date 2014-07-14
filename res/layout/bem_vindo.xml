@@ -2,26 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:gravity="center_horizontal"
+    android:orientation="vertical" 
+    android:padding="30dp">
     
 	<TextView 
+	    android:textSize="20sp"
+	    android:gravity="center"
+	    android:textStyle="bold"
+        android:textColor="@color/blue"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/bem_vindo"/>
 	
 	<TextView 
+	    android:layout_marginTop="30dp"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/digite_o_seu_nome"/>
 	<EditText 
+	    android:layout_marginTop="10dp"
+	    android:paddingLeft="10dp"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/nome_pessoa"
-	    android:inputType="textCapWords"/>
+	    android:inputType="textCapWords"
+	    android:background="@drawable/botao_edit"/>
 	
 	<Button 
+	    android:layout_marginTop="10dp"
+	    android:background="@drawable/botao_escuro"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/proximo"
+	    android:textColor="#fff"
 	    android:id="@+id/botao_proximo"/>
 </LinearLayout>
