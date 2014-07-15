@@ -49,32 +49,39 @@ public class NovaRefeicaoFragment extends Fragment{
 	private int minuto;
 	protected AlimentoVirtual alimentoSelecionado;
 	private ListView campoLista;
+	private EditText totalCHO;
+	private EditText totalInsulina;
 	
 	void carregaBundle(){
 		if(null == refeicao){
 			refeicao = new Refeicao();
 		} else {
 			carregaLista();
+			atualizaDadosTotais();
 		}
 	}
 	
-	@Override
-	public void onResume() {
-		super.onResume();
-		carregaBundle();
-		
-		EditText totalCHO = (EditText) view.findViewById(R.id.totalCHO);
+	private void atualizaDadosTotais() {
 		totalCHO.setText(String.valueOf(refeicao.getTotalCHO()) + " g");
 		
 		double valorInsulina = new CalculaInsulina(refeicao, paciente).getTotalInsulina();
 		
-		EditText totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
 		totalInsulina.setText(String.valueOf(valorInsulina) + " U");
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		carregaBundle();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.nova_refeicao, null);
+		
+		totalCHO = (EditText) view.findViewById(R.id.totalCHO);
+		totalInsulina = (EditText) view.findViewById(R.id.totalInsulina);
+		
 		carregaBundle();
 		
 		DbHelper helper = new DbHelper(getActivity());
@@ -192,7 +199,7 @@ public class NovaRefeicaoFragment extends Fragment{
 				
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, fragment);
-				transaction.addToBackStack("nova-refeicao");
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
@@ -211,9 +218,7 @@ public class NovaRefeicaoFragment extends Fragment{
 				
 				helper.close();
 				
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
-				transaction.replace(R.id.main_view, new ListaRefeicaoFragment());
-				transaction.commit();
+				getFragmentManager().popBackStack();
 			}
 		});
 		

@@ -56,11 +56,7 @@ public class NovoAlimentoDiferenteFragment extends Fragment {
 				dao.salva(alimentoFisico);
 				helper.close();
 
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new DashboardCalculadoraFragment());
-				transaction.commit();
+				getFragmentManager().popBackStack();
 			}
 		});
 

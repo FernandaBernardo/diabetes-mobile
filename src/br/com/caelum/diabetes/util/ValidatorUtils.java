@@ -5,16 +5,14 @@ import android.widget.EditText;
 public class ValidatorUtils {
 
 	public static void checkIfOnError(final EditText editText) {
-
 		if (editText.getText().toString().length() == 0) {
-			editText.setError("Campo n„o preenchido!");
+			editText.setError("Campo n√£o preenchido!");
 		}
 
 		if (editText.getText().toString().equals("0.0")
 				|| editText.getText().toString().equals("0")) {
-			editText.setError("Valor Inv·lido");
+			editText.setError("Valor Inv√°lido");
 		}
-
 	}
 
 	public static boolean checkEmptyEditText(EditText... editTexts) {
@@ -40,9 +38,7 @@ public class ValidatorUtils {
 					return false;
 				}
 			}
-
 		}
-
 		return true;
 	}
 
@@ -51,11 +47,8 @@ public class ValidatorUtils {
 			if (checkValueAndLength(editText)) {
 				return false;
 			}
-
 		}
-
 		return true;
-
 	}
 
 	private static boolean checkHint(EditText editText) {
@@ -72,7 +65,5 @@ public class ValidatorUtils {
 	private static boolean checkValue(EditText editText) {
 		return (editText.getText().toString().equals("0.0") || editText
 				.getText().toString().equals("0"));
-
 	}
-
 }

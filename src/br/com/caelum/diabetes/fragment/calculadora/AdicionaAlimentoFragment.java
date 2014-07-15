@@ -4,7 +4,6 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -120,13 +119,7 @@ public class AdicionaAlimentoFragment extends Fragment {
 				Bundle args = new Bundle();
 				args.putSerializable("refeicao", refeicao);
 
-//				NovaRefeicaoFragment fragment = new NovaRefeicaoFragment();
-//				fragment.setArguments(args);
-
 				getFragmentManager().popBackStack();
-//				transaction.replace(R.id.main_view, fragment);
-				
-//				transaction.commit();
 			}
 		});
 
