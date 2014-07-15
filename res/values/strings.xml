@@ -46,8 +46,8 @@
     <string name="voltar">Voltar</string>
     <string name="calculadora">Calculadora</string>
     <string name="lembretes">Lembretes</string>
-    <string name="exames">Exames</string>
-    <string name="estat_sticas">Estatísticas</string>
+    <string name="exames">Exames (logo)</string>
+    <string name="estat_sticas">Estatísticas (logo)</string>
     <string name="glicemia">Glicemia</string>
     <string name="total_insulina">Total Insulina</string>
     <string name="configurar_insulina_correcao">Configurar Insulina Correção</string>

@@ -18,6 +18,11 @@
         android:id="@+id/main_lembretes" />
     <Button 
         style="@style/dashboard_button" 
+        android:drawableTop="@drawable/medicao"
+        android:text="@string/glicemia"
+        android:id="@+id/main_glicemia" />    
+    <Button 
+        style="@style/dashboard_button" 
         android:drawableTop="@drawable/exames"
         android:text="@string/exames"
         android:id="@+id/main_exames"/>
@@ -26,11 +31,6 @@
         android:drawableTop="@drawable/estatistica"
         android:text="@string/estat_sticas"
         android:id="@+id/main_estatisticas" />
-    <Button 
-        style="@style/dashboard_button" 
-        android:drawableTop="@drawable/medicao"
-        android:text="@string/glicemia"
-        android:id="@+id/main_glicemia" />    
 	<Button 
 	    style="@style/dashboard_button" 
         android:drawableTop="@drawable/perfil"

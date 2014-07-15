@@ -22,7 +22,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		
 		View view = inflater.inflate(R.layout.preencher_dados_medicos, container);
-		getDialog().setTitle("ATEN«√O");
+		getDialog().setTitle("ATEN√á√ÉO");
 		confirmarButton = (Button)view.findViewById(R.id.confirmar_button);
 		cancelarButton = (Button)view.findViewById(R.id.cancelar_button);
 		
@@ -49,6 +49,7 @@ public class PreencherDadosMedicosDialog extends DialogFragment {
 	private void setTransaction(int view, Fragment f){
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(view, f);
+		transaction.addToBackStack(null);
 		transaction.commit();
 	}
 }
