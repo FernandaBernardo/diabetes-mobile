@@ -155,6 +155,7 @@ public class NovaRefeicaoFragment extends Fragment{
 					public void onClick(View v) {
 						refeicao.getAlimentos().remove(alimentoSelecionado);
 						carregaLista();
+						atualizaDadosTotais();
 					}
 				});				
 			}
