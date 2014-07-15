@@ -29,8 +29,7 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 	private View view;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_insulina_continua, null);
 
 		getValoresGlobais();
@@ -42,25 +41,17 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 		validateEditText(lancheTarde);
 		validateEditText(ceia);
 
-		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar,
-				lancheManha, lancheTarde, ceia));
+		salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, lancheManha, lancheTarde, ceia));
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				DadosMedicos dadosMedicos = new DadosMedicos(
-						TipoDadoMedico.CONTINUA);
-				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText()
-						.toString()));
-				dadosMedicos.setLancheManha(Double.parseDouble(lancheManha
-						.getText().toString()));
-				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText()
-						.toString()));
-				dadosMedicos.setLancheTarde(Double.parseDouble(lancheTarde
-						.getText().toString()));
-				dadosMedicos.setJantar(Double.parseDouble(jantar.getText()
-						.toString()));
-				dadosMedicos.setCeia(Double.parseDouble(ceia.getText()
-						.toString()));
+				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.CONTINUA);
+				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
+				dadosMedicos.setLancheManha(Double.parseDouble(lancheManha.getText().toString()));
+				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
+				dadosMedicos.setLancheTarde(Double.parseDouble(lancheTarde.getText().toString()));
+				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
+				dadosMedicos.setCeia(Double.parseDouble(ceia.getText().toString()));
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -80,47 +71,34 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 	}
 
 	private void validateEditText(final EditText editText) {
-
 		editText.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable s) {
-
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
-						jantar, ceia, lancheManha, lancheTarde));
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar, ceia, lancheManha, lancheTarde));
 				ValidatorUtils.checkIfOnError(editText);
-
 			}
 		});
-
 	}
 
 	private void settarTextos() {
 		DbHelper helper = new DbHelper(getActivity());
 		DadosMedicosDao dao = new DadosMedicosDao(helper);
 
-		DadosMedicos dadosMedicosAntigo = dao
-				.getDadosMedicosCom(TipoDadoMedico.CONTINUA);
-		if (dadosMedicosAntigo == null)
-			return;
+		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.CONTINUA);
+		if (dadosMedicosAntigo == null) return;
 
 		cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
-		lancheManha
-				.setText(String.valueOf(dadosMedicosAntigo.getLancheManha()));
+		lancheManha.setText(String.valueOf(dadosMedicosAntigo.getLancheManha()));
 		almoco.setText(String.valueOf(dadosMedicosAntigo.getAlmoco()));
-		lancheTarde
-				.setText(String.valueOf(dadosMedicosAntigo.getLancheTarde()));
+		lancheTarde.setText(String.valueOf(dadosMedicosAntigo.getLancheTarde()));
 		jantar.setText(String.valueOf(dadosMedicosAntigo.getJantar()));
 		ceia.setText(String.valueOf(dadosMedicosAntigo.getCeia()));
 
@@ -129,11 +107,9 @@ public class ConfigurarInsulinaContinuaFragment extends Fragment {
 
 	private void getValoresGlobais() {
 		cafe = (EditText) view.findViewById(R.id.valor_cafe_continua);
-		lancheManha = (EditText) view
-				.findViewById(R.id.valor_lanche_manha_continua);
+		lancheManha = (EditText) view.findViewById(R.id.valor_lanche_manha_continua);
 		almoco = (EditText) view.findViewById(R.id.valor_almoco_continua);
-		lancheTarde = (EditText) view
-				.findViewById(R.id.valor_lanche_tarde_continua);
+		lancheTarde = (EditText) view.findViewById(R.id.valor_lanche_tarde_continua);
 		jantar = (EditText) view.findViewById(R.id.valor_jantar_continua);
 		ceia = (EditText) view.findViewById(R.id.valor_ceia_continua);
 		salvar = (Button) view.findViewById(R.id.salvar_insulina_continua);

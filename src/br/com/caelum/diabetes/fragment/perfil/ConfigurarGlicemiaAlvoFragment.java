@@ -26,8 +26,7 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 	private View view;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.configurar_glicemia, null);
 
 		getValoresGlobais();
@@ -40,14 +39,10 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				DadosMedicos dadosMedicos = new DadosMedicos(
-						TipoDadoMedico.GLICEMIA_ALVO);
-				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText()
-						.toString()));
-				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText()
-						.toString()));
-				dadosMedicos.setJantar(Double.parseDouble(jantar.getText()
-						.toString()));
+				DadosMedicos dadosMedicos = new DadosMedicos(TipoDadoMedico.GLICEMIA_ALVO);
+				dadosMedicos.setCafeManha(Double.parseDouble(cafe.getText().toString()));
+				dadosMedicos.setAlmoco(Double.parseDouble(almoco.getText().toString()));
+				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
 
 				DbHelper helper = new DbHelper(getActivity());
 
@@ -67,41 +62,29 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 	}
 
 	private void validateEditText(final EditText editText) {
-
 		editText.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable arg0) {
-
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 			}
 
 			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco,
-						jantar));
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+				salvar.setEnabled(ValidatorUtils.checkIfIsValid(cafe, almoco, jantar));
 				ValidatorUtils.checkIfOnError(editText);
-
 			}
-
 		});
-
 	}
 
 	private void settarTextos() {
 		DbHelper helper = new DbHelper(getActivity());
 		DadosMedicosDao dao = new DadosMedicosDao(helper);
 
-		DadosMedicos dadosMedicosAntigo = dao
-				.getDadosMedicosCom(TipoDadoMedico.GLICEMIA_ALVO);
-		if (dadosMedicosAntigo == null)
-			return;
+		DadosMedicos dadosMedicosAntigo = dao.getDadosMedicosCom(TipoDadoMedico.GLICEMIA_ALVO);
+		if (dadosMedicosAntigo == null) return;
 
 		cafe.setText(String.valueOf(dadosMedicosAntigo.getCafeManha()));
 		almoco.setText(String.valueOf(dadosMedicosAntigo.getAlmoco()));

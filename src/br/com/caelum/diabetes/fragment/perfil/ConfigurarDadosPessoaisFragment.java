@@ -30,9 +30,7 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	private Button salvar;
 
 	@Override
-	public View onCreateView(final LayoutInflater inflater,
-			final ViewGroup container, final Bundle savedInstanceState) {
-
+	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.configurar_dados, null);
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
@@ -46,43 +44,33 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 		setValues();
 
 		salvar = (Button) view.findViewById(R.id.salvar_dados);
-		salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso,
-				altura));
+		salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso, altura));
 
 		salvar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				if (idade.getText().length() == 0) {
-					paciente.setIdade(Integer.parseInt(idade.getHint()
-							.toString()));
+					paciente.setIdade(Integer.parseInt(idade.getHint().toString()));
 				} else {
-					paciente.setIdade(Integer.parseInt(idade.getText()
-							.toString()));
+					paciente.setIdade(Integer.parseInt(idade.getText().toString()));
 				}
 
 				if (peso.getText().length() == 0) {
-					paciente.setPeso(Double.parseDouble(peso.getHint()
-							.toString()));
+					paciente.setPeso(Double.parseDouble(peso.getHint().toString()));
 				} else {
-					paciente.setPeso(Double.parseDouble(peso.getText()
-							.toString()));
+					paciente.setPeso(Double.parseDouble(peso.getText().toString()));
 				}
 
 				if (altura.getText().length() == 0) {
-					paciente.setAltura(Double.parseDouble(altura.getHint()
-							.toString()));
+					paciente.setAltura(Double.parseDouble(altura.getHint().toString()));
 				} else {
-					paciente.setAltura(Double.parseDouble(altura.getText()
-							.toString()));
+					paciente.setAltura(Double.parseDouble(altura.getText().toString()));
 				}
 
 				if (masculino.isChecked()) {
 					paciente.setSexo(masculino.getText().toString());
-					;
 				} else {
 					paciente.setSexo(feminino.getText().toString());
-					;
 				}
 
 				if (tipo2.isChecked()) {
@@ -101,32 +89,21 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	}
 
 	private void validateEditText(final EditText editText) {
-
 		editText.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable s) {
-
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
-
-				salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade,
-						peso, altura));
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				salvar.setEnabled(ValidatorUtils.checkIfIsValidWithHint(idade, peso, altura));
 				ValidatorUtils.checkIfOnError(editText);
-
 			}
-
 		});
-
 	}
 
 	private void initializeComponents(View view) {

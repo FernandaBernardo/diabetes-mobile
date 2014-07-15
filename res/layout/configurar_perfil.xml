@@ -28,12 +28,5 @@
 	        android:text="@string/glicemia_alvo"
 	        android:id="@+id/perfil_glicemia_alvo"/>
 	    
-	    <Button
-	        style="@style/dashboard_button" 
-	        android:text="@string/voltar"
-	        android:id="@+id/voltar"/>
-	
 	</br.com.caelum.diabetes.dashboard.DashboardLayout>
-
-    
 </LinearLayout>

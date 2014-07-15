@@ -38,7 +38,6 @@ public class DashboardFragment extends Fragment {
 		calculadora.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				getPaciente();
 
 				if (!paciente.temValorCorrecao()) {
@@ -58,10 +57,9 @@ public class DashboardFragment extends Fragment {
 		perfil.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new ConfigurarPerfilFragment());
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new ConfigurarPerfilFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
@@ -70,10 +68,8 @@ public class DashboardFragment extends Fragment {
 		medicao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new DashboardGlicemiaFragment());
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new DashboardGlicemiaFragment());
 				transaction.commit();
 			}
 		});
@@ -82,10 +78,8 @@ public class DashboardFragment extends Fragment {
 		lembrete.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new DashboardLembreteFragment());
+				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				transaction.replace(R.id.main_view, new DashboardLembreteFragment());
 				transaction.commit();
 			}
 		});

@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import br.com.caelum.diabetes.R;
-import br.com.caelum.diabetes.fragment.DashboardFragment;
 
 public class ConfigurarPerfilFragment extends Fragment{
 	
@@ -23,14 +22,10 @@ public class ConfigurarPerfilFragment extends Fragment{
 		Button botaoBolus = (Button) view.findViewById(R.id.perfil_bolus);
 		Button botaoGlicemiaAlvo = (Button) view.findViewById(R.id.perfil_glicemia_alvo);
 		
-		Button botaoVoltar = (Button) view.findViewById(R.id.voltar);
-		
 		onClickBotao(botaoDados, new ConfigurarDadosPessoaisFragment());
 		onClickBotao(botaoBasal, new ConfigurarInsulinaContinuaFragment());
 		onClickBotao(botaoBolus, new ConfigurarInsulinaCorrecaoFragment());
 		onClickBotao(botaoGlicemiaAlvo, new ConfigurarGlicemiaAlvoFragment());
-		
-		onClickBotao(botaoVoltar, new DashboardFragment());
 		
 		return view;
 	}
