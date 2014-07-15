@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DbHelper;
@@ -22,13 +21,12 @@ import br.com.caelum.diabetes.model.Refeicao;
 
 public class ListaRefeicaoFragment extends Fragment{
 	private List<Refeicao> refeicoes;
-	private ArrayAdapter<Refeicao> adapter;
+	private ListaRefeicaoAdapter adapter;
 	private ListView listaRefeicoes;
 	protected Refeicao refeicaoSelecionada;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.lista_refeicao, null);
 		
 		listaRefeicoes = (ListView) view.findViewById(R.id.lista_refeicoes);
@@ -59,7 +57,7 @@ public class ListaRefeicaoFragment extends Fragment{
 		
 		helper.close();
 		
-		adapter = new ArrayAdapter<Refeicao>(getActivity(), android.R.layout.simple_list_item_1, refeicoes);
+		adapter = new ListaRefeicaoAdapter(refeicoes, getActivity());
 		listaRefeicoes.setAdapter(adapter);
 	}
 	
