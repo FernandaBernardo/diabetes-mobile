@@ -64,12 +64,13 @@ public class DashboardFragment extends Fragment {
 			}
 		});
 
-		Button medicao = (Button) view.findViewById(R.id.main_medicao);
+		Button medicao = (Button) view.findViewById(R.id.main_glicemia);
 		medicao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new DashboardGlicemiaFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});

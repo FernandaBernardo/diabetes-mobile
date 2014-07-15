@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="app_name">Diabetes</string>
     <string name="action_settings">Settings</string>
     <string name="alimento">Buscar Alimento</string>
@@ -11,7 +11,6 @@
     <string name="carboidrato">Carboidrato</string>
     <string name="adicionar_alimento">Adicionar Alimento</string>
     <string name="total_de_carboidrato">Total de Carboidrato</string>
-    
     <string name="peso">Peso(kg)</string>
     <string name="bem_vindo">Seja bem-vindo, usuário!</string>
     <string name="glicemia_alvo">Glicemia Alvo</string>
@@ -19,7 +18,6 @@
     <string name="glicemia_contagem">Glicemia Contagem: </string>
     <string name="glicemia_basal">Glicemia Basal: </string>
     <string name="salvar">Salvar</string>
-
     <string name="selecione_refeicao">Selecione a Refeição</string>
     <string name="cafe_da_manha">Café da Manhã</string>
     <string name="lanche_da_manha">Lanche da Manhã</string>
@@ -27,9 +25,7 @@
     <string name="lanche_da_tarde">Lanche da Tarde</string>
     <string name="jantar">Jantar</string>
     <string name="ceia">Ceia</string>
-    
     <string name="perfil">Perfil</string>
-    
     <string name="dados_pessoais">Dados Pessoais</string>
     <string name="bolus">Valores Correção (Bolus)</string>
     <string name="basal">Valores Contínuos (Basal)</string>
@@ -52,61 +48,56 @@
     <string name="lembretes">Lembretes</string>
     <string name="exames">Exames</string>
     <string name="estat_sticas">Estatísticas</string>
-    <string name="medicao">Medição</string>
+    <string name="glicemia">Glicemia</string>
     <string name="total_insulina">Total Insulina</string>
     <string name="configurar_insulina_correcao">Configurar Insulina Correção</string>
     <string name="configurar_insulina_continua">Configurar Insulina Continua</string>
     <string name="configurar_glicemia_alvo">Configurar Glicemia Alvo</string>
     <string name="novo_alimento">Novo Alimento</string>
-    
     <string name="dados_medicos_aviso">Você não pode usar esta funcionalidade enquanto
         não cadastrar seus dados médicos, mas pode usar o restante do aplicativo.
         Deseja cadastrar agora? Lembre-se: se você cadastrar os dados médicos, você
         nos ajudará! =)</string>
     <string name="confirmar_dados_medicos">Sim, quero preencher os dados</string>
     <string name="cancelar_dados_medicos">Não, quero continuar a utilizar o aplicativo</string>
-    
     <string name="dado_incorreto_ok">OK</string>
     <string name="dado_incorreto_texto">Dados Inválidos. Preencha novamente!</string>
-
     <string name="adicionar_novo_alimento">Adicionar Novo Alimento</string>
     <string name="salvar_alimento">Salvar Alimento</string>
     <string name="nome_alimento">Nome do Novo Alimento</string>
     <string name="quantidade_de_carboidrato">Quantidade de Carboidrato</string>
     <string name="unidade_de_medida">Unidade de Medida</string>
     <string name="nova_refeicao">Nova Refeição</string>
-    
     <string name="anotacoes">Anotações</string>
     <string name="exemplo">Ex.: Medir Glicemia.</string>
-    
     <string name="todos_lembretes">Todos os Lembretes</string>
-	<string name="novo_lembrete">Novo Lembrete</string>
-	
-	<string-array name="refeicoes_array">
-	    <item>@string/cafe_da_manha</item>
-	    <item>@string/lanche_da_manha</item>
-	    <item>@string/almoco</item>
-	    <item>@string/lanche_da_tarde</item>
-	    <item>@string/jantar</item>
-	    <item>@string/ceia</item>
-	</string-array>
-	    <string name="nova_medicao">Nova Medição</string>
-	    <string name="valor_glicemia">Valor Glicemia</string>
-	    <string name="lista_glicemias">Lista Glicemias</string>
-	    <string name="media_dessa_semana">Média dessa Semana</string>
-	    <string name="media_desse_mes">Média desse Mês</string>
-	    <string name="media_de_hoje">Média de Hoje</string>
-	    <string name="hoje">Hoje</string>
-	    <string name="semana">Semana</string>
-	    <string name="mes">Mês</string>
-	    <string name="tipo_da_refeicao">Tipo da Refeição</string>
-	    <string name="salvar_glicemia">Salvar Glicemia</string>
-	    <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
-	    <string name="listar_refeicoes">Listar Refeições</string>
-	    <string name="medias">Médias</string>
-	    <string name="ex_colher_de_cha_concha_unidade">Ex: colher de chá, concha, unidade</string>
-	    <string name="quantidade_de_gramas_de_cho">quantidade de gramas de CHO</string>
-	    <string name="novo_alimento_refeicao">Novo Alimento - Refeição</string>
+    <string name="novo_lembrete">Novo Lembrete</string>
+
+    <string-array name="refeicoes_array">
+        <item>@string/cafe_da_manha</item>
+        <item>@string/lanche_da_manha</item>
+        <item>@string/almoco</item>
+        <item>@string/lanche_da_tarde</item>
+        <item>@string/jantar</item>
+        <item>@string/ceia</item>
+    </string-array>
+
+    <string name="nova_glicemia">Nova Glicemia</string>
+    <string name="valor_glicemia">Valor Glicemia</string>
+    <string name="lista_glicemias">Lista Glicemias</string>
+    <string name="media_dessa_semana">Média dessa Semana</string>
+    <string name="media_desse_mes">Média desse Mês</string>
+    <string name="media_de_hoje">Média de Hoje</string>
+    <string name="hoje">Hoje</string>
+    <string name="semana">Semana</string>
+    <string name="mes">Mês</string>
+    <string name="tipo_da_refeicao">Tipo da Refeição</string>
+    <string name="salvar_glicemia">Salvar Glicemia</string>
+    <string name="valor_glicemia_mg_dl">Valor Glicemia (mg/DL)</string>
+    <string name="listar_refeicoes">Listar Refeições</string>
+    <string name="medias">Médias</string>
+    <string name="ex_colher_de_cha_concha_unidade">Ex: colher de chá, concha, unidade</string>
+    <string name="quantidade_de_gramas_de_cho">quantidade de gramas de CHO</string>
+    <string name="novo_alimento_refeicao">Novo Alimento - Refeição</string>
 
 </resources>
-

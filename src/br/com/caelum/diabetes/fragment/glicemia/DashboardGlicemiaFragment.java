@@ -24,6 +24,7 @@ public class DashboardGlicemiaFragment extends Fragment{
 			public void onClick(View arg0) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new NovaGlicemiaFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});
@@ -34,6 +35,7 @@ public class DashboardGlicemiaFragment extends Fragment{
 			public void onClick(View arg0) {
 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
 				transaction.replace(R.id.main_view, new ListaGlicemiaFragment());
+				transaction.addToBackStack(null);
 				transaction.commit();
 			}
 		});

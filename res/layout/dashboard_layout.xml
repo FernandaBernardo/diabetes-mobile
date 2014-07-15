@@ -29,8 +29,8 @@
     <Button 
         style="@style/dashboard_button" 
         android:drawableTop="@drawable/medicao"
-        android:text="@string/medicao"
-        android:id="@+id/main_medicao" />    
+        android:text="@string/glicemia"
+        android:id="@+id/main_glicemia" />    
 	<Button 
 	    style="@style/dashboard_button" 
         android:drawableTop="@drawable/perfil"

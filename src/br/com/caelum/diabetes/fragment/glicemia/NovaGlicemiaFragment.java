@@ -41,20 +41,15 @@ public class NovaGlicemiaFragment extends Fragment {
 	private Button salvarGlicemia;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.nova_glicemia, null);
 
 		DateTime dataAgora = new DateTime();
 
-		final TextClock horario = (TextClock) view
-				.findViewById(R.id.hora_glicemia);
-		horario.setText(dataAgora.getHourOfDay() + ":"
-				+ dataAgora.getMinuteOfHour());
-		final TextClock data = (TextClock) view
-				.findViewById(R.id.data_glicemia);
-		data.setText(dataAgora.getDayOfMonth() + "/"
-				+ dataAgora.getMonthOfYear() + "/" + dataAgora.getYear());
+		final TextClock horario = (TextClock) view.findViewById(R.id.hora_glicemia);
+		horario.setText(dataAgora.getHourOfDay() + ":" + dataAgora.getMinuteOfHour());
+		final TextClock data = (TextClock) view.findViewById(R.id.data_glicemia);
+		data.setText(dataAgora.getDayOfMonth() + "/" + dataAgora.getMonthOfYear() + "/" + dataAgora.getYear());
 
 		String dataAtual = (String) data.getText();
 		String[] numerosData = dataAtual.split("/");
@@ -71,12 +66,10 @@ public class NovaGlicemiaFragment extends Fragment {
 		horario.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				TimePickerDialog timePicker = new TimePickerDialog(
-						getActivity(),
+				TimePickerDialog timePicker = new TimePickerDialog(getActivity(),
 						new TimePickerDialog.OnTimeSetListener() {
 							@Override
-							public void onTimeSet(TimePicker timePicker,
-									int selectedHour, int selectedMinute) {
+							public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 								hora = selectedHour;
 								minuto = selectedMinute;
 								horario.setText(hora + ":" + minuto);
@@ -89,12 +82,10 @@ public class NovaGlicemiaFragment extends Fragment {
 		data.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DatePickerDialog datePicker = new DatePickerDialog(
-						getActivity(),
+				DatePickerDialog datePicker = new DatePickerDialog(getActivity(),
 						new DatePickerDialog.OnDateSetListener() {
 							@Override
-							public void onDateSet(DatePicker arg0, int year,
-									int month, int day) {
+							public void onDateSet(DatePicker arg0, int year, int month, int day) {
 								dia = day;
 								mes = month;
 								ano = year;
@@ -105,36 +96,29 @@ public class NovaGlicemiaFragment extends Fragment {
 			}
 		});
 
-		final Spinner tipoRefeicao = (Spinner) view
-				.findViewById(R.id.tipo_refeicao);
-		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao
-				.getAdapter();
+		final Spinner tipoRefeicao = (Spinner) view.findViewById(R.id.tipo_refeicao);
+		final ArrayAdapter<String> spinnerAdapter = (ArrayAdapter<String>) tipoRefeicao.getAdapter();
 
 		glicemia = new Glicemia();
 		TipoRefeicao tipo = new DescobreTipoRefeicao().getTipoRefeicao();
 
 		int position = spinnerAdapter.getPosition(tipo.getText());
-		if (position == -1)
-			position = 0;
+		if (position == -1) position = 0;
 		tipoRefeicao.setSelection(position);
 
 		valorGlicemia = (EditText) view.findViewById(R.id.valor_glicemia);
 		validateEditText(valorGlicemia);
 		salvarGlicemia = (Button) view.findViewById(R.id.salvar_glicemia);
-		salvarGlicemia.setEnabled(ValidatorUtils
-				.checkEmptyEditText(valorGlicemia));
+		salvarGlicemia.setEnabled(ValidatorUtils.checkEmptyEditText(valorGlicemia));
 
 		salvarGlicemia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				glicemia.setValorGlicemia(Integer.parseInt(valorGlicemia
-						.getText().toString()));
+				glicemia.setValorGlicemia(Integer.parseInt(valorGlicemia.getText().toString()));
 				int pos = tipoRefeicao.getSelectedItemPosition();
-				glicemia.setTipoRefeicao(TipoRefeicao.fromString(spinnerAdapter
-						.getItem(pos)));
+				glicemia.setTipoRefeicao(TipoRefeicao.fromString(spinnerAdapter.getItem(pos)));
 
-				DateTime dateTime = new DateTime(ano, mes + 1, dia, hora,
-						minuto);
+				DateTime dateTime = new DateTime(ano, mes + 1, dia, hora, minuto);
 				glicemia.setData(dateTime);
 
 				DbHelper helper = new DbHelper(getActivity());
@@ -142,41 +126,27 @@ public class NovaGlicemiaFragment extends Fragment {
 				dao.salva(glicemia);
 				helper.close();
 
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction
-						.replace(R.id.main_view, new ListaGlicemiaFragment());
-				transaction.commit();
+				getFragmentManager().popBackStack();
 			}
 		});
 		return view;
 	}
 
 	private void validateEditText(final EditText editText) {
-
 		editText.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable arg0) {
-
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 			}
 
 			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				salvarGlicemia.setEnabled(ValidatorUtils
-						.checkEmptyEditText(valorGlicemia));
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+				salvarGlicemia.setEnabled(ValidatorUtils.checkEmptyEditText(valorGlicemia));
 				ValidatorUtils.checkIfOnError(editText);
-
 			}
-
 		});
-
 	}
 }
