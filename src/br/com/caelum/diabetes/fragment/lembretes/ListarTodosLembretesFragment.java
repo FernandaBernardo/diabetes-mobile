@@ -28,8 +28,7 @@ public class ListarTodosLembretesFragment extends Fragment {
 	protected Lembrete lembreteSelecionado;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.listar_lembretes, null);
 
 		listaLembretes = (ListView) view.findViewById(R.id.list_lembretes_all);

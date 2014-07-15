@@ -7,7 +7,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -38,20 +37,15 @@ public class NovoLembreteFragment extends Fragment {
 	private Button salvar;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.novo_lembrete, null);
 		DateTime dataAgora = new DateTime();
-		final TextClock horario = (TextClock) view
-				.findViewById(R.id.hora_lembrete);
+		final TextClock horario = (TextClock) view.findViewById(R.id.hora_lembrete);
 
-		horario.setText(dataAgora.getHourOfDay() + ":"
-				+ dataAgora.getMinuteOfHour());
+		horario.setText(dataAgora.getHourOfDay() + ":" + dataAgora.getMinuteOfHour());
 
-		final TextClock data = (TextClock) view
-				.findViewById(R.id.data_lembrete);
-		data.setText(dataAgora.getDayOfMonth() + "/"
-				+ dataAgora.getMonthOfYear() + "/" + dataAgora.getYear());
+		final TextClock data = (TextClock) view.findViewById(R.id.data_lembrete);
+		data.setText(dataAgora.getDayOfMonth() + "/" + dataAgora.getMonthOfYear() + "/" + dataAgora.getYear());
 
 		String dataAtual = (String) data.getText();
 		String[] numerosData = dataAtual.split("/");
@@ -68,12 +62,10 @@ public class NovoLembreteFragment extends Fragment {
 		horario.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				TimePickerDialog timePicker = new TimePickerDialog(
-						getActivity(),
+				TimePickerDialog timePicker = new TimePickerDialog( getActivity(),
 						new TimePickerDialog.OnTimeSetListener() {
 							@Override
-							public void onTimeSet(TimePicker timePicker,
-									int selectedHour, int selectedMinute) {
+							public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 								hora = selectedHour;
 								minuto = selectedMinute;
 								horario.setText(hora + ":" + minuto);
@@ -86,12 +78,10 @@ public class NovoLembreteFragment extends Fragment {
 		data.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DatePickerDialog datePicker = new DatePickerDialog(
-						getActivity(),
+				DatePickerDialog datePicker = new DatePickerDialog(getActivity(),
 						new DatePickerDialog.OnDateSetListener() {
 							@Override
-							public void onDateSet(DatePicker arg0, int year,
-									int month, int day) {
+							public void onDateSet(DatePicker arg0, int year, int month, int day) {
 								dia = day;
 								mes = month;
 								ano = year;
@@ -114,8 +104,7 @@ public class NovoLembreteFragment extends Fragment {
 
 			@Override
 			public void onClick(View arg0) {
-				DateTime dateTime = new DateTime(ano, mes + 1, dia, hora,
-						minuto);
+				DateTime dateTime = new DateTime(ano, mes + 1, dia, hora, minuto);
 				lembrete.setData(dateTime);
 				lembrete.setAtividade(atividade.getText().toString());
 				lembrete.setAnotacoes(anotacoes.getText().toString());
@@ -124,42 +113,28 @@ public class NovoLembreteFragment extends Fragment {
 				LembreteDao dao = new LembreteDao(helper);
 				dao.salva(lembrete);
 				helper.close();
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
-				transaction.replace(R.id.main_view,
-						new DashboardLembreteFragment());
-				transaction.commit();
+				getFragmentManager().popBackStack();
 			}
-
 		});
 
 		return view;
 	}
 
 	private void validateEditText(final EditText editText) {
-
 		editText.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable s) {
-
 			}
 
 			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			}
 
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before,
-					int count) {
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				salvar.setEnabled(ValidatorUtils.checkEmptyEditText(atividade));
 				ValidatorUtils.checkIfOnError(editText);
-
 			}
 		});
-
 	}
-
 }
