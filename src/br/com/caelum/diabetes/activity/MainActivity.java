@@ -74,6 +74,7 @@ public class MainActivity extends FragmentActivity{
 						transaction.replace(R.id.main_view, new ConfigurarGlicemiaAlvoFragment());
 						break;
 				}
+				transaction.addToBackStack(null);
 				transaction.commit();
 				menuLateral.closeDrawer(listaMenuLateral);
 			}
