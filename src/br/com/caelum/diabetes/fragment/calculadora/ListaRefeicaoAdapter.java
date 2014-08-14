@@ -46,6 +46,8 @@ public class ListaRefeicaoAdapter extends BaseAdapter{
 		
 		TextView campoTipoRefeicao = (TextView) item.findViewById(R.id.refeicao_tipo_refeicao);
 		campoTipoRefeicao.setText(refeicao.getTipoRefeicao().getText());
+		TextView campoTotalCho= (TextView) item.findViewById(R.id.refeicao_total_cho);
+		campoTotalCho.setText(refeicao.getTotalCHO()+"");
 		
 		TextView campoDia = (TextView) item.findViewById(R.id.refeicao_dia);
 		DateTime data = refeicao.getData();

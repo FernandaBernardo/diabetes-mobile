@@ -112,9 +112,9 @@ public class AdicionaAlimentoFragment extends Fragment {
 								.toString()), refeicao);
 				refeicao.adicionaAlimento(alimentoVirtual);
 
-				AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(
-						helper);
-				alimentoVirtualDao.salva(alimentoVirtual);
+//				AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(
+//						helper);
+//				alimentoVirtualDao.salva(alimentoVirtual);
 
 				Bundle args = new Bundle();
 				args.putSerializable("refeicao", refeicao);

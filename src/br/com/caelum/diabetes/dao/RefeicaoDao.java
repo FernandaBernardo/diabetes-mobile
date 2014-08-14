@@ -7,10 +7,10 @@ import org.joda.time.DateTime;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import br.com.caelum.diabetes.extras.Extras;
 import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.extras.TipoRefeicao;
-import br.com.caelum.diabetes.model.Paciente;
+import br.com.caelum.diabetes.model.AlimentoFisico;
+import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.Refeicao;
 
 public class RefeicaoDao{
@@ -25,8 +25,16 @@ public class RefeicaoDao{
 	}
 	
 	public int salva(Refeicao refeicao) {
-		ContentValues values = toContentValues(refeicao);
-		return (int) helper.getWritableDatabase().insert(TABELA, null, values);
+		ContentValues values;
+		
+		values = toContentValues(refeicao);
+		int id = (int) helper.getWritableDatabase().insert(TABELA, null, values);
+		
+		for (AlimentoVirtual alimento : refeicao.getAlimentos()) {
+			values = toContentValues(alimento, id);
+			helper.getWritableDatabase().insert(TabelasBD.ALIMENTO_VIRTUAL , null, values);
+		}
+		return id;
 	}
 
 	public void deletar(Refeicao refeicao) {
@@ -46,7 +54,18 @@ public class RefeicaoDao{
 
 		while(cursor.moveToNext()) {
 			Refeicao refeicao = new Refeicao(cursor.getInt(0), TipoRefeicao.fromString(cursor.getString(1)), new DateTime(cursor.getLong(2)));
+			String[] args = {String.valueOf(refeicao.getId())};
+			Cursor cursor2 = helper.getReadableDatabase().rawQuery("SELECT * from " + TabelasBD.ALIMENTO_VIRTUAL+ " where id_refeicao=?;", args);
+			while (cursor2.moveToNext()) {
+				String[] args2 = {String.valueOf(cursor2.getInt(cursor2.getColumnIndex("id_alimento")))};
+				System.out.println(args2[0]);
+				Cursor cursor3 = helper.getReadableDatabase().rawQuery("SELECT * from " + TabelasBD.ALIMENTO_FISICO+ " where id=?;", args2);
+				cursor3.moveToFirst();
+				refeicao.adicionaAlimento(new AlimentoVirtual(new AlimentoFisico(cursor3.getString(1), cursor3.getDouble(2), cursor3.getString(3)), cursor2.getInt(2), refeicao));
+				cursor3.close();
+			}
 			refeicoes.add(refeicao);
+			cursor2.close();
 		}
 		cursor.close();
 
@@ -59,27 +78,12 @@ public class RefeicaoDao{
 		values.put("data", refeicao.getData().toDate().getTime());
 		return values;
 	}
-
-//	public Refeicao getRefeicao(int id) {
-//		String[] args = {String.valueOf(id)};
-//		Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT * from " + TabelasBD.REFEICAO + " where id=?;", args);
-//		if(cursor.moveToNext()) {
-//			Refeicao refeicao = new Refeicao();
-//			refeicao.setId(cursor.getInt(0));
-//			refeicao.setNome(cursor.getString(1));
-//			refeicao.setIdade(cursor.getInt(2));
-//			refeicao.setPeso(cursor.getDouble(3));
-//			refeicao.setAltura(cursor.getDouble(4));
-//			refeicao.setSexo(cursor.getString(5));
-//			refeicao.setTipoDiabetes(cursor.getString(6));
-//			
-//			refeicao.setInsulinaCorrecao(getDadosMedicos(refeicao, Extras.CORRECAO));
-//			refeicao.setInsulinaContinua(getDadosMedicos(refeicao, Extras.CONTINUO));
-//			refeicao.setGlicemiaAlvo(getDadosMedicos(refeicao, Extras.GLICEMIA_ALVO));
-//			return refeicao;
-//		}
-//		return null;
-//		return null;
-//	}
-
+	
+	private ContentValues toContentValues(AlimentoVirtual alimento, int id) {
+		ContentValues values = new ContentValues();
+		values.put("id_refeicao", id);
+		values.put("quantidade", alimento.getQuantidade());
+		values.put("id_alimento", alimento.getAlimento().getId());
+		return values;
+	}
 }
