@@ -2,18 +2,26 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+import com.j256.ormlite.field.DatabaseField;
+
 @SuppressWarnings("serial")
 public class DadosMedicos implements Serializable {
+	@DatabaseField(generatedId = true)
 	private Integer id;
+	@DatabaseField
 	private Double cafeManha;
+	@DatabaseField
 	private Double lancheManha;
+	@DatabaseField
 	private Double almoco;
+	@DatabaseField
 	private Double lancheTarde;
+	@DatabaseField
 	private Double jantar;
+	@DatabaseField
 	private Double ceia;
-	
+	@DatabaseField (columnName="tipoDado")
 	private TipoDadoMedico tipo;
-	private Paciente paciente;
 	
 	public DadosMedicos() {
 	}
@@ -71,14 +79,6 @@ public class DadosMedicos implements Serializable {
 		this.id = id;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-	
 	public boolean isEmpty(){
 		
 		if (this.tipo == TipoDadoMedico.GLICEMIA_ALVO){
@@ -87,8 +87,7 @@ public class DadosMedicos implements Serializable {
 		
 		return this.almoco == null || this.cafeManha == null
 				|| this.ceia == null || this.jantar == null
-				|| this.lancheManha == null || this.lancheTarde == null
-				|| this.paciente == null;
+				|| this.lancheManha == null || this.lancheTarde == null;
 	}
 }
 

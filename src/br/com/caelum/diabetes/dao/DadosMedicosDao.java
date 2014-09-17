@@ -1,85 +1,51 @@
 package br.com.caelum.diabetes.dao;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import br.com.caelum.diabetes.extras.TabelasBD;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 
-public class DadosMedicosDao {
-	private static final String TABELA = TabelasBD.DADOS_MEDICOS;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 
-	private DbHelper helper;
+public class DadosMedicosDao {
+	private RuntimeExceptionDao<DadosMedicos, Integer> dao;
 
 	public DadosMedicosDao(DbHelper helper) {
-		this.helper = helper;
+		dao = helper.getSimpleDataDao(DadosMedicos.class);
 	}
 	
-	public int salva(DadosMedicos dadosMedicos) {
-		ContentValues values = toContentValues(dadosMedicos);
-		return (int) helper.getWritableDatabase().insert(TABELA, null, values);
+	public void salva(DadosMedicos dadosMedicos) throws SQLException {
+		DadosMedicos dadosMedicosCom = getDadosMedicosCom(dadosMedicos.getTipo());
+		if (dadosMedicosCom == null) {
+			dao.create(dadosMedicos);
+		} else {
+			dadosMedicos.setId(dadosMedicosCom.getId());
+			dao.update(dadosMedicos);
+		}
 	}
 
 	public void deletar(DadosMedicos dadosMedicos) {
-		String[] args = {String.valueOf(dadosMedicos.getId())};
-		helper.getWritableDatabase().delete(TABELA, "id=?", args);
+		dao.delete(dadosMedicos);
 	}
 
 	public void atualiza(DadosMedicos dadosMedicos) {
-		String[] args = {String.valueOf(dadosMedicos.getId())};
-		ContentValues values = toContentValues(dadosMedicos);
-		helper.getWritableDatabase().update(TABELA, values, "id=?", args);
+		dao.update(dadosMedicos);
 	}
 	
-	public List<DadosMedicos> getDadosMedicos() {
-		Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT * from " + TABELA + ";", null);
-		List<DadosMedicos> dados = new ArrayList();
-		while(cursor.moveToNext()) {
-			DadosMedicos dadosMedicos = new DadosMedicos();
-			dadosMedicos.setId(cursor.getInt(0));
-			dadosMedicos.setCafeManha(cursor.getDouble(1));
-			dadosMedicos.setLancheManha(cursor.getDouble(2));
-			dadosMedicos.setAlmoco(cursor.getDouble(3));
-			dadosMedicos.setLancheTarde(cursor.getDouble(4));
-			dadosMedicos.setJantar(cursor.getDouble(5));
-			dadosMedicos.setCeia(cursor.getDouble(6));
-			dadosMedicos.setTipo(TipoDadoMedico.fromString(cursor.getString(7)));
-			dados.add(dadosMedicos);
-		}
-		return dados;
+	public List<DadosMedicos> getDadosMedicos() throws SQLException {
+		QueryBuilder<DadosMedicos,Integer> builder = dao.queryBuilder();
+		PreparedQuery<DadosMedicos> prepare = builder.prepare();
+		return dao.query(prepare);
 	}
 	
-	private ContentValues toContentValues(DadosMedicos dadosMedicos) {
-		ContentValues values = new ContentValues();
-		values.put("cafeDaManha", dadosMedicos.getCafeManha());
-		values.put("lancheDaManha", dadosMedicos.getLancheManha());
-		values.put("almoco", dadosMedicos.getAlmoco());
-		values.put("lancheDaTarde", dadosMedicos.getLancheTarde());
-		values.put("jantar", dadosMedicos.getJantar());
-		values.put("ceia", dadosMedicos.getCeia());
-		values.put("tipoDado", dadosMedicos.getTipo().getText());
-		values.put("id_paciente", dadosMedicos.getPaciente().getId());
-		return values;
-	}
-
-	public DadosMedicos getDadosMedicosCom(TipoDadoMedico glicemiaAlvo) {
-		String[] args = {glicemiaAlvo.getText()};
-		Cursor cursor = helper.getReadableDatabase().rawQuery("SELECT * from " + TABELA + " where tipoDado=?", args);
-		if(cursor.moveToNext()) {
-			DadosMedicos dadosMedicos = new DadosMedicos();
-			dadosMedicos.setId(cursor.getInt(0));
-			dadosMedicos.setCafeManha(cursor.getDouble(1));
-			dadosMedicos.setLancheManha(cursor.getDouble(2));
-			dadosMedicos.setAlmoco(cursor.getDouble(3));
-			dadosMedicos.setLancheTarde(cursor.getDouble(4));
-			dadosMedicos.setJantar(cursor.getDouble(5));
-			dadosMedicos.setCeia(cursor.getDouble(6));
-			dadosMedicos.setTipo(TipoDadoMedico.fromString(cursor.getString(7)));
-			return dadosMedicos;
-		}
-		return null;
+	public DadosMedicos getDadosMedicosCom(TipoDadoMedico glicemiaAlvo) throws SQLException {
+		QueryBuilder<DadosMedicos,Integer> builder = dao.queryBuilder();
+		builder.where().eq("tipoDado", glicemiaAlvo);
+		PreparedQuery<DadosMedicos> prepare = builder.prepare();
+		List<DadosMedicos> list = dao.query(prepare);
+		return list.size() == 0 ? null : list.get(0);
 	}
 }

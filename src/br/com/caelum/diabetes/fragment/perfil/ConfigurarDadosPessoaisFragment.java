@@ -1,5 +1,7 @@
 package br.com.caelum.diabetes.fragment.perfil;
 
+import java.sql.SQLException;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -28,14 +30,19 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	private RadioButton tipo2;
 	private PacienteDao dao;
 	private Button salvar;
+	private View view;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		final View view = inflater.inflate(R.layout.configurar_dados, null);
+		view = inflater.inflate(R.layout.configurar_dados, null);
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);
-		paciente = dao.getPaciente();
+		try {
+			paciente = dao.getPaciente();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		validateEditText(idade);
 		validateEditText(peso);

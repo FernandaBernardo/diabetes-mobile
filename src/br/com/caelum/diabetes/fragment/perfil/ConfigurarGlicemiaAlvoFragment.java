@@ -1,5 +1,7 @@
 package br.com.caelum.diabetes.fragment.perfil;
 
+import java.sql.SQLException;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -13,7 +15,6 @@ import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
-import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 import br.com.caelum.diabetes.util.ValidatorUtils;
@@ -30,7 +31,11 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		view = inflater.inflate(R.layout.configurar_glicemia, null);
 
 		getValoresGlobais();
-		settarTextos();
+		try {
+			settarTextos();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		validateEditText(cafe);
 		validateEditText(almoco);
 		validateEditText(jantar);
@@ -46,11 +51,12 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 
 				DbHelper helper = new DbHelper(getActivity());
 
-				PacienteDao pacienteDao = new PacienteDao(helper);
-				dadosMedicos.setPaciente(pacienteDao.getPaciente());
-
 				DadosMedicosDao dadosDao = new DadosMedicosDao(helper);
-				dadosDao.salva(dadosMedicos);
+				try {
+					dadosDao.salva(dadosMedicos);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 
 				helper.close();
 
@@ -79,7 +85,7 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 		});
 	}
 
-	private void settarTextos() {
+	private void settarTextos() throws SQLException {
 		DbHelper helper = new DbHelper(getActivity());
 		DadosMedicosDao dao = new DadosMedicosDao(helper);
 
