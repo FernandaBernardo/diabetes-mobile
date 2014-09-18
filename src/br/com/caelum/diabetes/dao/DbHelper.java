@@ -20,8 +20,11 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 	
 	AlimentoFisicoDao alimentoFisicoDao;
 
+	public Context context;
+
 	public DbHelper(Context context) {
 		super(context, DATABASE, null, 1);
+		this.context = context;
 	}
 
 	@Override

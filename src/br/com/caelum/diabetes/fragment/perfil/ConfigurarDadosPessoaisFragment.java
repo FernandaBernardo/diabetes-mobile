@@ -1,7 +1,5 @@
 package br.com.caelum.diabetes.fragment.perfil;
 
-import java.sql.SQLException;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -38,11 +36,7 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);
-		try {
-			paciente = dao.getPaciente();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		paciente = dao.getPaciente();
 
 		validateEditText(idade);
 		validateEditText(peso);

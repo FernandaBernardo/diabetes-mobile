@@ -3,6 +3,7 @@ package br.com.caelum.diabetes.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.Paciente;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -11,8 +12,10 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class PacienteDao {
 	private RuntimeExceptionDao<Paciente, Integer> dao;
+	private DbHelper helper;
 
 	public PacienteDao(DbHelper helper) {
+		this.helper = helper;
 		dao = helper.getSimpleDataDao(Paciente.class);
 	}
 	
@@ -28,9 +31,16 @@ public class PacienteDao {
 		dao.update(paciente);
 	}
 	
-	public Paciente getPaciente() throws SQLException {
+	public Paciente getPaciente() {
 		QueryBuilder<Paciente,Integer> builder = dao.queryBuilder();
-		PreparedQuery<Paciente> prepare = builder.prepare();
+
+		PreparedQuery<Paciente> prepare = null;
+		try {
+			prepare = builder.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
+		}
+		
 		List<Paciente> list = dao.query(prepare);
 		return list.size() == 0 ? null : list.get(0);
 	}
