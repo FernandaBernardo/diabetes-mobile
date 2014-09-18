@@ -67,7 +67,7 @@ public class DadosMedicosDao {
 		try {
 			prepare = builder.prepare();
 		} catch (SQLException e) {
-			helper.trataException(e);
+			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
 		return dao.query(prepare);
 	}
