@@ -99,11 +99,6 @@ public class Paciente implements Serializable{
 	}
 	
 	public boolean temValorCorrecao(){
-		if (!(this.getInsulinaCorrecao() == null)){
-			if (this.getInsulinaCorrecao().isEmpty()){
-				return false;
-			}
-		}
-		return true;
+		return (!(this.getInsulinaCorrecao() == null));
 	}
 }

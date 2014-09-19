@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.AlimentoFisicoDao;
-import br.com.caelum.diabetes.dao.AlimentoVirtualDao;
 import br.com.caelum.diabetes.dao.DbHelper;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
