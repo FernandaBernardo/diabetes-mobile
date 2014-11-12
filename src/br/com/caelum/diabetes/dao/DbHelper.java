@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.DadosMedicos;
+import br.com.caelum.diabetes.model.Lembrete;
 import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.model.Refeicao;
 
@@ -36,41 +37,18 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 			TableUtils.createTable(connectionSource, Refeicao.class);
 			TableUtils.createTable(connectionSource, AlimentoVirtual.class);
 			TableUtils.createTable(connectionSource, AlimentoFisico.class);
+			TableUtils.createTable(connectionSource, Lembrete.class);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 		
-//		String alimentoFisico = "CREATE TABLE " + TabelasBD.ALIMENTO_FISICO + " " + 
-//				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//				"nome TEXT UNIQUE NOT NULL, " +
-//				"carboidrato DOUBLE, " +
-//				"unidadeDeMedida TEXT);";
-//		
-//		String alimentoVirtual = "CREATE TABLE " + TabelasBD.ALIMENTO_VIRTUAL + " " + 
-//				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//				"id_refeicao INTEGER, " +
-//				"quantidade DOUBLE, " +
-//				"id_alimento INTEGER," +
-//				"FOREIGN KEY (id_alimento) references AlimentoFisico(id), " +
-//				"FOREIGN KEY (id_refeicao) references Refeicao(id));";
-//		
 //		String glicemia = "CREATE TABLE " + TabelasBD.GLICEMIA + " " + 
 //				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 //				"tipoRefeicao TEXT," + 
 //				"data DATE," + 
 //				"valorGlicemia INTEGER);";
 //		
-//		String lembrete = "CREATE TABLE " + TabelasBD.LEMBRETE + " " + 
-//				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//				"data DATE," + 
-//				"atividade TEXT," + 
-//				"anotacoes TEXT);";
-//		
-//		
-//		db.execSQL(alimentoFisico);
-//		db.execSQL(alimentoVirtual);
 //		db.execSQL(glicemia);
-//		db.execSQL(lembrete);
 		insereAlimentoFisico(db);
 	}
 

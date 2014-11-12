@@ -4,11 +4,21 @@ import java.io.Serializable;
 
 import org.joda.time.DateTime;
 
+import com.j256.ormlite.field.DatabaseField;
+
+@SuppressWarnings("serial")
 public class Lembrete implements Serializable {
+	@DatabaseField(generatedId=true)
 	int id;
+	@DatabaseField
 	DateTime data;
+	@DatabaseField
 	String atividade;
+	@DatabaseField
 	String anotacoes;
+	
+	public Lembrete() {
+	}
 
 	public int getId() {
 		return id;
