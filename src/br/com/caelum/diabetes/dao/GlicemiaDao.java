@@ -1,64 +1,48 @@
 package br.com.caelum.diabetes.dao;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
-import android.content.ContentValues;
-import android.database.Cursor;
-import br.com.caelum.diabetes.extras.TabelasBD;
-import br.com.caelum.diabetes.extras.TipoRefeicao;
+import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.Glicemia;
 
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
+
 public class GlicemiaDao {
-	private static final String TABELA = TabelasBD.GLICEMIA;
-	private static final String[] COLUNAS = {"id", "tipoRefeicao", "data", "valorGlicemia"};
+	private RuntimeExceptionDao<Glicemia, Integer> dao;
 
 	private DbHelper helper;
 
 	public GlicemiaDao(DbHelper helper) {
 		this.helper = helper;
+		this.dao = helper.getSimpleDataDao(Glicemia.class);
 	}
 	
-	public int salva(Glicemia glicemia) {
-		ContentValues values = toContentValues(glicemia);
-		return (int) helper.getWritableDatabase().insert(TABELA, null, values);
+	public void salva(Glicemia glicemia) {
+		dao.create(glicemia);
 	}
 
 	public void deletar(Glicemia glicemia) {
-		String[] args = {String.valueOf(glicemia.getId())};
-		helper.getWritableDatabase().delete(TABELA, "id=?", args);
+		dao.delete(glicemia);
 	}
 
 	public void atualiza(Glicemia glicemia) {
-		String[] args = {String.valueOf(glicemia.getId())};
-		ContentValues values = toContentValues(glicemia);
-		helper.getWritableDatabase().update(TABELA, values, "id=?", args);
+		dao.update(glicemia);
 	}
 	
 	public List<Glicemia> getGlicemias() {
-		ArrayList<Glicemia> glicemias = new ArrayList<Glicemia>();
-		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS, null, null, null, null, null);
-
-		while(cursor.moveToNext()) {
-			Glicemia glicemia = new Glicemia();
-			glicemia.setId(cursor.getInt(0));
-			glicemia.setTipoRefeicao(TipoRefeicao.fromString(cursor.getString(1)));
-			glicemia.setData(new DateTime(cursor.getLong(2)));
-			glicemia.setValorGlicemia(cursor.getInt(3));
-			glicemias.add(glicemia);
+		QueryBuilder<Glicemia,Integer> builder = dao.queryBuilder();
+		
+		PreparedQuery<Glicemia> prepare = null;
+		try {
+			prepare = builder.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
-		cursor.close();
-
+		
+		List<Glicemia> glicemias = dao.query(prepare);
 		return glicemias;
-	}
-	
-	private ContentValues toContentValues(Glicemia glicemia) {
-		ContentValues values = new ContentValues();
-		values.put("tipoRefeicao", glicemia.getTipoRefeicao().getText());
-		values.put("data", glicemia.getData().toDate().getTime());
-		values.put("valorGlicemia", glicemia.getValorGlicemia());
-		return values;
 	}
 }

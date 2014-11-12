@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import br.com.caelum.diabetes.model.AlimentoFisico;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
 import br.com.caelum.diabetes.model.DadosMedicos;
+import br.com.caelum.diabetes.model.Glicemia;
 import br.com.caelum.diabetes.model.Lembrete;
 import br.com.caelum.diabetes.model.Paciente;
 import br.com.caelum.diabetes.model.Refeicao;
@@ -38,17 +39,11 @@ public class DbHelper extends OrmLiteSqliteOpenHelper{
 			TableUtils.createTable(connectionSource, AlimentoVirtual.class);
 			TableUtils.createTable(connectionSource, AlimentoFisico.class);
 			TableUtils.createTable(connectionSource, Lembrete.class);
+			TableUtils.createTable(connectionSource, Glicemia.class);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
-//		String glicemia = "CREATE TABLE " + TabelasBD.GLICEMIA + " " + 
-//				"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//				"tipoRefeicao TEXT," + 
-//				"data DATE," + 
-//				"valorGlicemia INTEGER);";
-//		
-//		db.execSQL(glicemia);
+
 		insereAlimentoFisico(db);
 	}
 
