@@ -32,6 +32,9 @@ public class RefeicaoDao{
 
 	public void deletar(Refeicao refeicao) {
 		dao.delete(refeicao);
+		for (AlimentoVirtual alimentoVirtual : refeicao.getAlimentos()) {
+			alimentoVirtualDao.deletar(alimentoVirtual);
+		}
 	}
 
 	public void atualiza(Refeicao refeicao) {
