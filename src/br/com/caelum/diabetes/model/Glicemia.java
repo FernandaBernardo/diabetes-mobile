@@ -4,21 +4,22 @@ import java.io.Serializable;
 
 import org.joda.time.DateTime;
 
+import com.j256.ormlite.field.DatabaseField;
+
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
 public class Glicemia implements Serializable{
+	@DatabaseField(generatedId=true)
 	private int id;
+	@DatabaseField
 	private DateTime data;
+	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
+	@DatabaseField
 	private int valorGlicemia;
 	
 	public Glicemia() {
-		this.data = new DateTime();
-	}
-	
-	public Glicemia(TipoRefeicao tipoRefeicao) {
-		this.tipoRefeicao = tipoRefeicao;
 		this.data = new DateTime();
 	}
 	

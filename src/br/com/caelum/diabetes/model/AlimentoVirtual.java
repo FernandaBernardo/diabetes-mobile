@@ -2,12 +2,21 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+import com.j256.ormlite.field.DatabaseField;
+
 @SuppressWarnings("serial")
 public class AlimentoVirtual implements Serializable{
+	@DatabaseField(generatedId = true)
 	private int id;
+	@DatabaseField(foreign = true)
 	private Refeicao refeicao;
+	@DatabaseField
 	private double quantidade;
+	@DatabaseField(foreign = true)
 	private AlimentoFisico alimento;
+	
+	public AlimentoVirtual() {
+	}
 	
 	public AlimentoVirtual(AlimentoFisico alimento, double quantidade, Refeicao refeicao) {
 		this.quantidade = quantidade;

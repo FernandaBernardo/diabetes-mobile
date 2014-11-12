@@ -28,9 +28,9 @@ public class BemVindoActivity extends Activity {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
 		setContentView(R.layout.bem_vindo);
+		
 		DbHelper helper = new DbHelper(BemVindoActivity.this);
 		dao = new PacienteDao(helper);
-		
 		pacienteBanco = dao.getPaciente();
 		
 		if(pacienteBanco != null) {
@@ -46,13 +46,12 @@ public class BemVindoActivity extends Activity {
 				EditText nomePessoa = (EditText) findViewById(R.id.nome_pessoa);
 				Paciente paciente = new Paciente();
 				paciente.setNome(nomePessoa.getText().toString());
-				paciente.setId(dao.salva(paciente));
+				dao.salva(paciente);
 				Intent intent = new Intent(BemVindoActivity.this, MainActivity.class);
 				intent.putExtra("paciente", paciente);
 				startActivity(intent);
 			}
 		});
-		helper.close();
 	}
 	
 	@Override

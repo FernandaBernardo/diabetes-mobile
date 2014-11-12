@@ -2,17 +2,25 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.joda.time.DateTime;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 import br.com.caelum.diabetes.extras.TipoRefeicao;
 
 @SuppressWarnings("serial")
 public class Refeicao implements Serializable{
+	@DatabaseField(generatedId = true)
 	private int id;
-	private List<AlimentoVirtual> alimentos;
+	@ForeignCollectionField
+	private Collection<AlimentoVirtual> alimentos;
+	@DatabaseField
 	private TipoRefeicao tipoRefeicao;
+	@DatabaseField
 	private DateTime data;
 	
 	public Refeicao() {
@@ -20,25 +28,12 @@ public class Refeicao implements Serializable{
 		this.data = new DateTime();
 	}
 	
-	public Refeicao(TipoRefeicao tipoRefeicao) {
-		this.tipoRefeicao = tipoRefeicao;
-		this.alimentos = new ArrayList<AlimentoVirtual>();
-		this.data = new DateTime();
-	}
-	
-	public Refeicao(int id, TipoRefeicao tipoRefeicao, DateTime data) {
-		this.id = id;
-		this.tipoRefeicao = tipoRefeicao;
-		this.alimentos = new ArrayList<AlimentoVirtual>();
-		this.data = data;
-	}
-
 	public void adicionaAlimento(AlimentoVirtual alimento) {
 		alimentos.add(alimento);
 	}
 	
 	public List<AlimentoVirtual> getAlimentos() {
-		return alimentos;
+		return (List<AlimentoVirtual>) alimentos;
 	}
 
 	public void setAlimentos(List<AlimentoVirtual> alimentos) {

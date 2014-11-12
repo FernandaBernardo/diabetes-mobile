@@ -13,7 +13,6 @@ import android.widget.EditText;
 import br.com.caelum.diabetes.R;
 import br.com.caelum.diabetes.dao.DadosMedicosDao;
 import br.com.caelum.diabetes.dao.DbHelper;
-import br.com.caelum.diabetes.dao.PacienteDao;
 import br.com.caelum.diabetes.model.DadosMedicos;
 import br.com.caelum.diabetes.model.TipoDadoMedico;
 import br.com.caelum.diabetes.util.ValidatorUtils;
@@ -45,9 +44,6 @@ public class ConfigurarGlicemiaAlvoFragment extends Fragment {
 				dadosMedicos.setJantar(Double.parseDouble(jantar.getText().toString()));
 
 				DbHelper helper = new DbHelper(getActivity());
-
-				PacienteDao pacienteDao = new PacienteDao(helper);
-				dadosMedicos.setPaciente(pacienteDao.getPaciente());
 
 				DadosMedicosDao dadosDao = new DadosMedicosDao(helper);
 				dadosDao.salva(dadosMedicos);

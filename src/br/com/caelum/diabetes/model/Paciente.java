@@ -2,20 +2,35 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+import com.j256.ormlite.field.DatabaseField;
+
 @SuppressWarnings("serial")
 public class Paciente implements Serializable{
 	
+	@DatabaseField(generatedId = true)
 	private int id;
+	@DatabaseField(canBeNull= false)
 	private String nome;
+	@DatabaseField
 	private Integer idade;
+	@DatabaseField
 	private Double peso;
+	@DatabaseField
 	private Double altura;
+	@DatabaseField
 	private String sexo;
+	@DatabaseField
 	private String tipoDiabetes;
 	
+	@DatabaseField(foreign=true)
 	private DadosMedicos insulinaContinua;
+	@DatabaseField(foreign=true)
 	private DadosMedicos insulinaCorrecao;
+	@DatabaseField(foreign=true)
 	private DadosMedicos glicemiaAlvo;
+	
+	public Paciente() {
+	}
 	
 	public String getNome() {
 		return nome;
@@ -84,11 +99,6 @@ public class Paciente implements Serializable{
 	}
 	
 	public boolean temValorCorrecao(){
-		if (!(this.getInsulinaCorrecao() == null)){
-			if (this.getInsulinaCorrecao().isEmpty()){
-				return false;
-			}
-		}
-		return true;
+		return (!(this.getInsulinaCorrecao() == null));
 	}
 }

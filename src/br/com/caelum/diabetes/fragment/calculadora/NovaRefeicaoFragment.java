@@ -215,7 +215,7 @@ public class NovaRefeicaoFragment extends Fragment{
 				DbHelper helper = new DbHelper(getActivity());
 				
 				RefeicaoDao refeicaoDao = new RefeicaoDao(helper);
-				refeicao.setId(refeicaoDao.salva(refeicao));
+				refeicaoDao.salva(refeicao);
 				
 				helper.close();
 				

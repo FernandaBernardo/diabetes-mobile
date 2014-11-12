@@ -1,66 +1,61 @@
 package br.com.caelum.diabetes.dao;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import br.com.caelum.diabetes.extras.TabelasBD;
+import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.AlimentoFisico;
+import br.com.caelum.diabetes.model.AlimentoVirtual;
+
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 
 public class AlimentoFisicoDao{
 
-	private static final String TABELA = TabelasBD.ALIMENTO_FISICO;
-	private static final String[] COLUNAS = {"id", "nome", "carboidrato", "unidadeDeMedida"};
-
 	private DbHelper helper;
+	private RuntimeExceptionDao<AlimentoFisico, Integer> dao;
 
 	public AlimentoFisicoDao(DbHelper helper) {
 		this.helper = helper;
+		dao = helper.getSimpleDataDao(AlimentoFisico.class);
 	}
 	
 	public void salva(AlimentoFisico alimento) {
-		ContentValues values = toContentValues(alimento);
-		helper.getWritableDatabase().insert(TABELA, null, values);
+		dao.create(alimento);
 	}
 	
-	public void salvaFirst(AlimentoFisico alimento, SQLiteDatabase db) {
-		ContentValues values = toContentValues(alimento);
-		db.insert(TABELA, null, values);
-	}
-
 	public void deletar(AlimentoFisico alimento) {
-		String[] args = {String.valueOf(alimento.getId())};
-		helper.getWritableDatabase().delete(TABELA, "id=?", args);
+		dao.delete(alimento);
 	}
 
 	public void atualiza(AlimentoFisico alimento) {
-		String[] args = {String.valueOf(alimento.getId())};
-		ContentValues values = toContentValues(alimento);
-		helper.getWritableDatabase().update(TABELA, values, "id=?", args);
+		dao.update(alimento);
 	}
 	
 	public List<AlimentoFisico> getAlimentos() {
-		ArrayList<AlimentoFisico> alimentos = new ArrayList<AlimentoFisico>();
-		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS, null, null, null, null, null);
-
-		while(cursor.moveToNext()) {
-			AlimentoFisico task = new AlimentoFisico(cursor.getString(1), cursor.getDouble(2), cursor.getString(3));
-			task.setId(cursor.getInt(0));
-			alimentos.add(task);
+		QueryBuilder<AlimentoFisico, Integer> builder = dao.queryBuilder();
+		
+		PreparedQuery<AlimentoFisico> prepare = null;
+		try {
+			prepare = builder.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
-		cursor.close();
-
-		return alimentos;
-	}
-	
-	private ContentValues toContentValues(AlimentoFisico alimento) {
-		ContentValues values = new ContentValues();
-		values.put("nome", alimento.getNome());
-		values.put("carboidrato", alimento.getCarboidrato());
-		values.put("unidadeDeMedida", alimento.getUnidadeDeMedida());
-		return values;
+		
+		return dao.query(prepare);
 	}
 
+	public AlimentoFisico getAlimentoFisicoDoVirtual(AlimentoVirtual alimentoVirtual) {
+		QueryBuilder<AlimentoFisico, Integer> builderAlimento = dao.queryBuilder();
+		PreparedQuery<AlimentoFisico> prepare = null;
+		try {
+			builderAlimento.where().eq("id", alimentoVirtual.getAlimento().getId());
+			prepare = builderAlimento.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
+		}
+		
+		return dao.queryForFirst(prepare);
+	}
 }

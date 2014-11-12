@@ -28,10 +28,11 @@ public class ConfigurarDadosPessoaisFragment extends Fragment {
 	private RadioButton tipo2;
 	private PacienteDao dao;
 	private Button salvar;
+	private View view;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		final View view = inflater.inflate(R.layout.configurar_dados, null);
+		view = inflater.inflate(R.layout.configurar_dados, null);
 		initializeComponents(view);
 		DbHelper helper = new DbHelper(getActivity());
 		dao = new PacienteDao(helper);

@@ -2,12 +2,21 @@ package br.com.caelum.diabetes.model;
 
 import java.io.Serializable;
 
+import com.j256.ormlite.field.DatabaseField;
+
 @SuppressWarnings("serial")
 public class AlimentoFisico implements Serializable{
+	@DatabaseField(generatedId = true)
 	private int id;
+	@DatabaseField
 	private String nome;
+	@DatabaseField
 	private double carboidrato;
+	@DatabaseField
 	private String unidadeDeMedida;
+	
+	public AlimentoFisico() {
+	}
 	
 	public AlimentoFisico(String nome, double carboidrato, String unidadeDeMedida) {
 		this.nome = nome;

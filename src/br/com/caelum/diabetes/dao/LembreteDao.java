@@ -1,86 +1,53 @@
 package br.com.caelum.diabetes.dao;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
-import org.joda.time.DateTime;
-
-import android.content.ContentValues;
-import android.database.Cursor;
-import br.com.caelum.diabetes.extras.TabelasBD;
+import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.Lembrete;
 
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
+
 public class LembreteDao {
-	private static final String TABELA = TabelasBD.LEMBRETE;
-	private static final String[] COLUNAS = { "id", "data", "atividade",
-			"anotacoes" };
+	private RuntimeExceptionDao<Lembrete, Integer> dao;
 	private final DbHelper helper;
 
 	public LembreteDao(DbHelper helper) {
 		this.helper = helper;
+		this.dao = helper.getSimpleDataDao(Lembrete.class);
 	}
 
-	public int salva(Lembrete lembrete) {
-		ContentValues values = toContentValues(lembrete);
-		return (int) helper.getWritableDatabase().insert(TABELA, null, values);
+	public void salva(Lembrete lembrete) {
+		dao.create(lembrete);
 	}
 
 	public void deletar(Lembrete lembrete) {
-		String[] args = { String.valueOf(lembrete.getId()) };
-		helper.getWritableDatabase().delete(TABELA, "id=?", args);
+		dao.delete(lembrete);
 	}
 
 	public void atualiza(Lembrete lembrete) {
-		String[] args = { String.valueOf(lembrete.getId()) };
-		ContentValues values = toContentValues(lembrete);
-		helper.getWritableDatabase().update(TABELA, values, "id=?", args);
+		dao.update(lembrete);
 	}
 
 	public List<Lembrete> getLembretes() {
-		ArrayList<Lembrete> lembretes = new ArrayList<Lembrete>();
-		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS,
-				null, null, null, null, "data");
-
-		while (cursor.moveToNext()) {
-			Lembrete lembrete = new Lembrete();
-			lembrete.setId(cursor.getInt(0));
-			lembrete.setData(new DateTime(cursor.getLong(1)));
-			lembrete.setAtividade(cursor.getString(2));
-			lembrete.setAnotacoes(cursor.getString(3));
-			lembretes.add(lembrete);
+		QueryBuilder<Lembrete,Integer> builder = dao.queryBuilder();
+		
+		PreparedQuery<Lembrete> prepare = null;
+		try {
+			prepare = builder.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
 		}
-		cursor.close();
-
+		
+		List<Lembrete> lembretes = dao.query(prepare);
 		return lembretes;
 	}
 
 	public List<Lembrete> getLembretes(int limit) {
-		ArrayList<Lembrete> lembretes = new ArrayList<Lembrete>();
-		Cursor cursor = helper.getReadableDatabase().query(TABELA, COLUNAS,
-				null, null, null, null, "data");
-		int contador = 0;
-		while (cursor.moveToNext()) {
-			if (contador == limit) {
-				break;
-			}
-			Lembrete lembrete = new Lembrete();
-			lembrete.setId(cursor.getInt(0));
-			lembrete.setData(new DateTime(cursor.getLong(1)));
-			lembrete.setAtividade(cursor.getString(2));
-			lembrete.setAnotacoes(cursor.getString(3));
-			lembretes.add(lembrete);
-			contador++;
-		}
-		cursor.close();
-
-		return lembretes;
-	}
-
-	private ContentValues toContentValues(Lembrete lembrete) {
-		ContentValues values = new ContentValues();
-		values.put("data", lembrete.getData().toDate().getTime());
-		values.put("atividade", lembrete.getAtividade());
-		values.put("anotacoes", lembrete.getAnotacoes());
-		return values;
+		List<Lembrete> lembretes = getLembretes();
+		if (lembretes.size() < limit) return lembretes;
+		else return lembretes.subList(0, limit);
 	}
 }
