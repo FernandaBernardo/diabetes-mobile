@@ -1,40 +1,55 @@
 package br.com.caelum.diabetes.dao;
 
-import android.content.ContentValues;
-import br.com.caelum.diabetes.extras.TabelasBD;
+import java.sql.SQLException;
+import java.util.List;
+
+import br.com.caelum.diabetes.exception.TratadorExcecao;
 import br.com.caelum.diabetes.model.AlimentoVirtual;
+import br.com.caelum.diabetes.model.Refeicao;
+
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 
 public class AlimentoVirtualDao{
 
-	private static final String TABELA = TabelasBD.ALIMENTO_VIRTUAL;
-
+	private RuntimeExceptionDao<AlimentoVirtual, Integer> dao;
 	private DbHelper helper;
 
 	public AlimentoVirtualDao(DbHelper helper) {
 		this.helper = helper;
+		dao = helper.getSimpleDataDao(AlimentoVirtual.class);
 	}
 	
 	public void salva(AlimentoVirtual alimento) {
-		ContentValues values = toContentValues(alimento);
-		helper.getWritableDatabase().insert(TABELA, null, values);
+		dao.create(alimento);
 	}
 
 	public void deletar(AlimentoVirtual alimento) {
-		String[] args = {String.valueOf(alimento.getId())};
-		helper.getWritableDatabase().delete(TABELA, "id=?", args);
+		dao.delete(alimento);
 	}
 
 	public void atualiza(AlimentoVirtual alimento) {
-		String[] args = {String.valueOf(alimento.getId())};
-		ContentValues values = toContentValues(alimento);
-		helper.getWritableDatabase().update(TABELA, values, "id=?", args);
+		dao.update(alimento);
 	}
-	
-	private ContentValues toContentValues(AlimentoVirtual alimento) {
-		ContentValues values = new ContentValues();
-		values.put("id_refeicao", alimento.getRefeicao().getId());
-		values.put("quantidade", alimento.getQuantidade());
-		values.put("id_alimento", alimento.getAlimento().getId());
-		return values;
+
+	public List<AlimentoVirtual> getAlimentosDaRefeicao(Refeicao refeicao) {
+		QueryBuilder<AlimentoVirtual, Integer> builderAlimento = dao.queryBuilder();
+		PreparedQuery<AlimentoVirtual> prepare = null;
+		try {
+			builderAlimento.where().eq("refeicao_id", refeicao.getId());
+			prepare = builderAlimento.prepare();
+		} catch (SQLException e) {
+			new TratadorExcecao(helper.context).trataSqlException(e);
+		}
+		
+		List<AlimentoVirtual> alimentosVirtuais = dao.query(prepare);
+		AlimentoFisicoDao alimentoFisicoDao = new AlimentoFisicoDao(helper);
+		
+		for (AlimentoVirtual alimentoVirtual : alimentosVirtuais) {
+			alimentoVirtual.setAlimento(alimentoFisicoDao.getAlimentoFisicoDoVirtual(alimentoVirtual));
+		}
+		
+		return alimentosVirtuais;
 	}
 }

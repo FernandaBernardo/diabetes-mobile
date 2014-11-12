@@ -48,12 +48,15 @@ public class AdicionaAlimentoFragment extends Fragment {
 		helper = new DbHelper(getActivity());
 		alimentoDao = new AlimentoFisicoDao(helper);
 
+		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
+		
+		helper.close();
+		
 		carboidrato = (EditText) view.findViewById(R.id.carboidrato_alimento);
 		valor = (EditText) view.findViewById(R.id.valor);
 		unidade = (EditText) view.findViewById(R.id.unidade);
 		
 		adicionarAlimento = (Button) view.findViewById(R.id.adicionar_alimento);
-		final List<AlimentoFisico> alimentos = alimentoDao.getAlimentos();
 
 		ArrayAdapter<AlimentoFisico> adapter = new ArrayAdapter<AlimentoFisico>(
 				getActivity(), android.R.layout.simple_dropdown_item_1line,
@@ -110,10 +113,6 @@ public class AdicionaAlimentoFragment extends Fragment {
 						alimentoAtual, Double.parseDouble(valor.getText()
 								.toString()), refeicao);
 				refeicao.adicionaAlimento(alimentoVirtual);
-
-//				AlimentoVirtualDao alimentoVirtualDao = new AlimentoVirtualDao(
-//						helper);
-//				alimentoVirtualDao.salva(alimentoVirtual);
 
 				Bundle args = new Bundle();
 				args.putSerializable("refeicao", refeicao);
